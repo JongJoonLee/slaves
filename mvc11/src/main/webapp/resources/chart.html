@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>차트</title>
+<link rel="stylesheet"
+	href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+</head>
+<body>
+
+	<div id="display_chart"></div>
+
+	<input type="button" id="btn" value="변경" />
+
+	<script>
+		$(document).ready(function() {
+			var graph = Morris.Line({
+				element : 'display_chart',
+
+				data : [ {
+					year : '2008',
+					value : 30
+				}, {
+					year : '2009',
+					value : 10
+				}, {
+					year : '2010',
+					value : 5
+				}, {
+					year : '2011',
+					value : 5
+				}, {
+					year : '2012',
+					value : 20
+				} ],
+				xkey : 'year',
+				ykeys : [ 'value' ],
+				labels : [ 'value' ]
+			});
+
+			//$('#btn').click(function(){
+			$('#btn').bind('click', function() {
+				var ret = [];
+				ret.push({
+					year : '2008',
+					value : 55
+				});
+				ret.push({
+					year : '2009',
+					value : 65
+				});
+				ret.push({
+					year : '2010',
+					value : 45
+				});
+				graph.setData(ret);
+			});
+
+			var cnt = 0;
+			function update() {
+				var ret = [];
+				cnt++;
+				ret.push({
+					year : '2008',
+					value : cnt
+				});
+				ret.push({
+					year : '2009',
+					value : 65
+				});
+				ret.push({
+					year : '2010',
+					value : 45
+				});
+				graph.setData(ret);
+			}
+
+			setInterval(update, 100);
+
+		});
+	</script>
+
+</body>
+</html>

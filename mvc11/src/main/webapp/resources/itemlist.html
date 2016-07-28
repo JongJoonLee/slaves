@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원목록</title>
+<link href="css/bootstrap.css" rel="stylesheet" />
+<style>
+.margin5 {
+	margin-left: 5px;
+	margin-right: 5px;
+}
+</style>
+</head>
+<body>
+
+	<div class="margin5">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>번호</th>
+					<th>제목</th>
+					<th>내용</th>
+					<th>이미지</th>
+					<th>가격</th>
+					<th>수량</th>
+					<th>체크</th>
+					<th>날짜</th>
+				</tr>
+			</thead>
+
+			<tbody id="list">
+
+			</tbody>
+		</table>
+
+
+
+	</div>
+
+
+	<script src="js/jquery-1.12.3.min.js"></script>
+	<script>
+		$(document)
+				.ready(
+						function() {
+							//페이지 시작 위치 초기값 0
+							var st = 0;
+
+							//함수로 만듬
+							getList = function() {
+								$
+										.post(
+												"http://127.0.0.1:8080/mvc11/itemlist.do",
+												{
+													"start" : st
+												},
+												function(data) {
+													var len = data.length; //길이 구하기
+
+													for (var i = 0; i < len; i++) {
+														$('#list')
+																.append(
+																		'<tr>'
+																				+ '<td>'
+																				+ data[i].no
+																				+ '</td>'
+																				+ '<td>'
+																				+ data[i].title
+																				+ '</td>'
+																				+ '<td>'
+																				+ data[i].content
+																				+ '</td>'
+																				+ '<td><img src="http://127.0.0.1:8080/mvc2/resources/img/'+data[i].img+'" width="50" height="50" /></td>'
+																				+ '<td>'
+																				+ data[i].price
+																				+ '</td>'
+																				+ '<td>'
+																				+ data[i].qty
+																				+ '</td>'
+																				+ '<td>'
+																				+ data[i].chk
+																				+ '</td>'
+																				+ '<td>'
+																				+ data[i].date1
+																				+ '</td>'
+																				+
+
+																				'</tr>');
+													}
+												});
+							};
+
+							getList();// 페이지가 로딩시에 동작하기 위해서 호출함.
+
+							$(window).scroll( //start 값에 따라 스크롤이 바텀에 오면 계속 20개씩 더 불러옴.
+									function() {
+										//스크롤이 bottom에 도달
+										if ($(window).scrollTop()
+												+ $(window).height() == $(
+												document).height()) {
+											st += 20;
+											getList();
+										}
+									});
+
+						});
+	</script>
+
+
+
+
+</body>
+</html>

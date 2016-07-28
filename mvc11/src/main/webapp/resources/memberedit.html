@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>회원정보수정</title>
+<link href="css/bootstrap.css" rel="stylesheet" />
+<style>
+.margin5 {
+	margin-left: 5px;
+	margin-right: 5px;
+}
+</style>
+</head>
+
+
+<body>
+	<div class="margin5">
+		<input type="text" placeholder="아이디" id="id" readonly /> <input
+			type="text" placeholder="이름" id="name" /> <input type="text"
+			placeholder="전화번호" id="tel" /> <input type="text" placeholder="이메일"
+			id="email" /> <input type="button" value="수정" id="btn_edit" />
+	</div>
+
+	<script src="js/jquery-1.12.3.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			var id = "aaa"; //main페이지에서 전달된 1개의 아이디라고 가정
+
+			//POST, id
+			$.post("http://127.0.0.1:8080/mvc11/app_get_member_one.do", {
+				"id" : id
+			}, function(data) {
+				$('#id').val(data.id);
+				$('#name').val(data.name);
+				$('#tel').val(data.tel);
+				$('#email').val(data.email);
+			});
+
+			$(document).on("click", ".btn_edit", function() {
+
+				var id = $('#id').val();
+				var name = $('#name').val();
+				var tel = $('#tel').val();
+				var email = $('#email').val();
+
+				$.post("http://127.0.0.1:8080/mvc11/app_member_edit.do", {
+					"id" : id,
+					"name" : name,
+					"tel" : tel,
+					"email" : email
+				}, function(data) {
+
+					if (data.ret == 1) {
+						alert("완료되었습니다.");
+					} else {
+						alert("실패했습니다.");
+					}
+				});
+			});
+
+		});
+	</script>
+</body>
+
+</html>

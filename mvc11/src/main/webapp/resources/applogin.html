@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>회원가입</title>
+<link href="css/bootstrap.css" rel="stylesheet" />
+
+<style>
+.margin5 {
+	margin-left: 5px;
+	margin-right: 5px;
+}
+</style>
+</head>
+<body>
+
+	<div class="margin5">
+		<input type="text" class="form-control" id="userid"
+			placeholder="아이디를 입력" /> <label id="check_id">아이디중복확인</label> <input
+			type="password" class="form-control" id="userpw1"
+			placeholder="암호1 입력" /> <input type="password" class="form-control"
+			id="userpw2" placeholder="암호2 입력" /> <input type="text"
+			class="form-control" id="username" placeholder="이름 입력" />
+
+		<div id="div">내용</div>
+	</div>
+
+
+	<script src="js/jquery-1.12.3.min.js"></script>
+	<script>
+		$(document).ready(
+				function() {
+					$('#userid').focus();
+
+					$('#userid').bind(
+							'keyup',
+							function(event) {
+								var id = $('#userid').val();
+
+								$.get(
+										"http://127.0.0.1:8080/mvc11/appidcheck.do?id="
+												+ id, function(data) {
+											var tmp = data.ret; //{"ret":0}
+											if (tmp == 0) {
+												$('#check_id').text('사용불가능');
+											} else {
+												$('#check_id').text('사용가능');
+											}
+										});
+
+								/*
+								 {"key":"value", "key1":"value1"}
+								 $.post("서버주소", {"id":id}, function(ret){
+
+								 }); 
+								 */
+							});
+				});
+	</script>
+
+</body>
+</html>

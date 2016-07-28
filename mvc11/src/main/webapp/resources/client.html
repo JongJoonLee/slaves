@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>웹채팅클라이언트</title>
+</head>
+<body>
+
+
+<input type="button" id="btn_conn" value="접속" />
+
+<br />
+<input type="text" id="txt_msg" />
+<input type="button" id="btn_send" value="전송" />
+<div id="output">
+
+</div>
+
+
+<script type="text/javascript" src="js/jquery-1.12.3.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+   var host = "ws://127.0.0.1:8080/mvc11/chat/server.do";
+   var socket = new WebSocket(host);
+      
+   socket.onopen = function(){
+      //서버 접속시   
+   };
+
+   socket.onmessage = function(msg){
+      //서버에서 메시지가 올경우   
+      $('#output').append(msg.data+"<br />");
+   };
+      
+   socket.onclose = function(){
+      //서버 접속 종료시
+   };
+
+   $('#btn_conn').click(function(){
+      alert('접속');   
+   });
+
+   $('#btn_send').click(function(){
+      var msg =  $('#txt_msg').val();
+      socket.send(msg);
+   });
+});
+
+</script>
+
+
+</body>
+</html>

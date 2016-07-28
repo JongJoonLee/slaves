@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Bcustom">
+	<insert id="addBcustom" parameterType="Bcustom">
+		INSERT INTO `custom`(c_name, c_tel, c_postcode,c_add1,c_add2,c_birth,c_date)
+		VALUES(#{c_name}, #{c_tel}, #{c_postcode},
+		#{c_add1},#{c_add2},#{c_birth}, now())
+	</insert>
+
+	<select id="getCustomList" parameterType="int" resultType="Bcustom">
+
+		SELECT * FROM `custom` ORDER BY c_id DESC LIMIT #{cnt} , 10 
+
+	</select>
+	
+	
+	
+	<select id="getSearchList" parameterType="CustomSearchVO" resultType="Bcustom">
+		SELECT * FROM `custom` WHERE ${type} LIKE CONCAT('%',#{txt},'%') ORDER BY c_id DESC LIMIT #{cnt}, 10
+	</select>
+
+	<select id="getSearchTot" resultType="int" parameterType="CustomSearchVO">
+		SELECT count(*) FROM `custom` WHERE ${type} LIKE CONCAT('%',#{txt},'%') 
+	</select>
+	
+	
+	
+	
+	
+	
+	<insert id="insertmkaccount" parameterType="Account">
+		INSERT INTO `b_account`(a_no, c_id, a_date)
+		VALUES(#{a_no}, #{c_id}, now())
+	</insert>
+	
+	 <select id="getCustomCount" resultType="int">
+         SELECT COUNT(*) FROM `custom`
+    </select>
+
+<!-- 	<select id="getMyaccount" parameterType="int" resultType="Myaccount" >
+
+		SELECT a.*, b.* 
+		FROM `custom` as a 
+		INNER JOIN `b_account` as b 
+		ON a.c_id = b.c_id 
+	
+
+	</select> -->
+	
+	<select id="getMyaccount" parameterType="int" resultType="Myaccount" >
+
+		SELECT a.*, b.* 
+		FROM `custom` as a 		
+		INNER JOIN `b_account` as b 
+		ON a.c_id = b.c_id 
+		where a.c_id = #{c_id}
+		
+
+	</select>
+
+
+</mapper>
+
+
+

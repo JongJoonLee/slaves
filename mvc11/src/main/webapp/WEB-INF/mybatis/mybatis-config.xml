@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "HTTP://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<settings>
+		<setting name="cacheEnabled" value="true" />
+		<!--<setting name="lazyLoadingEnabled" value="true" /> -->
+		<setting name="aggressiveLazyLoading" value="true" />
+		<setting name="multipleResultSetsEnabled" value="true" />
+		<setting name="useColumnLabel" value="true" />
+		<!-- <setting name="autoMappingBehavior" value="false" /> -->
+		<setting name="useGeneratedKeys" value="true" />
+		<setting name="defaultExecutorType" value="REUSE" />
+		<setting name="defaultStatementTimeout" value="5000" />
+	</settings>
+
+	<typeAliases>
+		<typeAlias alias="Member" type="com.example.bean.Member" />
+		<typeAlias alias="Board" type="com.example.bean.Board" />
+		<typeAlias alias="Bcustom" type="com.example.bean.B_Custom" />
+		<typeAlias alias="Account" type="com.example.bean.AccountVO" />
+		<typeAlias alias="Myaccount" type="com.example.bean.MyaccountVO" />
+		<typeAlias alias="CustomSearchVO" type="com.example.bean.CustomSearchVO" />
+		<typeAlias alias="ItemVO" type="com.example.bean.ItemVO" />
+		
+		
+		<!-- <typeAlias alias="PPage" type="com.example.bean.PPage" /> -->
+	</typeAliases>
+</configuration>
