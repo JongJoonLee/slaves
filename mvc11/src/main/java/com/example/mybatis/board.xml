@@ -49,7 +49,7 @@
     
     <delete id="getBoardDelete" parameterType="int">
         
-        DELETE FORM `board` WHERE no = #{no}
+        DELETE FROM `board` WHERE no = #{no}
         
     </delete>
     
@@ -100,6 +100,12 @@
         
         UPDATE `notice_board` SET title=#{title} , contents=#{contents}, date=now() WHERE no=#{no}
     </update>
+    
+    <delete id="getNotice_BoardDelete" parameterType="int">
+        
+        DELETE FROM `notice_board` WHERE no = #{no}
+        
+    </delete>
     
     <!-- 공지사항 끝 -->
     

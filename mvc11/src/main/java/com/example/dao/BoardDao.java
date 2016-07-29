@@ -27,12 +27,14 @@ public class BoardDao extends SqlSessionDaoSupport {
 		
 	}
 	
-		public void getBoardDelete(int no){
+	public int getBoardDelete(int no){
 		
 		//this.getSqlSession().delete("Board.getBoardDelete", no);
-			getSqlSession().delete("Board.getBoardDelete", no);
+			return this.getSqlSession().delete("Board.getBoardDelete", no);
 		
 	}
+	
+	
 	
 
 	
@@ -109,6 +111,13 @@ public class BoardDao extends SqlSessionDaoSupport {
 		return this.getSqlSession().update("Board.updateNotice_Board", nbd);
 	}
 	
+	
+	public int getNotice_BoardDelete(int no){
+		
+		//this.getSqlSession().delete("Board.getBoardDelete", no);
+			return this.getSqlSession().delete("Board.getNotice_BoardDelete", no);
+		
+	}
 	
 	
 	

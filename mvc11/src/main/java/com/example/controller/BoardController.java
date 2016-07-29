@@ -58,8 +58,9 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/boardcontent.do", method = RequestMethod.GET)
-	public String boardcontents(Locale locale, Model model, @RequestParam(value = "no") int no) {
-
+	public String boardcontents(Locale locale, Model model, HttpSession session, @RequestParam(value = "no") int no) {
+		
+		session.setAttribute("prev", "boardcontent.do?no="+no);
 		model.addAttribute("ctnt", bDao.boardcontents(no));
 		model.addAttribute("ctntpre", bDao.boardcontents(no-1));
 		model.addAttribute("ctntnext", bDao.boardcontents(no+1));
@@ -206,9 +207,10 @@ public class BoardController {
 	@RequestMapping(value = "/boarddelete.do", method = RequestMethod.GET)
 	public String deleteboardcontent(@RequestParam(value = "no") int no) {
 		
+		int res = 0;
 		
-		bDao.getBoardDelete(no);
-		return "redirect:boardlist"; 
+		res = bDao.getBoardDelete(no);
+		return "redirect:boardlist.do";
 	}
 	
 	
@@ -242,8 +244,8 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/notice_boardcontent.do", method = RequestMethod.GET)
-	public String notice_boardcontents(Locale locale, Model model, @RequestParam(value = "no") int no) {
-
+	public String notice_boardcontents(Locale locale, Model model, HttpSession session, @RequestParam(value = "no") int no) {
+		session.setAttribute("prev", "notice_boardcontent.do?no="+no);
 		model.addAttribute("ctnt", bDao.notice_boardcontents(no));
 		model.addAttribute("ctntpre", bDao.notice_boardcontents(no-1));
 		model.addAttribute("ctntnext", bDao.notice_boardcontents(no+1));
@@ -338,6 +340,15 @@ public class BoardController {
 		
 		return "redirect:notice_boardcontent.do?no="+board.getNo();
 	
+	}
+	
+	@RequestMapping(value = "/notice_boarddelete.do", method = RequestMethod.GET)
+	public String deleteNotice_boardcontent(@RequestParam(value = "no") int no) {
+		
+		int res = 0;
+		
+		res = bDao.getNotice_BoardDelete(no);
+		return "redirect:notice_boardlist.do";
 	}
 	
 	
