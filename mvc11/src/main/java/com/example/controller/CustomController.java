@@ -71,9 +71,9 @@ public class CustomController {
 		int bopage = 10;
 		
 		int totpage = totgle / bopage+1;
-		System.out.println("/////////////////////////////////");
-		System.out.println("customlist totpage : " + totpage);
-		System.out.println("/////////////////////////////////");
+		//System.out.println("/////////////////////////////////");
+		//System.out.println("customlist totpage : " + totpage);
+		//System.out.println("/////////////////////////////////");
 		//1 0
 		//2 10
 		//3 20
@@ -133,7 +133,7 @@ public class CustomController {
 	
 	
 	
-		System.out.println(AVO.getC_id());
+		//System.out.println(AVO.getC_id());
 		
 		
 		try {
@@ -143,7 +143,7 @@ public class CustomController {
 			
 		} 
 		catch (Exception e) {
-			System.out.println(e.getMessage());
+			//System.out.println(e.getMessage());
 		}
 
 		

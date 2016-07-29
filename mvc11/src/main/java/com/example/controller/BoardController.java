@@ -40,13 +40,13 @@ public class BoardController {
 			@RequestParam(value = "page", required = false, defaultValue = "1") int cnt) {
 		
 		session.setAttribute("prev", "boardlist.do");
-		System.out.println(session.getAttribute("prev"));
+		//System.out.println(session.getAttribute("prev"));
 		int totgle = bDao.boardCount();
 		int bopage = 20;
 		
 		int totpage = totgle / bopage+1;
 		
-		System.out.println(cnt);
+		//System.out.println(cnt);
 		
 		//1 0
 		//2 10
@@ -84,7 +84,7 @@ public class BoardController {
 				String filename = file.getOriginalFilename();
 				String root = request.getSession().getServletContext().getRealPath("/");
 				
-				System.out.println(root);
+				//System.out.println(root);
 
 				// root디렉토리/upload디렉토리 밑에 생성
 				File dir = new File(root + File.separator + "upload");
@@ -101,8 +101,8 @@ public class BoardController {
 				stream.write(bytedata);
 				stream.close();
 
-				System.out.println(filename);
-				System.out.println(root);
+				//System.out.println(filename);
+				//System.out.println(root);
 				return "upload ok";
 
 			} catch (Exception e) {
@@ -129,7 +129,7 @@ public class BoardController {
 	   
 		List<Board> list = bDao.getBoardSearch(bcp);
 		
-		System.out.println(bcp.getCnt());
+		//System.out.println(bcp.getCnt());
 		
 		model.addAttribute("blist", list);
 
@@ -164,7 +164,7 @@ public class BoardController {
 	@RequestMapping(value = "/boardwritepost1.do", method = RequestMethod.POST)
 	public String BoardWritePost(Board board) {
 		bDao.insertBoard(board);
-		System.out.println(board.getContents());
+		//System.out.println(board.getContents());
 		
 		return "redirect:boardlist.do";
 		
@@ -195,7 +195,7 @@ public class BoardController {
 	@RequestMapping(value = "/boardeditpost1.do", method = RequestMethod.POST)
 	public String boardeditpost1(Board board,@RequestParam(value = "no") int no) {
 		bDao.updateBoard(board);
-		System.out.println(board.getNo());
+		//System.out.println(board.getNo());
 		//System.out.println(no);
 		
 		return "redirect:boardcontent.do?no="+board.getNo();
@@ -226,13 +226,13 @@ public class BoardController {
 			@RequestParam(value = "page", required = false, defaultValue = "1") int cnt) {
 		
 		session.setAttribute("prev", "notice_boardlist.do");
-		System.out.println(session.getAttribute("prev"));
+		//System.out.println(session.getAttribute("prev"));
 		int totgle = bDao.notice_boardCount();
 		int bopage = 20;
 		
 		int totpage = totgle / bopage+1;
 		
-		System.out.println(cnt);
+		//System.out.println(cnt);
 		
 		//1 0
 		//2 10
@@ -335,7 +335,7 @@ public class BoardController {
 	@RequestMapping(value = "/notice_boardeditpost1.do", method = RequestMethod.POST)
 	public String notice_boardeditpost1(Board board,@RequestParam(value = "no") int no) {
 		bDao.updateNotice_Board(board);
-		System.out.println(board.getNo());
+		//System.out.println(board.getNo());
 		//System.out.println(no);
 		
 		return "redirect:notice_boardcontent.do?no="+board.getNo();

@@ -55,9 +55,9 @@ public class HomeController {
 	public String home1add(Locale locale, Model model, @RequestParam("id") String id,
 			@RequestParam("password") String password, @RequestParam("name") String name) {
 
-		System.out.println("id : " + id);
-		System.out.println("password : " + password);
-		System.out.println("name : " + password);
+		//System.out.println("id : " + id);
+		//System.out.println("password : " + password);
+		//System.out.println("name : " + password);
 
 		return "join";
 	}
@@ -72,9 +72,9 @@ public class HomeController {
 
 	@RequestMapping(value = "/formJoin1", method = RequestMethod.POST)
 	public String formjoin1(@ModelAttribute() Member mem) {
-		System.out.println("A:" + mem.getId());
-		System.out.println(mem.getPassword());
-		System.out.println(mem.getName());
+		//System.out.println("A:" + mem.getId());
+		//System.out.println(mem.getPassword());
+		//System.out.println(mem.getName());
 
 		mDao.join(mem);
 

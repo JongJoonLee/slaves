@@ -57,7 +57,7 @@ public class LoginController {
 			return "redirect:"+prevURL;///index.do";
 		} catch (Exception e) {
 			e.getMessage();
-			System.out.println("로긘실패");
+			//System.out.println("로긘실패");
 			return "redirect:login.do";
 		}
 
@@ -81,7 +81,7 @@ public class LoginController {
 	public String logout(HttpSession session) {
 		// System.out.println("로가웃성공");
 		prevURL=(String) session.getAttribute("prev");
-		System.out.println(prevURL);
+		//System.out.println(prevURL);
 		session.invalidate();
 
 		return "redirect:"+prevURL;
