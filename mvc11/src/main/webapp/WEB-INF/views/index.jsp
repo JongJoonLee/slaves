@@ -22,21 +22,6 @@
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9TEWZ1WTrfrDiOb2y8KxPtZJt98IOW3I&callback=initMap"
 	async defer></script>
 <script type="text/javascript">
-	$(document).ready(
-			function() {
-				$(".dropdown").hover(
-						function() {
-							$('.dropdown-menu', this).not('.in .dropdown-menu')
-									.stop(true, true).slideDown("400");
-							$(this).toggleClass('open');
-						},
-						function() {
-							$('.dropdown-menu', this).not('.in .dropdown-menu')
-									.stop(true, true).slideUp("400");
-							$(this).toggleClass('open');
-						});
-			});
-
 	function initMap() {
 		// Create a map object and specify the DOM element for display.
 		var map = new google.maps.Map(document.getElementById('map'), {
@@ -53,6 +38,19 @@
 </script>
 </head>
 <body>
+	<div id="fb-root"></div>
+	<script>
+		(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id))
+				return;
+			js = d.createElement(s);
+			js.id = id;
+			js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.7";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
+
 
 	<div class="container">
 
@@ -60,10 +58,10 @@
 
 
 		<div class="row">
-		
-		<div class="col-md-3"></div>
-		<div class="col-md-6"></div>
-		
+
+			<div class="col-md-3"></div>
+			<div class="col-md-6"></div>
+
 
 			<div class="col-lg-8">
 
@@ -142,7 +140,8 @@
 					<tr>
 						<td><h3>공지사항</h3></td>
 						<td align="right"><h3>
-							<a href="notice_boardlist.do">	<span class="label label-default">More</span></a>
+								<a href="notice_boardlist.do"> <span
+									class="label label-default">More</span></a>
 							</h3></td>
 
 
@@ -165,8 +164,8 @@
 
 
 			<div class="col-md-4">
-			
-			
+
+
 				<table class="table">
 					<tr>
 						<td><h3>SNS 이야기</h3></td>
@@ -176,20 +175,27 @@
 
 
 					</tr>
-					<tr>
-						<td>가나다라</td>
-					</tr>
-
-
 				</table>
+
+				<!-- 페이스북 페이지연동 -->
+				<div class="fb-page" style="width: 100%; height: 100%"
+					data-href="https://www.facebook.com/OverwatchKR" data-width="500"
+					data-hide-cover="false" data-show-facepile="false"
+					data-show-posts="false"></div>
+				<!-- 페이스북 페이지연동 끝 -->
+
+
+
+
+
 
 
 
 				<hr />
-			
-			
-			
-			
+
+
+
+
 			</div>
 
 		</div>

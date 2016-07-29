@@ -27,6 +27,13 @@ public class BoardDao extends SqlSessionDaoSupport {
 		
 	}
 	
+		public void getBoardDelete(int no){
+		
+		//this.getSqlSession().delete("Board.getBoardDelete", no);
+			getSqlSession().delete("Board.getBoardDelete", no);
+		
+	}
+	
 
 	
 	public int boardCount( ){

@@ -202,6 +202,20 @@ public class BoardController {
 	}
 	
 	
+	
+	@RequestMapping(value = "/boarddelete.do", method = RequestMethod.GET)
+	public String deleteboardcontent(@RequestParam(value = "no") int no) {
+		
+		
+		bDao.getBoardDelete(no);
+		return "redirect:boardlist"; 
+	}
+	
+	
+	
+	
+	
+	
 	///////////////////// 공지사항 보드 ////////////////////////////////
 	
 	

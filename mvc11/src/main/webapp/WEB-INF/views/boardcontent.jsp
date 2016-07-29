@@ -42,6 +42,7 @@
 			<c:if test="${session eq ctnt.getId()}">
 			<div align="right">
 				<a href="boardedit.do?no=${ctnt.getNo()}" class="btn btn-primary">수정</a>
+				<a href="boarddelete.do?no=${ctnt.getNo()}" class="btn btn-danger">삭제</a>
 			</div>
 			</c:if>
 			
