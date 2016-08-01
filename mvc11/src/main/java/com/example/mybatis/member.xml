@@ -3,29 +3,29 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Member">
     <insert id="addMember" parameterType="Member">
-        INSERT INTO `mvc_member`(id, password, name)
+        INSERT INTO `member`(id, password, name)
 	        VALUES(#{id}, #{password}, #{name})
     </insert>	 
     
     <select id="getCheckUserId" parameterType="String" resultType="String">
-		SELECT id FROM `mvc_member` WHERE id=#{id}
+		SELECT id FROM `member` WHERE id=#{id}
 	</select>
 	
     <select id="login" parameterType="Member" resultType="Member">
-		SELECT * FROM `mvc_member` WHERE id=#{id} AND password=#{password}
+		SELECT * FROM `member` WHERE id=#{id} AND password=#{password}
 	</select>     
 	
     
     <select id="logintest" parameterType="Member" resultType="boolean">
-		SELECT * FROM `mvc_member` WHERE id=#{id} AND password=#{password}
+		SELECT * FROM `member` WHERE id=#{id} AND password=#{password}
 	</select>     
 	
      <update id="appMemberEdit" parameterType="Member">
-		UPDATE `mvc_member` SET name=#{name}, tel=#{tel}, email=#{email} WHRER id=#{id}
+		UPDATE `member` SET name=#{name}, tel=#{tel}, email=#{email} WHRER id=#{id}
 	</update>
      
     <select id="appGetMemberOne" parameterType="String" resultType="Member">
-		SELECT id, name, tel, email FROM `mvc_member` WHERE id=#{id}
+		SELECT id, name, tel, email FROM `member` WHERE id=#{id}
 	</select>
      
 	

@@ -81,6 +81,9 @@ public class LoginController {
 	public String logout(HttpSession session) {
 		// System.out.println("로가웃성공");
 		prevURL=(String) session.getAttribute("prev");
+		if(prevURL.equals(null)){
+			prevURL="index.do";
+		}
 		//System.out.println(prevURL);
 		session.invalidate();
 
