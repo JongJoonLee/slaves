@@ -70,23 +70,8 @@
 
 	<script type="text/javascript" src="resources/js/jquery-1.12.3.min.js"></script>
 	<script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
-	<script type="text/javascript">
-		$(document).ready(
-				function() {
-					$(".dropdown").hover(
-							function() {
-								$('.dropdown-menu', this).not(
-										'.in .dropdown-menu').stop(true, true)
-										.slideDown("400");
-								$(this).toggleClass('open');
-							},
-							function() {
-								$('.dropdown-menu', this).not(
-										'.in .dropdown-menu').stop(true, true)
-										.slideUp("400");
-								$(this).toggleClass('open');
-							});
-				});
-	</script>
+
+
+
 </body>
 </html>

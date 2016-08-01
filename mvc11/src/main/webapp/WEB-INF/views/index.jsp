@@ -157,8 +157,7 @@
 
 
 
-				<hr />
-
+				
 			</div>
 
 
@@ -170,12 +169,14 @@
 					<tr>
 						<td><h3>SNS 이야기</h3></td>
 						<td align="right"><h3>
-								<span class="label label-default">More</span>
+								<span style="margin-top:3px;" class="fa fa-facebook-square"></span>
 							</h3></td>
 
 
 					</tr>
-				</table>
+					
+				<tr>
+				<td style="margin:0px;">
 
 				<!-- 페이스북 페이지연동 -->
 				<div class="fb-page" style="width: 100%; height: 100%"
@@ -183,16 +184,14 @@
 					data-hide-cover="false" data-show-facepile="false"
 					data-show-posts="false"></div>
 				<!-- 페이스북 페이지연동 끝 -->
+				</td>
+				</tr>
+				</table>
 
 
 
 
-
-
-
-
-				<hr />
-
+			
 
 
 
