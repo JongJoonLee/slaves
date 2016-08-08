@@ -23,44 +23,29 @@ import com.example.dao.MemberDao;
 @Controller
 public class MemberController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
-	
-	
-	
+
 	@Resource(name = "mDao")
 	private MemberDao mDao;
-	
-	
+
 	@RequestMapping(value = "/joinpage.do", method = RequestMethod.GET)
 	public ModelAndView joinpage(Locale locale, Model model) {
-			
-		
-		
+
 		Member member = new Member();
 
-		
 		return new ModelAndView("joinpage", "command", member);
 	}
-	
+
 	@RequestMapping(value = "/joinpagepost.do", method = RequestMethod.POST)
 	public String joinpagepost(@ModelAttribute Member member, HttpSession session, HttpServletRequest request) {
-
-		//String beforeURL = request.getHeader("referer");
-
-		//System.out.println("a  : " + beforeURL);
 		
-		try {
-			Member a = mDao.login(member);
-			
-			return "redirect:index.do";///index.do";
-		} catch (Exception e) {
-			e.getMessage();
-			//System.out.println("회원가입실패");
-			return "redirect:joinpage.do";
-		}
+		
+		
+		
+		
+		return null;
 
+		
+		
 	}
-	
-	
-	
+
 }

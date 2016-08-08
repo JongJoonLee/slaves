@@ -194,6 +194,7 @@ public class BoardController {
 	
 	@RequestMapping(value = "/boardeditpost1.do", method = RequestMethod.POST)
 	public String boardeditpost1(Board board,@RequestParam(value = "no") int no) {
+		
 		bDao.updateBoard(board);
 		//System.out.println(board.getNo());
 		//System.out.println(no);

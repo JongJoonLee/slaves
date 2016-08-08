@@ -19,6 +19,7 @@ public class Member {
 	
 	
 	
+	
 	public int getNo() {
 		return no;
 	}
