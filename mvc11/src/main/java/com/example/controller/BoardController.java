@@ -3,6 +3,7 @@ package com.example.controller;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Locale;
 
@@ -251,8 +252,8 @@ public class BoardController {
 		model.addAttribute("ctntpre", bDao.notice_boardcontents(no-1));
 		model.addAttribute("ctntnext", bDao.notice_boardcontents(no+1));
 
+		//System.out.println("한글");
 		return "notice_boardcontent";
-
 	}
 	
 	
@@ -260,7 +261,7 @@ public class BoardController {
 	public String notice_customsearch(Locale locale, Model model, 
 				@RequestParam(value = "page", required = false, defaultValue = "1") int cnt,
 				@RequestParam(value = "s_type") String s_type,
-				@RequestParam(value = "s_text") String s_text) {
+				@RequestParam(value = "s_text") String s_text) throws UnsupportedEncodingException {
 		
 		CustomSearchVO bcp = new CustomSearchVO();
 		bcp.setCnt((cnt-1)*20);
@@ -272,6 +273,8 @@ public class BoardController {
 		
 		//System.out.println(bcp.getCnt());
 		
+		//String aaa = new String(s_text.getBytes("8859_1"),"KSC5601"); 
+		System.out.println(s_text);
 		model.addAttribute("blist", list);
 
 		int tot = bDao.getNotice_ListTot(bcp);
@@ -280,10 +283,8 @@ public class BoardController {
 		model.addAttribute("type", s_type);
 		model.addAttribute("txt", s_text);
 	
-		
-	return "notice_boardlist";
+		return "notice_boardlist";
 	}
-	
 	
 	
 	

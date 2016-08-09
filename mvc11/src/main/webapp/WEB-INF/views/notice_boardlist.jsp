@@ -25,8 +25,7 @@
 		<div class="row" style="padding-left: 25px;">
 
 			<!-- 검색 시작 -->
-
-			<form action="boardsearch.do" method="get">
+			<form action="notice_boardsearch.do" method="get">
 				<div class="form-inline" align="right"
 					style="padding-top: 5px; padding-bottom: 5px;">
 					<div class="form-group">
@@ -35,7 +34,6 @@
 								${param.s_type=="title" ? 'selected="selected"':''}>제목</option>
 							<option value="id"
 								${param.s_type=="content" ? 'selected="selected"':''}>이름</option>
-
 							<option value="date"
 								${param.s_type=="date" ? 'selected="selected"':''}>날짜</option>
 						</select>
@@ -52,7 +50,6 @@
 
 
 			<div class="col-md-2">
-
 				<img style="max-width: 100%; height: auto;"
 					src="resources/img/123123.PNG" />
 					
@@ -224,7 +221,7 @@
 						var txt = $('#s_text').val();
 
 						$(location).attr('href',
-								"boardlist.do?type=" + type + "&txt=" + txt);
+								"notice_boardlist.do?type=" + type + "&txt=" + txt);
 					}
 				});
 	</script>
