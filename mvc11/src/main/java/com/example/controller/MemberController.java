@@ -38,11 +38,10 @@ public class MemberController {
 	@RequestMapping(value = "/joinpagepost.do", method = RequestMethod.POST)
 	public String joinpagepost(@ModelAttribute Member member, HttpSession session, HttpServletRequest request) {
 		
+		mDao.join(member);
 		
 		
-		
-		
-		return null;
+		return "redirect:index.do";
 
 		
 		

@@ -33,6 +33,7 @@ public class Member {
 		this.grade = grade;
 	}
 	public int getSex() {
+		
 		return sex;
 	}
 	public void setSex(int sex) {

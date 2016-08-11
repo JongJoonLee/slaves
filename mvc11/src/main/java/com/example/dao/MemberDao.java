@@ -9,7 +9,7 @@ import com.example.bean.Member;
 public class MemberDao extends SqlSessionDaoSupport {
 
 	public void join(Member mem) {
-		System.out.println(mem.getId());
+		//System.out.println(mem.getId());
 		this.getSqlSession().insert("Member.addMember", mem);
 	}
 
@@ -36,5 +36,7 @@ public class MemberDao extends SqlSessionDaoSupport {
 	public int appMemberEdit(Member member) {
 		return this.getSqlSession().update("Member.appMemberEdit", member);
 	}
+	
+	
 
 }

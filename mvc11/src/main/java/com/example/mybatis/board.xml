@@ -38,14 +38,17 @@
         
         INSERT INTO `board`(id, title, contents, date)
 	        VALUES(#{id}, #{title}, #{contents}, now())
-        
     </insert>
     
     
     <update id="updateBoard" parameterType="Board">
-        
         UPDATE `board` SET title=#{title} , contents=#{contents}, date=now() WHERE no=#{no}
     </update>
+    
+    <update id="updateHit" parameterType="java.util.Map">
+        UPDATE `board` SET hit=#{hit} WHERE no=#{no}
+    </update>
+    
     
     
     
@@ -108,6 +111,10 @@
         DELETE FROM `notice_board` WHERE no = #{no}
         
     </delete>
+    
+    <update id="notice_updateHit" parameterType="java.util.Map">
+        UPDATE `notice_board` SET hit=#{hit} WHERE no=#{no}
+    </update>
     
     <!-- 공지사항 끝 -->
     
