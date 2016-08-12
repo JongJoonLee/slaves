@@ -27,6 +27,14 @@
     <select id="appGetMemberOne" parameterType="String" resultType="Member">
 		SELECT id, name, tel, email FROM `member` WHERE id=#{id}
 	</select>
+	
+	
+	 <select id="chkMbId" resultType="int">
+		 SELECT
+		 count(*)
+		 FROM `member`
+		 WHERE id = #{id} 
+	 </select> 
      
 	
     

@@ -37,6 +37,10 @@ public class MemberDao extends SqlSessionDaoSupport {
 		return this.getSqlSession().update("Member.appMemberEdit", member);
 	}
 	
+	public int chkMbId(String mbId) throws Exception {
+		  return this.getSqlSession().selectOne("Member.chkMbId", mbId);
+		 }
+	
 	
 
 }
