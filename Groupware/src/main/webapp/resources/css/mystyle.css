@@ -1,64 +1,39 @@
-﻿@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
-
-body {
-	font-family: 'Open Sans', 'sans-serif';
+﻿/*Panel tabs*/
+.panel-tabs {
+    position: relative;
+    bottom: 30px;
+    clear:both;
+    border-bottom: 1px solid transparent;
 }
 
-.mega-dropdown {
-	position: static !important;
+.panel-tabs > li {
+    float: left;
+    margin-bottom: -1px;
 }
 
-.mega-dropdown-menu {
-	padding: 0px 0px;
-	width: 100%;
-	box-shadow: none;
-	-webkit-box-shadow: none;
+.panel-tabs > li > a {
+    margin-right: 2px;
+    margin-top: 4px;
+    line-height: .85;
+    border: 1px solid transparent;
+    border-radius: 4px 4px 0 0;
+    color: inherit;
 }
 
-.mega-dropdown-menu>li>ul {
-	padding: 0;
-	margin: 0;
+.panel-tabs > li > a:hover {
+    border-color: transparent;
+    color: inherit;
+    background-color: transparent;
 }
 
-.mega-dropdown-menu>li>ul>li {
-	list-style: none;
+.panel-tabs > li.active > a,
+.panel-tabs > li.active > a:hover,
+.panel-tabs > li.active > a:focus {
+    color: #fff;
+    cursor: default;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    background-color: rgba(255,255,255, .23);
+    border-bottom-color: transparent;
 }
-
-.mega-dropdown-menu>li>ul>li>a {
-	display: block;
-	color: #222;
-	padding: 3px 5px;
-}
-
-.mega-dropdown-menu>li ul>li>a:hover, .mega-dropdown-menu>li ul>li>a:focus
-	{
-	text-decoration: none;
-}
-
-.mega-dropdown-menu .dropdown-header {
-	font-size: 18px;
-	color: #ff3546;
-	padding: 5px 60px 5px 5px;
-	line-height: 30px;
-}
-
-/* .carousel-control {
-	width: 30px;
-	height: 30px;
-	top: -35px;
-}
-
-.left.carousel-control {
-	right: 30px;
-	left: inherit;
-}
-
-.carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right
-	{
-	font-size: 12px;
-	background-color: #fff;
-	line-height: 30px;
-	text-shadow: none;
-	color: #333;
-	border: 1px solid #ddd;
-} */

@@ -15,6 +15,7 @@
 <!-- 부트스트랩 -->
 <link href="resources/css/bootstrap.css" rel="stylesheet" />
 <link href="resources/css/font-awesome.css" rel="stylesheet" />
+<link href="resources/css/mystyle.css" rel="stylesheet" />
 
 <!-- IE8 에서 HTML5 요소와 미디어 쿼리를 위한 HTML5 shim 와 Respond.js -->
 <!-- WARNING: Respond.js 는 당신이 file:// 을 통해 페이지를 볼 때는 동작하지 않습니다. -->
@@ -122,10 +123,16 @@
 
 				<table class="table">
 					<tr>
-						<td class="success">전자결재</td>
+						<td class="success" colspan="2">전자결재</td>
 					</tr>
 					<tr>
-						<td></td>
+						<td style="text-align: center;">결재할 문서</td>
+
+						<td style="text-align: center;">상신한 문서</td>
+					</tr>
+					<tr>
+						<td style="text-align: center;"><h2>0</h2></td>
+						<td style="text-align: center;"><h2>0</h2></td>
 
 
 					</tr>
@@ -133,7 +140,89 @@
 
 
 			</div>
-			<div class="col-md-6"></div>
+
+
+
+			<div class="col-md-6">
+
+				<div class="panel panel-success">
+					<div class="panel-heading">
+						<h3 class="panel-title">이야기</h3>
+					</div>
+					<div class="panel-body">
+						<form action="#" method="post" class="form-inline">
+							<div class="form-group">
+								<textarea style="width: 460px;" class="form-control" rows="1"></textarea>
+								<button class="btn btn-default">등록</button>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="panel panel-success">
+					<div class="panel-heading">
+						<h3 class="panel-title">Panel title</h3>
+						<span class="pull-right"> <!-- Tabs -->
+							<ul class="nav panel-tabs">
+								<li class="active"><a href="#tab1" data-toggle="tab">Tab
+										1</a></li>
+								<li><a href="#tab2" data-toggle="tab">Tab 2</a></li>
+								<li><a href="#tab3" data-toggle="tab">Tab 3</a></li>
+								<li><a href="#tab4" data-toggle="tab">Tab 4</a></li>
+							</ul>
+						</span>
+					</div>
+					<div class="panel-body">
+						<div class="tab-content">
+							<div class="tab-pane active" id="tab1">Lorem ipsum dolor
+								sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+								tempor invidunt ut labore et dolore magna aliquyam erat, sed
+								diam voluptua. At</div>
+							<div class="tab-pane" id="tab2">Lorem ipsum dolor sit amet,
+								consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+								invidunt ut labore et dolore magna aliquyam erat, sed diam
+								voluptua. At vero eos et accusam et justo duo dolores et ea
+								rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+								Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
+								consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+								invidunt ut labore et dolore magna aliquyam erat, sed diam
+								voluptua. At vero eos et accusam et justo duo dolores et ea
+								rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+								Lorem ipsum dolor sit amet.</div>
+							<div class="tab-pane" id="tab3">Lorem ipsum dolor sit amet,
+								consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+								invidunt ut labore et dolore magna aliquyam erat, sed diam
+								voluptua. At vero eos et accusam et justo duo dolores et ea
+								rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+								Lorem ipsum dolor sit amet.</div>
+							<div class="tab-pane" id="tab4">Lorem ipsum dolor sit amet,
+								consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+								invidunt ut labore et dolore magna aliquyam erat, sed diam
+								voluptua. At vero eos et accusam et justo duo dolores et ea
+								rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+								Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
+								consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+								invidunt ut labore et dolore magna aliquyam erat, sed diam
+								voluptua. At vero eos et accusam et justo duo dolores et ea
+								rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+								Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
+								consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+								invidunt ut labore et dolore magna aliquyam erat, sed diam
+								voluptua. At vero eos et accusam et justo duo dolores et ea
+								rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+								Lorem ipsum dolor sit amet. Duis autem vel eum iriure dolor in
+								hendrerit in vulputate velit esse molestie consequat, vel illum
+								dolore eu feugiat nulla facilisis at vero eros et accumsan et
+								iusto odio dignissim qui blandit praesent luptatum zzril delenit
+								augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor
+								sit amet,</div>
+						</div>
+					</div>
+				</div>
+
+				
+
+
+			</div>
 			<div class="col-md-3"></div>
 
 
