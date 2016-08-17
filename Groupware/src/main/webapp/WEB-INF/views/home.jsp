@@ -69,45 +69,14 @@
 						id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav">
 
-							<li class="dropdown"><a href="#" class="dropdown-toggle"
-								data-toggle="dropdown" role="button" aria-expanded="false">MY
-									WORK <span class="caret"></span>
-							</a>
-								<ul class="dropdown-menu" role="menu">
-									<li><a href="#">Action</a></li>
-									<li><a href="#">Another action</a></li>
-									<li><a href="#">Something else here</a></li>
-									<li class="divider"></li>
-									<li><a href="#">Separated link</a></li>
-									<li class="divider"></li>
-									<li><a href="#">One more separated link</a></li>
-								</ul></li>
-							<li class="dropdown"><a href="#" class="dropdown-toggle"
-								data-toggle="dropdown" role="button" aria-expanded="false">CO
-									WORK <span class="caret"></span>
-							</a>
-								<ul class="dropdown-menu" role="menu">
-									<li><a href="#">Action</a></li>
-									<li><a href="#">Another action</a></li>
-									<li><a href="#">Something else here</a></li>
-									<li class="divider"></li>
-									<li><a href="#">Separated link</a></li>
-									<li class="divider"></li>
-									<li><a href="#">One more separated link</a></li>
-								</ul></li>
-							<li class="dropdown"><a href="#" class="dropdown-toggle"
-								data-toggle="dropdown" role="button" aria-expanded="false">SUPPORT
-									<span class="caret"></span>
-							</a>
-								<ul class="dropdown-menu" role="menu">
-									<li><a href="#">Action</a></li>
-									<li><a href="#">Another action</a></li>
-									<li><a href="#">Something else here</a></li>
-									<li class="divider"></li>
-									<li><a href="#">Separated link</a></li>
-									<li class="divider"></li>
-									<li><a href="#">One more separated link</a></li>
-								</ul></li>
+							<li><a href="#">전자우편</a></li>
+							<li><a href="#">전자결재</a></li>
+							<li><a href="#">일정</a></li>
+							<li><a href="#">문서관리 </a></li>
+							<li><a href="#">업무지원</a></li>
+							<li><a href="#">공지사항</a></li>
+							<li><a href="#">마이페이지</a></li>
+
 						</ul>
 
 						<ul class="nav navbar-nav navbar-right">
@@ -131,10 +100,46 @@
 						<td class="success" colspan="2">사용자정보</td>
 					</tr>
 					<tr>
-						<td><img width="100" height="120" src="resources/img/mypic.JPG"/></td>
-						<td><b>김머시기 사원</b><br/>부서 :  쫄병부<br/>계정 : aaa@aaa.com<br/>메일용량 : 0 / 500Mb</td>
+						<td><img width="100" height="120"
+							src="resources/img/mypic.JPG" /></td>
+						<td><b>김머시기 사원</b><br />부서 : 쫄병부<br />계정 : aaa@aaa.com<br />메일용량
+							: 0 / 500Mb</td>
 					</tr>
 
+				</table>
+
+				<table class="table">
+					<tr>
+						<td class="success">근태정보</td>
+					</tr>
+					<tr>
+						<td><div class="clock">
+								<!-- <div id="Date">Monday 14 January 2013</div> -->
+
+								<ul>
+									<li id="hours">10</li>
+									<li id="point">:</li>
+									<li id="min">13</li>
+									<li id="point">:</li>
+									<li id="sec">03</li>
+								</ul>
+
+							</div></td>
+
+
+					</tr>
+				</table>
+
+
+				<table class="table">
+					<tr>
+						<td class="success">전자결재</td>
+					</tr>
+					<tr>
+						<td></td>
+
+
+					</tr>
 				</table>
 
 
@@ -170,5 +175,65 @@
 		<script type="text/javascript" src="resources/js/jquery-1.12.3.min.js"></script>
 		<!-- 모든 컴파일된 플러그인을 포함합니다 (아래), 원하지 않는다면 필요한 각각의 파일을 포함하세요 -->
 		<script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
+
+		<script type="text/javascript">
+			$(document)
+					.ready(
+							function() {
+								// Create two variable with the names of the months and days in an array
+								var monthNames = [ "January", "February",
+										"March", "April", "May", "June",
+										"July", "August", "September",
+										"October", "November", "December" ];
+								var dayNames = [ "Sunday", "Monday", "Tuesday",
+										"Wednesday", "Thursday", "Friday",
+										"Saturday" ]
+
+								// Create a newDate() object
+								var newDate = new Date();
+								// Extract the current date from Date object
+								newDate.setDate(newDate.getDate());
+								// Output the day, date, month and year    
+								$('#Date')
+										.html(
+												dayNames[newDate.getDay()]
+														+ " "
+														+ newDate.getDate()
+														+ ' '
+														+ monthNames[newDate
+																.getMonth()]
+														+ ' '
+														+ newDate.getFullYear());
+
+								setInterval(function() {
+									// Create a newDate() object and extract the seconds of the current time on the visitor's
+									var seconds = new Date().getSeconds();
+									// Add a leading zero to seconds value
+									$("#sec")
+											.html(
+													(seconds < 10 ? "0" : "")
+															+ seconds);
+								}, 1000);
+
+								setInterval(function() {
+									// Create a newDate() object and extract the minutes of the current time on the visitor's
+									var minutes = new Date().getMinutes();
+									// Add a leading zero to the minutes value
+									$("#min")
+											.html(
+													(minutes < 10 ? "0" : "")
+															+ minutes);
+								}, 1000);
+
+								setInterval(function() {
+									// Create a newDate() object and extract the hours of the current time on the visitor's
+									var hours = new Date().getHours();
+									// Add a leading zero to the hours value
+									$("#hours").html(
+											(hours < 10 ? "0" : "") + hours);
+								}, 1000);
+
+							});
+		</script>
 </body>
 </html>
