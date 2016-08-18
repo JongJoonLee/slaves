@@ -23,13 +23,14 @@
 .panel-tabs > li > a:hover {
     border-color: transparent;
     color: inherit;
+    
     background-color: transparent;
 }
 
 .panel-tabs > li.active > a,
 .panel-tabs > li.active > a:hover,
 .panel-tabs > li.active > a:focus {
-    color: #fff;
+    color: inherit;
     cursor: default;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;

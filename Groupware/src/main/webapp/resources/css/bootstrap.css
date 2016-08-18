@@ -5329,7 +5329,7 @@ a.list-group-item-danger.active:focus {
 .panel-title > .small,
 .panel-title > small > a,
 .panel-title > .small > a {
-  color: inherit;
+  color: black;
 }
 .panel-footer {
   padding: 10px 15px;

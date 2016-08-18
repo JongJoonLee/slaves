@@ -160,61 +160,40 @@
 				</div>
 				<div class="panel panel-success">
 					<div class="panel-heading">
-						<h3 class="panel-title">Panel title</h3>
+						<h3 class="panel-title">뉴스피드</h3>
 						<span class="pull-right"> <!-- Tabs -->
 							<ul class="nav panel-tabs">
-								<li class="active"><a href="#tab1" data-toggle="tab">Tab
-										1</a></li>
-								<li><a href="#tab2" data-toggle="tab">Tab 2</a></li>
-								<li><a href="#tab3" data-toggle="tab">Tab 3</a></li>
-								<li><a href="#tab4" data-toggle="tab">Tab 4</a></li>
+								<li class="active"><a href="#tab1" data-toggle="tab">전체</a></li>
+								<li><a href="#tab2" data-toggle="tab">메일</a></li>
+								<li><a href="#tab3" data-toggle="tab">공지</a></li>
+								<li><a href="#tab4" data-toggle="tab">결제</a></li>
+								<li><a href="#tab5" data-toggle="tab">일정</a></li>
+								<li><a href="#tab6" data-toggle="tab">이야기</a></li>
 							</ul>
 						</span>
 					</div>
 					<div class="panel-body">
-						<div class="tab-content">
-							<div class="tab-pane active" id="tab1">Lorem ipsum dolor
-								sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-								tempor invidunt ut labore et dolore magna aliquyam erat, sed
-								diam voluptua. At</div>
-							<div class="tab-pane" id="tab2">Lorem ipsum dolor sit amet,
-								consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-								invidunt ut labore et dolore magna aliquyam erat, sed diam
-								voluptua. At vero eos et accusam et justo duo dolores et ea
-								rebum. Stet clita kasd gubergren, no sea takimata sanctus est
-								Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
-								consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-								invidunt ut labore et dolore magna aliquyam erat, sed diam
-								voluptua. At vero eos et accusam et justo duo dolores et ea
-								rebum. Stet clita kasd gubergren, no sea takimata sanctus est
-								Lorem ipsum dolor sit amet.</div>
-							<div class="tab-pane" id="tab3">Lorem ipsum dolor sit amet,
-								consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-								invidunt ut labore et dolore magna aliquyam erat, sed diam
-								voluptua. At vero eos et accusam et justo duo dolores et ea
-								rebum. Stet clita kasd gubergren, no sea takimata sanctus est
-								Lorem ipsum dolor sit amet.</div>
-							<div class="tab-pane" id="tab4">Lorem ipsum dolor sit amet,
-								consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-								invidunt ut labore et dolore magna aliquyam erat, sed diam
-								voluptua. At vero eos et accusam et justo duo dolores et ea
-								rebum. Stet clita kasd gubergren, no sea takimata sanctus est
-								Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
-								consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-								invidunt ut labore et dolore magna aliquyam erat, sed diam
-								voluptua. At vero eos et accusam et justo duo dolores et ea
-								rebum. Stet clita kasd gubergren, no sea takimata sanctus est
-								Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
-								consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-								invidunt ut labore et dolore magna aliquyam erat, sed diam
-								voluptua. At vero eos et accusam et justo duo dolores et ea
-								rebum. Stet clita kasd gubergren, no sea takimata sanctus est
-								Lorem ipsum dolor sit amet. Duis autem vel eum iriure dolor in
-								hendrerit in vulputate velit esse molestie consequat, vel illum
-								dolore eu feugiat nulla facilisis at vero eros et accumsan et
-								iusto odio dignissim qui blandit praesent luptatum zzril delenit
-								augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor
-								sit amet,</div>
+						<div class="tab-content" >
+							<div class="tab-pane active" id="tab1" style="height:600px;">
+							
+							
+							</div>
+							<div class="tab-pane" id="tab2" style="height:600px;">
+							
+							</div>
+							<div class="tab-pane" id="tab3" style="height:600px;">
+							
+							</div>
+							<div class="tab-pane" id="tab4" style="height:600px;">
+							
+							</div>
+							<div class="tab-pane" id="tab5" style="height:600px;">
+							
+							</div>
+							<div class="tab-pane" id="tab6" style="height:600px;">
+							
+							</div>
+							
 						</div>
 					</div>
 				</div>
@@ -223,7 +202,40 @@
 
 
 			</div>
-			<div class="col-md-3"></div>
+			<div class="col-md-3">
+				<table class="table">
+					<tr>
+						<td class="success">공지사항</td>
+					</tr>
+					<tr>
+						<td></td>
+
+
+					</tr>
+				</table>
+				<table class="table">
+					<tr>
+						<td class="success">메일</td>
+					</tr>
+					<tr>
+						<td></td>
+
+
+					</tr>
+				</table>
+				<table class="table">
+					<tr>
+						<td class="success">쪽지</td>
+					</tr>
+					<tr>
+						<td></td>
+
+
+					</tr>
+				</table>
+			
+			
+			</div>
 
 
 
