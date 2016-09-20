@@ -19,7 +19,7 @@
 	href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin'>
 <script src="resources/js/jquery-1.12.3.min.js"></script>
 <script src="resources/js/jquery-ui.min.js"></script>
-S
+
 <script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
 
 <!-- 아작스 아이디중복확인 -->
@@ -78,7 +78,9 @@ S
 
 	<div class="container">
 
-		<c:import url="topmenu.jsp"></c:import>
+		<div class="row" id="top-menu">
+		<c:import url="topmenu.jsp" charEncoding="UTF-8"></c:import>
+		</div>
 		<div class="row" style="padding-left: 25px;">
 			<div class="col-md-12">
 

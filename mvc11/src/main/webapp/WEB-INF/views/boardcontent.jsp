@@ -17,7 +17,9 @@
 <body>
 
 	<div class="container">
-		<c:import url="topmenu.jsp"></c:import>
+		<div class="row" id="top-menu">
+		<c:import url="topmenu.jsp" charEncoding="UTF-8"></c:import>
+		</div>
 
 
 

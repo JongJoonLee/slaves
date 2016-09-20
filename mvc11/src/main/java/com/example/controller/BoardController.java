@@ -260,7 +260,7 @@ public class BoardController {
 		// System.out.println(bcp.getCnt());
 
 		// String aaa = new String(s_text.getBytes("8859_1"),"KSC5601");
-		System.out.println(s_text);
+		//System.out.println(s_text);
 		model.addAttribute("blist", list);
 
 		int tot = bDao.getNotice_ListTot(bcp);

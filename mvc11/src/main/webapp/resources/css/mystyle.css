@@ -1,64 +1,80 @@
-﻿@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
-
-body {
-	font-family: 'Open Sans', 'sans-serif';
+﻿.navbar-white {
+  background-color: #ffffff;
+  border-bottom: 1px solid #EEEEEE;
+  
 }
 
-.mega-dropdown {
-	position: static !important;
+
+.navbar-white .navbar-brand {
+  color: #777;
+}
+.navbar-white .navbar-brand:hover,
+.navbar-white .navbar-brand:focus {
+  color: #5e5e5e;
+  background-color: transparent;
+}
+.navbar-white .navbar-text {
+  color: #777;
+}
+.navbar-white .navbar-nav > li > a {
+  color: #777;
+}
+.navbar-white .navbar-nav > li > a:hover,
+.navbar-white .navbar-nav > li > a:focus {
+  color: #333;
+  
+  background-color: transparent;
+}
+.navbar-white .navbar-nav > .active > a,
+.navbar-white .navbar-nav > .active > a:hover,
+.navbar-white .navbar-nav > .active > a:focus {
+  color: #555;
+  background-color: #e7e7e7;
+}
+.navbar-white .navbar-nav > .disabled > a,
+.navbar-white .navbar-nav > .disabled > a:hover,
+.navbar-white .navbar-nav > .disabled > a:focus {
+  color: #ccc;
+  background-color: transparent;
+}
+.navbar-white .navbar-toggle {
+  border-color: #ddd;
+}
+.navbar-white .navbar-toggle:hover,
+.navbar-white .navbar-toggle:focus {
+  background-color: #ddd;
+}
+.navbar-white .navbar-toggle .icon-bar {
+  background-color: #888;
+}
+.navbar-white .navbar-collapse,
+.navbar-white .navbar-form {
+  border-color: #e7e7e7;
+}
+.navbar-white .navbar-nav > .open > a,
+.navbar-white .navbar-nav > .open > a:hover,
+.navbar-white .navbar-nav > .open > a:focus {
+  color: #555;
+  background-color: #e7e7e7;
 }
 
-.mega-dropdown-menu {
-	padding: 0px 0px;
-	width: 100%;
-	box-shadow: none;
-	-webkit-box-shadow: none;
-}
 
-.mega-dropdown-menu>li>ul {
-	padding: 0;
-	margin: 0;
+#top-menu a:link {
+	color: #777;
 }
-
-.mega-dropdown-menu>li>ul>li {
-	list-style: none;
+/* visited link grey */
+#top-menu a:visited {
+	color: #777;
 }
-
-.mega-dropdown-menu>li>ul>li>a {
-	display: block;
-	color: #222;
-	padding: 3px 5px;
+/* mouse over link blue */
+#top-menu a:hover {
+	color: #777;
 }
-
-.mega-dropdown-menu>li ul>li>a:hover, .mega-dropdown-menu>li ul>li>a:focus
-	{
-	text-decoration: none;
+/* selected link blue */
+#top-menu a:active {
+	color: #777;
 }
-
-.mega-dropdown-menu .dropdown-header {
-	font-size: 18px;
-	color: #ff3546;
-	padding: 5px 60px 5px 5px;
-	line-height: 30px;
+/* !IMPORTANT ONLY ADD THIS CLASS TO YOUR ACTIVE PAGE LINK ( Color Blue )*/
+.activePage a {
+	color: #0CF !important
 }
-
-/* .carousel-control {
-	width: 30px;
-	height: 30px;
-	top: -35px;
-}
-
-.left.carousel-control {
-	right: 30px;
-	left: inherit;
-}
-
-.carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right
-	{
-	font-size: 12px;
-	background-color: #fff;
-	line-height: 30px;
-	text-shadow: none;
-	color: #333;
-	border: 1px solid #ddd;
-} */

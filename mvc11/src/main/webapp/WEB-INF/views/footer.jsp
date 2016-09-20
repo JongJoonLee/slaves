@@ -8,8 +8,8 @@
             <div class="col-md-8 sm-margon-bottom-10">
               <ul class="list-inline terms-menu">
                 <li class="silver">Lee JongJoon &copy; 2016 - All Rights Reserved</li>
-                <li><a target="_blank" href="http://support.wrapbootstrap.com/knowledge_base/topics/usage-licenses">License</a></li>
-                <li><a target="_blank" href="https://wrapbootstrap.com/user/htmlstream">Support</a></li>
+                <li><a target="_blank">License</a></li>
+                <li><a target="_blank">Support</a></li>
               </ul>
             </div>
             <div class="col-md-4">

@@ -42,7 +42,9 @@
 
 	<div class="container">
 
+		<div class="row" id="top-menu">
 		<c:import url="topmenu.jsp" charEncoding="UTF-8"></c:import>
+		</div>
 
 
 		<div class="row">

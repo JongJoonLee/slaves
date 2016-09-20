@@ -3,11 +3,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//KO" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="ko">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 위 3개의 메타 태그는 *반드시* head 태그의 처음에 와야합니다; 어떤 다른 콘텐츠들은 반드시 이 태그들 *다음에* 와야 합니다 -->
+<title>인덱스</title>
+
+<!-- 부트스트랩 -->
 <link href="resources/css/bootstrap.css" rel="stylesheet" />
 <link href="resources/css/font-awesome.css" rel="stylesheet" />
 <link href="resources/css/mystyle.css" rel="stylesheet" />
@@ -32,10 +37,52 @@
 			scrollwheel : false,
 			zoom : 15
 		});
+		
+		var marker = new google.maps.Marker({
+		    position:{
+				lat : 35.153178,
+				lng : 129.059263
+			},
+		    map: map,
+		    title: 'TEST COMPANY'
+		  });
+		
+		
 	};
 
 	initMap();
 </script>
+<style type="text/css">
+/*YOUR CSS SHOULD LOOK LIKE THIS*/
+
+/* unvisited link grey */
+#top-menu a:link {
+	color: #777;
+}
+/* visited link grey */
+#top-menu a:visited {
+	color: #777;
+}
+/* mouse over link blue */
+#top-menu a:hover {
+	color: #777;
+}
+/* selected link blue */
+#top-menu a:active {
+	color: #777;
+}
+/* !IMPORTANT ONLY ADD THIS CLASS TO YOUR ACTIVE PAGE LINK ( Color Blue )*/
+.activePage a {
+	color: #0CF !important
+}
+
+
+
+</style>
+
+
+
+
 </head>
 <body>
 	<div id="fb-root"></div>
@@ -53,9 +100,10 @@
 
 
 	<div class="container">
-
+	
+		<div class="row" id="top-menu">
 		<c:import url="topmenu.jsp" charEncoding="UTF-8"></c:import>
-
+		</div>
 
 		<div class="row">
 
@@ -78,17 +126,17 @@
 					<!-- Wrapper for slides -->
 					<div class="carousel-inner" role="listbox">
 						<div class="item active">
-							<img src="resources/img/b.jpg" alt="...">
-							<div class="carousel-caption">a</div>
+							<img src="resources/img/a1a1.JPG" height="30px">
+							<div class="carousel-caption"></div>
 						</div>
 
 						<div class="item">
-							<img src="resources/img/b.jpg" alt="...">
-							<div class="carousel-caption">b</div>
+							<img src="resources/img/b2b2.JPG" height="30px">
+							<div class="carousel-caption"></div>
 						</div>
 
 						<div class="item">
-							<img src="resources/img/b.jpg" alt="...">
+							<img src="resources/img/a3a3.JPG" height="30px">
 							<div class="carousel-caption">c</div>
 						</div>
 					</div>
