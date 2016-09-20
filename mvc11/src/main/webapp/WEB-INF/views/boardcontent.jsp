@@ -13,6 +13,9 @@
 <link href="resources/css/footer-v6.css" rel="stylesheet" />
 <link rel='stylesheet' type='text/css'
 	href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin'>
+	
+
+
 </head>
 <body>
 
@@ -36,12 +39,20 @@
 				</tr>
 			</table>
 
-			<div style="display: block; height: 500px">${ctnt.getContents()}</div>
+
+
+
+
+			<div style="display: block; min-height: 500px;" >${ctnt.getContents()}</div>
 			
 			
 			<c:set var="session" value="${_id}"/>
 			
 			<c:if test="${session eq ctnt.getId()}">
+			
+			
+			
+			
 			<div align="right">
 				<a href="boardedit.do?no=${ctnt.getNo()}" class="btn btn-primary">수정</a>
 				<a href="boarddelete.do?no=${ctnt.getNo()}" class="btn btn-danger">삭제</a>
@@ -64,8 +75,20 @@
 				</table>
 			</div>
 
-			<c:import url="footer.jsp"></c:import>
+			
+			
+		
+			
+			
 		</div>
+		
+		<div class="row"  style="padding-left: 15px; padding-right: 15px;">
+		<c:import url="footer.jsp"></c:import>
+		
+		</div>
+		
+		
+		
 	</div>
 
 

@@ -36,7 +36,7 @@
 				</tr>
 			</table>
 
-			<div style="display: block; height: 500px">${ctnt.getContents()}</div>
+			<div style="display: block; min-height: 500px;" >${ctnt.getContents()}</div>
 			
 			
 			<c:set var="session" value="${_id}"/>

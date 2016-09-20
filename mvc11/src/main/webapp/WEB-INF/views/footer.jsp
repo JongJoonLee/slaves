@@ -1,5 +1,6 @@
 <!--=== Footer v6 ===-->
     <br/>
+    <nav class="navbar navbar-default navbar-fixed-bottom">
     
     <div id="footer-v6" class="footer-v6">
       <div class="copyright">
@@ -41,4 +42,6 @@
         </div>
       </div>
     </div>
+    
+    </nav>
     <!--=== End Footer v6 ===-->
