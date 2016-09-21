@@ -25,6 +25,42 @@
 
 
 		<div class="row" style="padding-left: 15px; padding-right: 15px;">
+		
+		
+		<div class="col-md-2">
+				<img style="max-width: 100%; height: auto;"
+					src="resources/img/123123.PNG" />
+					
+				<hr/>
+				
+				<H4>회사소개</H4>
+				
+				<hr/>
+				
+				<H4 style="color:#337ab7;">참여마당</H4>
+				<hr style="border-bottom: 2px solid #337ab7;" />
+				
+				<ul style="list-style:none; padding-left:0; margin-left:0;">
+				<li><a href="notice_boardlist.do"><i class="fa fa-cog" aria-hidden="true"></i>&nbsp;공지사항</a></li>
+				<li><a href="boardlist.do"><i class="fa fa-cog" aria-hidden="true"></i>&nbsp;자유게시판</a></li>
+				</ul>
+				<hr/>
+				
+				
+				
+				<H4>TEST상품</H4>
+				
+				<hr/>
+				
+				<H4>인재채용</H4>
+				
+				<hr/>
+
+
+
+			</div>
+			
+			<div class="col-md-10">
 
 
 			<table class="table table-striped table-condensed">
@@ -35,6 +71,7 @@
 					<td style="text-align: right;" width="100px">${ctnt.getDate()}</td>
 				</tr>
 			</table>
+			
 
 			<div style="display: block; min-height: 500px;" >${ctnt.getContents()}</div>
 			
@@ -46,6 +83,7 @@
 				<a href="notice_boardedit.do?no=${ctnt.getNo()}" class="btn btn-primary">수정</a>
 				<a href="notice_boarddelete.do?no=${ctnt.getNo()}" class="btn btn-danger">삭제</a>
 			</div>
+			<br/>
 			</c:if>
 			
 			
@@ -61,6 +99,7 @@
 						<td><a href="notice_boardcontent.do?no=${ctntnext.getNo()}">${ctntnext.getTitle()}</a></td>
 					</tr>
 				</table>
+			</div>
 			</div>
 
 			<c:import url="footer.jsp"></c:import>

@@ -72,7 +72,7 @@
 									placeholder="암호를 입력하세요" />
 							</div>
 							<div class="col-md-4" align="left" style="margin-top: 22px;">
-								<input type="submit" class="btn btn-primary btn-lg" value="버튼">
+								<input type="submit" class="btn btn-primary btn-lg" value="로그인">
 							</div>
 
 						</form:form>
@@ -81,6 +81,7 @@
 
 			</div>
 		</div>
+		<c:import url="footer.jsp"></c:import>
 	</div>
 
 

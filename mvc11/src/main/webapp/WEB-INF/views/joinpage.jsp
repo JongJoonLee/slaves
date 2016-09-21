@@ -94,7 +94,7 @@
 					aria-hidden="true"></i><b> &nbsp;회원가입양식</b><br />
 
 
-				<form:form action="joinpagepost.do" method="post" name="frm">
+				<form:form action="joinpagepost.do" method="post" name="frm" id="frm"  onsubmit="return validateForm('frm');">
 					<table style="margin-top: 10px;" class="table table-condensed"
 						width="500px">
 						<tr>
@@ -114,7 +114,7 @@
 						</tr>
 						<tr>
 							<td class="active">이름</td>
-							<td><form:input type="text" path="name" /></td>
+							<td><form:input type="text" path="name" id="_name" /></td>
 						</tr>
 						<tr>
 							<td class="active">성별</td>
@@ -127,15 +127,15 @@
 						</tr>
 						<tr>
 							<td class="active">생년월일</td>
-							<td><form:input type="text" path="birthday" /></td>
+							<td><form:input type="text" path="birthday" id="_birthday"/></td>
 						</tr>
 						<tr>
 							<td class="active">e-mail</td>
-							<td><form:input type="email" path="email" /></td>
+							<td><form:input type="email" path="email" id="_email"/></td>
 						</tr>
 						<tr>
 							<td class="active">전화번호</td>
-							<td><form:input type="text" path="tel" /></td>
+							<td><form:input type="text" path="tel" id="_tel"/></td>
 						</tr>
 
 
@@ -165,12 +165,13 @@
 					</table>
 
 
-					<button class="btn btn-success" type="submit">회원가입</button>
+					<input type="submit"  onclick='fsubmit()' class="btn btn-success" value="회원가입"/>
 				</form:form>
 
 
 			</div>
 		</div>
+		<c:import url="footer.jsp"></c:import>
 
 	</div>
 
@@ -182,19 +183,27 @@
 
 
 
-	<!-- 	<script type="text/javascript">
-		function fsubmit() {
+	<script type="text/javascript">
+		function validateForm(frm) {
 
-			if (document.form1.uid.value == ""
-					|| document.form1.upwd.value == ""
-					|| document.form1.uname.value == "") {
-				alert("모든 항목을 작성해주세요.");
+			
+			var id = $("#mbId").val();//.text();
+			var pw = $("#_pw").val();
+			var name = $("#_name").val();
+			var birthday = $("#_birthday").val();
+			var email = $("#_email").val();
+			var tel = $("#_tel").val();
+			
+			if(id==""&&pw==""&&name==""&&birthday==""&&email==""&&tel==""){
+				alert("모든항목을 입력해 주세요");
 				return false;
-			} else {
+			}
+			else{
+				alert("회원가입이 완료되었습니다. 로그인 해주세요.");
 				return true;
 			}
 		}
-	</script> -->
+	</script>
 
 
 

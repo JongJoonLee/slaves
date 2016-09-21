@@ -24,9 +24,36 @@
 		<div class="row" style="padding-left: 15px;">
 
 			<div class="col-md-2">
-
 				<img style="max-width: 100%; height: auto;"
 					src="resources/img/123123.PNG" />
+					
+				<hr/>
+				
+				<H4>회사소개</H4>
+				
+				<hr/>
+				
+				<H4 style="color:#337ab7;">참여마당</H4>
+				<hr style="border-bottom: 2px solid #337ab7;" />
+				
+				<ul style="list-style:none; padding-left:0; margin-left:0;">
+				<li><a href="notice_boardlist.do"><i class="fa fa-cog" aria-hidden="true"></i>&nbsp;공지사항</a></li>
+				<li><a href="boardlist.do"><i class="fa fa-cog" aria-hidden="true"></i>&nbsp;자유게시판</a></li>
+				</ul>
+				<hr/>
+				
+				
+				
+				<H4>TEST상품</H4>
+				
+				<hr/>
+				
+				<H4>인재채용</H4>
+				
+				<hr/>
+
+
+
 			</div>
 
 
