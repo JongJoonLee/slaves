@@ -9,14 +9,14 @@
 
 
 
-<nav class="navbar navbar-white navbar-static-top navbar-fixed-top"  style="padding-left: 400px;padding-right: 400px;">
+<nav class="navbar navbar-white navbar-static-top navbar-fixed-top" style="max-width: 1200px; display:block;  margin-left: auto; margin-right: auto;">
 	<div class="navbar-header">
 		<button class="navbar-toggle" type="button" data-toggle="collapse"
 			data-target=".js-navbar-collapse">
 			<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
 			<span class="icon-bar"></span> <span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand2" href="index.do"><img src="resources/img/logo.jpg" style="margin-bottom: 20px; margin-top: 0px;"/></a>
+		<a class="navbar-brand2" href="index.do"><img src="resources/img/logo.jpg" style="margin-bottom: 25px; margin-top: 0px;"/></a>
 	</div>
 
 	<div class="collapse navbar-collapse js-navbar-collapse">
@@ -24,7 +24,7 @@
 
 
 				
-			<li style="margin-top: 15px; margin-bottom: 5px; margin-left:50px; "><font SIZE="5" COLOR="black"><a href="#">회사소개</a></font></li>
+			<li style="margin-top: 15px;"><font SIZE="5" COLOR="black"><a href="#">회사소개</a></font></li>
 			<li style="margin-top: 21px; color: #C4C4C4;" >&nbsp;&nbsp;|&nbsp;&nbsp;</li>
 			<li style="margin-top: 15px;"><font SIZE="5" COLOR="black"><a href="#">생산제품</a></font></li>
 			<li style="margin-top: 21px; color: #C4C4C4;">&nbsp;&nbsp;|&nbsp;&nbsp;</li>

@@ -62,7 +62,7 @@
 
 
 
-				<form:form action="boardwritepost1.do" method="post">
+				<form:form action="boardwritepost1.do" method="post"  id="frm"  onsubmit="return validateForm('frm');">
 
 
 
@@ -126,6 +126,25 @@
 
 	<script>
 		CKEDITOR.replace('editor1');
+	</script>
+	
+	<script type="text/javascript">
+		function validateForm(frm) {
+
+			
+			var title = $("#_title").val();//.text();
+			var contents = $("#editor1").val();
+			
+			
+			if(title==""&&contents==""){
+				alert("모든항목을 입력해 주세요");
+				return false;
+			}
+			else{
+				
+				return true;
+			}
+		}
 	</script>
 </body>
 </html>

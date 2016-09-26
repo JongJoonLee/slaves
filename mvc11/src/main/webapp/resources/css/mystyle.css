@@ -1,6 +1,9 @@
 ﻿.navbar-white {
   background-color: #ffffff;
   border-bottom: 1px solid #EEEEEE;
+  display: inline-block;
+  float: none;
+  vertical-align: top;
   
 }
 
