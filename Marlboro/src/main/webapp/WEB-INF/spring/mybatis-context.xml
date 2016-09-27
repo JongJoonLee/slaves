@@ -36,9 +36,6 @@
 		<constructor-arg index="0" ref="sqlSessionFactory" />
 	</bean>
  
-    <bean id="boardTestDAO" class="com.groupware.www.Dao.BoardTestDAO">
-	    <property name="sqlSessionFactory" ref="sqlSessionFactory" />	    
-	</bean>	 
 	
 	
 </beans>
