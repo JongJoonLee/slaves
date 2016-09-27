@@ -546,8 +546,8 @@
 											</div>
 										</div>
 										<div class="row" style="margin-top: 15px;">
-											<div class="col-md-10"><h3 style="margin: 4px 0; color: #2A3F54;">이야기</h3></div>
-											<div class="col-md-2" style="padding-left: 0;">
+											<div class="col-md-10 col-sm-8 col-xs-6"><h3 style="margin: 4px 0; color: #2A3F54;">이야기</h3></div>
+											<div class="col-md-2 col-sm-4 col-xs-6" style="padding-left: 0;">
 												<input type="submit" class="form-control" value="작성"/>
 											</div>
 										</div>
