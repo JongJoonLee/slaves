@@ -59,6 +59,13 @@ position: absolute;
 top: 10px;
 width: 15px;
 }
+.message-item.top:before {
+	visibility: hidden;
+}
+.message-item.top:after {
+	visibility: hidden;
+}
+
 .clearfix:before, .clearfix:after {
 content: " ";
 display: table;

@@ -595,9 +595,6 @@ a:hover, a:focus {
 .nav > li > a:hover, .nav > li > a:focus {
   background-color: transparent; }
 
-.top_search {
-  padding: 0; }
-
 .top_search .form-control {
   border-right: 0;
   box-shadow: inset 0 1px 0px rgba(0, 0, 0, 0.075);
