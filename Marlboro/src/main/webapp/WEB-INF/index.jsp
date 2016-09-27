@@ -541,7 +541,7 @@
 								<div class="form-group">
 									<form action="">
 										<div class="row">
-											<div class="col-md-12">
+											<div class="col-md-12 col-sm-12 col-xs-12">
 												<textarea class="form-control" id="message" rows="4" style="resize: none; overflow: hidden;" placeholder="지금의 상태, 기분 등을 나누어 보세요."></textarea>
 											</div>
 										</div>
