@@ -15,6 +15,7 @@
 	</settings>
 
 	<typeAliases>
+	
 		
 		<!-- <typeAlias alias="PPage" type="com.example.bean.PPage" /> -->
 	</typeAliases>

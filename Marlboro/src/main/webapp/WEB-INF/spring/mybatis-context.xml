@@ -23,7 +23,7 @@
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="mapperLocations" value="classpath*:com/groupware/www/Map/*.xml" />
+		<property name="mapperLocations" value="classpath:com/groupware/www/Map/*.xml" />
 		<property name="configLocation" value="/WEB-INF/spring/mybatis-config.xml" />
 
 		<property name="transactionFactory">
@@ -35,7 +35,27 @@
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg index="0" ref="sqlSessionFactory" />
 	</bean>
- 
+	
+	<bean id="bDao" class="com.groupware.www.Dao.NoticeBoardDao">
+	    <property name="sqlSessionFactory" ref="sqlSessionFactory" />	    
+	</bean>
+	
+
+	<!-- <bean id="mDao" class="com.example.dao.MemberDao">
+	    <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	<bean id="cDao" class="com.example.dao.CustomDAO">
+	    <property name="sqlSessionFactory" ref="sqlSessionFactory" />	    
+	</bean>
+	<bean id="itemDao" class="com.example.dao.ItemDAO">
+	    <property name="sqlSessionFactory" ref="sqlSessionFactory" />	    
+	</bean> -->
+	 
+	
+<!-- 	<bean id="mongoDao" class="com.example.dao.MongoDAO">
+	    <property name="sqlSessionFactory" ref="sqlSessionFactory" />	    
+	</bean>	 -->
 	
 	
 </beans>
