@@ -32,5 +32,8 @@ public class NoticeBoardController {
 
 		return "notice_board_test";
 	}
+	
+	
+	
 
 }
