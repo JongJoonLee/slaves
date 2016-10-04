@@ -1,0 +1,42 @@
+@CHARSET "UTF-8";
+
+/** Calendar Navigator **/
+.cal-nav-tabs {
+	margin: 0;
+	border-bottom: 1px solid #E6E9ED;
+}
+
+.cal-nav-tabs > div {
+	color: #2A3F54;
+	border: 1px solid transparent;
+	padding: 13px 15px 12px;
+	text-align: center;
+}
+
+.cal-nav-tabs > div:hover,
+.cal-nav-tabs > div:focus {
+	border: 1px solid #E6E9ED;
+	border-radius: 4px 4px 0 0;
+	font-style: bold;
+}
+
+.cal-nav-tabs > div.active,
+.cal-nav-tabs > div.active:hover,
+.cal-nav-tabs > div.active:focus {
+	color: #2A3F54;
+	border: 1px solid #E6E9ED;
+	border-radius: 4px 4px 0 0;
+	border-bottom-color: transparent;
+	padding: 13px 15px 12px;
+	text-align: center;
+	background-color: #FFFFFF;
+}
+
+
+/** Calendar **/
+.calendar-wrap {
+	margin-top: -2px;
+	border: 1px solid #E6E9ED;
+	padding: 15px;
+	background-color: #FFFFFF;
+}

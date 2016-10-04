@@ -25,7 +25,7 @@ public class NoticeBoardController {
 		/*model.addAttribute("blist", bDao.boardlist());*/
 		List<NoticeBoardVO> list = bDao.boardlist();
 
-		// System.out.println(bcp.getCnt());
+		// System.out.println(bcp.getCnt()); 
 
 		model.addAttribute("blist", list);
 		System.out.println();
