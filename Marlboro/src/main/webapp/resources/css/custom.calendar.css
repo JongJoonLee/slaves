@@ -1,5 +1,10 @@
 @CHARSET "UTF-8";
 
+/** Calendar Title **/
+h3 {
+	color: #2A3F54;
+}
+
 /** Calendar Navigator **/
 .cal-nav-tabs {
 	margin: 0;
@@ -9,7 +14,7 @@
 .cal-nav-tabs > div {
 	color: #2A3F54;
 	border: 1px solid transparent;
-	padding: 13px 15px 12px;
+	padding: 0;
 	text-align: center;
 }
 
@@ -27,11 +32,16 @@
 	border: 1px solid #E6E9ED;
 	border-radius: 4px 4px 0 0;
 	border-bottom-color: transparent;
-	padding: 13px 15px 12px;
 	text-align: center;
 	background-color: #FFFFFF;
 }
 
+.cal-nav-tabs > div > a {
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	padding: 13px 15px 12px;
+}
 
 /** Calendar **/
 .calendar-wrap {
@@ -39,4 +49,35 @@
 	border: 1px solid #E6E9ED;
 	padding: 15px;
 	background-color: #FFFFFF;
+}
+
+.calendar-list {
+	display: block;
+}
+.calendar-monthly {
+	display: none;
+}
+.calendar-show-month {
+	padding-right: 5px;
+	padding-left: 5px;
+	color: #2A3F54;
+	font-size: 150%;
+	font-weight: bold;
+	display: inline-block;
+}
+.calendar-show-today,
+.calendar-show-month-prev,
+.calendar-show-month-next {
+	margin: 0;
+	font-size: 80%;
+}
+.calendar-monthly > .table-responsive > table > thead > tr > th {
+	width: calc(100% / 7);
+}
+
+.calendar-weekly {
+	display: none;
+}
+.calendar-daily {
+	display: none;
 }

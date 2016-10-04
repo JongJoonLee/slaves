@@ -350,7 +350,7 @@
 
 				<div class="row">
 					<div class="col-md-9 col-sm-6 col-xs-12">
-						<h3>전체 일정 보기</h3>
+						<h3 class="calendar-title">전체 일정 보기</h3>
 					</div>
 
 					<div class="col-md-3 col-sm-6 col-xs-12 form-group pull-right top_search">
@@ -365,24 +365,135 @@
 					</div>
 				</div>
 
+				<!-- calendar tab -->
 				<div class="row cal-nav-tabs">
-					<div class="col-md-3 active">
+					<div class="col-md-3 calendar-tab-list active">
 						<a href="#">전체 일정</a>
 					</div>
-					<div class="col-md-3">
+					<div class="col-md-3 calendar-tab-monthly">
 						<a href="#">월간 일정</a>
 					</div>
-					<div class="col-md-3">
+					<div class="col-md-3 calendar-tab-weekly">
 						<a href="#">주간 일정</a>
 					</div>
-					<div class="col-md-3">
+					<div class="col-md-3 calendar-tab-daily">
 						<a href="#">일간 일정</a>
 					</div>
 				</div>
+				<!-- /calendar tab -->
 
+				<!-- calendar content -->
 				<div class="calendar-wrap">
-					Calendar Here
+					<div class="calendar-list">
+						Calendar List Here
+					</div>
+					
+					<div class="calendar-monthly">
+						<div class="row">
+							<div class="col-md-10 col-sm-6 col-xs-12">
+								<span class="calendar-show-month">2016년 10월</span>
+							</div>
+							<div class="col-md-2 col-sm-6 col-xs-12 text-right">
+								<button class="btn btn-default calendar-show-today">오늘</button>
+							<div class="btn-group" role="group">
+								<div class="btn-group" role="group">
+									<button class="btn btn-default calendar-show-month-prev"><span class="glyphicon glyphicon-chevron-left"></span></button>
+								</div>
+								<div class="btn-group" role="group">
+									<button class="btn btn-default calendar-show-month-next"><span class="glyphicon glyphicon-chevron-right"></span></button>
+								</div>
+							</div>
+							</div>
+						</div>
+						
+						<div class="table-responsive">
+							<table class="table table-bordered">
+								<thead>
+									<tr>
+										<th style="color: #FF0000;">SUN</th>
+										<th>MON</th>
+										<th>TUE</th>
+										<th>WED</th>
+										<th>THU</th>
+										<th>FRI</th>
+										<th style="color: #0000FF;">SAT</th>
+									</tr>
+								</thead>
+								
+								<tbody>
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td>1</td>
+									</tr>
+									
+									<tr>
+										<td>2</td>
+										<td>3</td>
+										<td>4</td>
+										<td>5</td>
+										<td>6</td>
+										<td>7</td>
+										<td>8</td>
+									</tr>
+									
+									<tr>
+										<td>9</td>
+										<td>10</td>
+										<td>11</td>
+										<td>12</td>
+										<td>13</td>
+										<td>14</td>
+										<td>15</td>
+									</tr>
+									
+									<tr>
+										<td>16</td>
+										<td>17</td>
+										<td>18</td>
+										<td>19</td>
+										<td>20</td>
+										<td>21</td>
+										<td>22</td>
+									</tr>
+									
+									<tr>
+										<td>23</td>
+										<td>24</td>
+										<td>25</td>
+										<td>26</td>
+										<td>27</td>
+										<td>28</td>
+										<td>29</td>
+									</tr>
+									
+									<tr>
+										<td>30</td>
+										<td>31</td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					
+					<div class="calendar-weekly">
+						Weekly Calendar Here
+					</div>
+					
+					<div class="calendar-daily">
+						Daily Calendar Here
+					</div>
 				</div>
+				<!-- /calendar content -->
 			</div>
 			<!-- /page content -->
 
@@ -396,12 +507,6 @@
 			<!-- /footer content -->
 		</div>
 	</div>
-
-
-
-
-
-
 
 
 
@@ -419,5 +524,64 @@
 
 	<!-- Custom Theme Scripts -->
 	<script src="resources/js/custom.js"></script>
+	
+	<!-- Custom Tab Actions -->
+	<script>
+		$('.calendar-tab-list a').on('click', function() {
+			$('.calendar-title').text('전체 일정 보기');
+			
+			$('.calendar-tab-list').addClass('active');
+			$('.calendar-tab-monthly').removeClass('active');
+			$('.calendar-tab-weekly').removeClass('active');
+			$('.calendar-tab-daily').removeClass('active');
+			
+			$('.calendar-list').css('display', 'block');
+			$('.calendar-monthly').css('display', 'none');
+			$('.calendar-weekly').css('display', 'none');
+			$('.calendar-daily').css('display', 'none');
+		});
+
+		$('.calendar-tab-monthly a').on('click', function() {
+			$('.calendar-title').text('월간 일정 보기');
+			
+			$('.calendar-tab-list').removeClass('active');
+			$('.calendar-tab-monthly').addClass('active');
+			$('.calendar-tab-weekly').removeClass('active');
+			$('.calendar-tab-daily').removeClass('active');
+			
+			$('.calendar-list').css('display', 'none');
+			$('.calendar-monthly').css('display', 'block');
+			$('.calendar-weekly').css('display', 'none');
+			$('.calendar-daily').css('display', 'none');
+		});
+
+		$('.calendar-tab-weekly a').on('click', function() {
+			$('.calendar-title').text('주간 일정 보기');
+			
+			$('.calendar-tab-list').removeClass('active');
+			$('.calendar-tab-monthly').removeClass('active');
+			$('.calendar-tab-weekly').addClass('active');
+			$('.calendar-tab-daily').removeClass('active');
+			
+			$('.calendar-list').css('display', 'none');
+			$('.calendar-monthly').css('display', 'none');
+			$('.calendar-weekly').css('display', 'block');
+			$('.calendar-daily').css('display', 'none');
+		});
+
+		$('.calendar-tab-daily a').on('click', function() {
+			$('.calendar-title').text('일간 일정 보기');
+			
+			$('.calendar-tab-list').removeClass('active');
+			$('.calendar-tab-monthly').removeClass('active');
+			$('.calendar-tab-weekly').removeClass('active');
+			$('.calendar-tab-daily').addClass('active');
+			
+			$('.calendar-list').css('display', 'none');
+			$('.calendar-monthly').css('display', 'none');
+			$('.calendar-weekly').css('display', 'none');
+			$('.calendar-daily').css('display', 'block');
+		});
+	</script>
 </body>
 </html>
