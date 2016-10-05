@@ -1,13 +1,16 @@
 package com.groupware.www.Dao;
 
+import java.util.List;
+
 import org.mybatis.spring.support.SqlSessionDaoSupport;
+
 
 import com.groupware.www.Vo.MemberVO;
 
 public class MemberDao extends SqlSessionDaoSupport {
 	
-	public MemberVO memberlist() {
-		return (MemberVO) this.getSqlSession().selectList("Member.getMemberList");	
+	public List<MemberVO> memberlist(int no) {
+		return this.getSqlSession().selectList("Member.getMemberList",no);	
 	}
 	
 }

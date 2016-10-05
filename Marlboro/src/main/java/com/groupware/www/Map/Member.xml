@@ -4,7 +4,7 @@
 	<select id="getMemberList" parameterType="int"
 		resultType="com.groupware.www.Vo.MemberVO">
 
-		SELECT * FROM `member` WHERE team = #{team} ORDER BY no DESC
+		 SELECT * FROM `member` WHERE mem_team = #{no} ORDER BY mem_no DESC
 
 	</select>
 

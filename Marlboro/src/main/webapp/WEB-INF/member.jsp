@@ -356,9 +356,20 @@
 													<div class="panel panel-default">
 														<div class="panel-heading">
 															<h4 class="panel-title">
-																<a data-toggle="collapse" data-parent="#accordion"  onclick="sendAjax('memberlist.do')"
+															
+															
+															
+															
+															
+																<a data-toggle="collapse" data-parent="#accordion"  onclick="sendAjax('memberlist.do?no=1')"
 																	href="#collapseFour" aria-expanded="true" aria-controls="#collapseFour">
 																	<span class="glyphicon glyphicon-file"> </span>회장</a>
+																	
+															
+																	
+																	
+																	
+																	
 															</h4>
 														</div>
 														<div id="collapseFour" class="panel-collapse collapse in">
@@ -376,7 +387,7 @@
 														<div class="panel-heading">
 															<h4 class="panel-title">
 																<a data-toggle="collapse" data-parent="#accordion"
-																	href="#3" aria-expanded="true" aria-controls="#3"><span
+																	href="#3" aria-expanded="true" aria-controls="#3" onclick="sendAjax('memberlist.do?no=2')"><span
 																	class="glyphicon glyphicon-file"> </span>경영지원팀</a>
 															</h4>
 														</div>
@@ -397,7 +408,7 @@
 														<div class="panel-heading">
 															<h4 class="panel-title">
 																<a data-toggle="collapse" data-parent="#accordion"
-																	href="#4" aria-expanded="true" aria-controls="#4"><span
+																	href="#4" aria-expanded="true" aria-controls="#4" onclick="sendAjax('memberlist.do?no=3')"><span
 																	class="glyphicon glyphicon-file"> </span>전산팀</a>
 															</h4>
 														</div>
@@ -418,7 +429,7 @@
 														<div class="panel-heading">
 															<h4 class="panel-title">
 																<a data-toggle="collapse" data-parent="#accordion"
-																	href="#5" aria-expanded="true" aria-controls="#5"><span
+																	href="#5" aria-expanded="true" aria-controls="#5" onclick="sendAjax('memberlist.do?no=4')"><span
 																	class="glyphicon glyphicon-file"> </span>생산설계팀</a>
 															</h4>
 														</div>
@@ -469,7 +480,7 @@
 
 
 									<div class="x_content" id="changeView">
-									s
+									
 									
 									
 									
@@ -530,9 +541,10 @@
 			var postString = "";
 			$.ajax({
 
-				type: "POST",
+				type: "GET",
 				url: url,
 				data: postString,
+				 
 				success: function(msg) {
 					
 					document.getElementById("changeView").innerHTML = msg;

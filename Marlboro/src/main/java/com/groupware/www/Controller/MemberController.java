@@ -1,5 +1,6 @@
 package com.groupware.www.Controller;
 
+import java.util.List;
 import java.util.Locale;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -39,21 +40,22 @@ public class MemberController {
 		return "member";
 	}
 	
-	@RequestMapping(value = "memberlist.do", method = RequestMethod.POST)
-	public String vew1(Locale locale, Model model,HttpSession session) {
+	@RequestMapping(value = "memberlist.do", method = RequestMethod.GET)
+	public String vew1(Locale locale, Model model,HttpSession session,
+			@RequestParam(value = "no") int no) {
 		logger.info("memberlist.do", locale);
 		
-		MemberVO mvo = new MemberVO();
 		
-		mvo = mDao.memberlist();
 		
-		System.out.println(mvo.getMem_id());
+		List<MemberVO> mvo = mDao.memberlist(no);
+		
+		//System.out.println(mvo);
 
 		// System.out.println(bcp.getCnt());
 
-		//model.addAttribute("mlist", mvo);
+		model.addAttribute("mlist", mvo);
 		
-		
+		System.out.println(no);
 		
 		
 		return "memberlist";
