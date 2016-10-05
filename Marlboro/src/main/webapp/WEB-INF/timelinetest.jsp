@@ -107,15 +107,15 @@
                                 var pPassword = $("#commentParentPassword");//패스워드를 노출 시켰는데 저장하고 나서 저장한 날짜를 보여줄 예정
                                 var pText = $("#commentParentText");
                                   
-                                if($.trim(pName.val())==""){
+                                /* if($.trim(pName.val())==""){
                                     alert("이름을 입력하세요.");
                                     pName.focus();
                                     return;
                                 }else if($.trim(pPassword.val())==""){
                                     alert("패스워드를 입력하세요.");
                                     pPassword.focus();
-                                    return;
-                                }else if($.trim(pText.val())==""){
+                                    return; */
+                                if($.trim(pText.val())==""){
                                     alert("내용을 입력하세요.");
                                     pText.focus();
                                     return;
@@ -164,7 +164,7 @@
                                 var commentChildText = '<tr name="commentChildCode">'+
                                                             '<td style="width:1%"><span class="glyphicon glyphicon-arrow-right"></span></td>'+
                                                             '<td style="width:99%">'+
-                                                                '<strong>'+cName.val()+'</strong> '+cPassword.val()+' <a style="cursor:pointer;" name="cAdd">답글</a> | <a style="cursor:pointer;" name="cDel">삭제</a>'+
+                                                                '<strong>'+cName.val()+'</strong> '+cPassword.val()+' <a style="cursor:pointer;" name="cAdd"></a> | <a style="cursor:pointer;" name="cDel">삭제</a>'+
                                                                 '<p>'+cText.val().replace(/\n/g, "<br>")+'</p>'+
                                                             '</td>'+
                                                         '</tr>';

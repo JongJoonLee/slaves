@@ -51,4 +51,17 @@ public class HomeController {
 	
 	
 	
+	
+	@RequestMapping(value = "timelinetest.do", method = RequestMethod.GET)
+	public String home2(Locale locale, Model model,HttpSession session) {
+		
+			
+		
+		
+		
+		return "timelinetest";
+	}
+	
+	
+	
 }
