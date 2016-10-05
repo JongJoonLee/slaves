@@ -40,6 +40,10 @@
 	    <property name="sqlSessionFactory" ref="sqlSessionFactory" />	    
 	</bean>
 	
+	<bean id="mDao" class="com.groupware.www.Dao.MemberDao">
+	    <property name="sqlSessionFactory" ref="sqlSessionFactory" />	    
+	</bean>
+	
 
 	<!-- <bean id="mDao" class="com.example.dao.MemberDao">
 	    <property name="sqlSessionFactory" ref="sqlSessionFactory" />

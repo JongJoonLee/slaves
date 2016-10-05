@@ -356,14 +356,14 @@
 													<div class="panel panel-default">
 														<div class="panel-heading">
 															<h4 class="panel-title">
-																<a data-toggle="collapse" data-parent="#accordion" 
+																<a data-toggle="collapse" data-parent="#accordion"  onclick="sendAjax('memberlist.do')"
 																	href="#collapseFour" aria-expanded="true" aria-controls="#collapseFour">
 																	<span class="glyphicon glyphicon-file"> </span>È¸Àå</a>
 															</h4>
 														</div>
 														<div id="collapseFour" class="panel-collapse collapse in">
 															<div class="list-group">
-																<a href="#" class="list-group-item active">È¸Àå´Ô</a> <a
+																<a href="#" class="list-group-item active" >È¸Àå´Ô</a> <a
 																	href="#" class="list-group-item">È¸Àå´ÔÃ¹Â°</a> <a href="#"
 																	class="list-group-item">È¸Àå´ÔµÑÂ°</a> <a href="#"
 																	class="list-group-item">È¸Àå´Ô¼ÂÂ°</a> <a href="#"
@@ -468,7 +468,12 @@
 									</div>
 
 
-									<div class="x_content"></div>
+									<div class="x_content" id="changeView">
+									s
+									
+									
+									
+									</div>
 								</div>
 							</div>
 						</div>
@@ -517,7 +522,25 @@
 
 	<!-- Custom Theme Scripts -->
 	<script src="resources/js/custom.js"></script>
+	
+	 <script type="text/javascript">
+ 
+		 var sendAjax =  function(url) {
 
+			var postString = "";
+			$.ajax({
+
+				type: "POST",
+				url: url,
+				data: postString,
+				success: function(msg) {
+					
+					document.getElementById("changeView").innerHTML = msg;
+				}
+			});
+		 };
+ 
+  </script>
 	
 
 </body>
