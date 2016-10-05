@@ -1,6 +1,7 @@
 package com.groupware.www.Vo;
 
-public class MemberVO {
+public class MemberVO{
+	
 	
 	private int mem_no=0;
 	private String mem_name=null;

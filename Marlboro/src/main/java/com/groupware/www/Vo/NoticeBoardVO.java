@@ -1,8 +1,10 @@
 package com.groupware.www.Vo;
 
-public class NoticeBoardVO {
 
-	
+
+public class NoticeBoardVO{
+
+		
 	private int no = 0;
 	private String title = null;;
 	private String contents = null;

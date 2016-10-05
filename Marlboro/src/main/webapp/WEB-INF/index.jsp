@@ -1,5 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -11,13 +13,13 @@
 
 <title>Groupware</title>
 
-<!-- ºÎÆ®½ºÆ®·¦ -->
+<!-- ë¶€íŠ¸ìŠ¤íŠ¸ëž© -->
 <link href="resources/css/bootstrap.css" rel="stylesheet">
 <!-- Font Awesome -->
 <link href="resources/css/font-awesome.css"	rel="stylesheet">
-<!-- ¿£ÇÁ·Î±×·¹½º -->
+<!-- ì—”í”„ë¡œê·¸ë ˆìŠ¤ -->
 <link href="resources/css/nprogress.css" rel="stylesheet">
-<!-- jQuery Ä¿½ºÅÒ ½ºÅ©·Ñ¹Ù -->
+<!-- jQuery ì»¤ìŠ¤í…€ ìŠ¤í¬ë¡¤ë°” -->
 <link href="resources/css/jquery.mCustomScrollbar.min.css" rel="stylesheet" />
 
 <!-- Custom Theme Style -->
@@ -36,7 +38,7 @@
 
 				<div class="left_col scroll-view">
 					<div class="navbar nav_title" style="border: 0;">
-						<a href="#" class="site_title"><i class="fa fa-apple"></i> <span>
+						<a href="index.do" class="site_title"><i class="fa fa-apple"></i> <span>
 								DOUNGSUNG</span></a>
 					</div>
 
@@ -49,8 +51,8 @@
 								class="img-circle profile_img">
 						</div>
 						<div class="profile_info">
-							<span>È¯¿µÇÕ´Ï´Ù,</span>
-							<h2>±èÁø¼ö´Ô (PIÆÀ/ºÎÀå)</h2>
+							<span>í™˜ì˜í•©ë‹ˆë‹¤,</span>
+							<h2>ê¹€ì§„ìˆ˜ë‹˜ (PIíŒ€/ë¶€ìž¥)</h2>
 							<br /> <br />
 
 						</div>
@@ -63,153 +65,153 @@
 					<div id="sidebar-menu"
 						class="main_menu_side hidden-print main_menu">
 						<div class="menu_section">
-							<h3>Ä«Å×°í¸®</h3>
+							<h3>ì¹´í…Œê³ ë¦¬</h3>
 							<ul class="nav side-menu">
 								<li><a><i class="fa fa-home"></i> Home</a></li>
 
 
 
-								<li><a><i class="fa fa-envelope"></i> ¸ÞÀÏ <span
+								<li><a><i class="fa fa-envelope"></i> ë©”ì¼ <span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a href="#">ÀüÃ¼ ¸ÞÀÏÇÔ</a></li>
-										<li><a href="#">¹ÞÀº ¸ÞÀÏÇÔ</a></li>
-										<li><a href="#">º¸³½ ¸ÞÀÏÇÔ</a></li>
-										<li><a href="#">ÀÓ½Ã º¸°üÇÔ</a></li>
-										<li><a href="#">³»°Ô ¾´ ¸ÞÀÏÇÔ</a></li>
-										<li><a href="#">½ºÆÔ ¸ÞÀÏÇÔ</a></li>
-										<li><a href="#">ÈÞÁöÅë</a></li>
+										<li><a href="#">ì „ì²´ ë©”ì¼í•¨</a></li>
+										<li><a href="#">ë°›ì€ ë©”ì¼í•¨</a></li>
+										<li><a href="#">ë³´ë‚¸ ë©”ì¼í•¨</a></li>
+										<li><a href="#">ìž„ì‹œ ë³´ê´€í•¨</a></li>
+										<li><a href="#">ë‚´ê²Œ ì“´ ë©”ì¼í•¨</a></li>
+										<li><a href="#">ìŠ¤íŒ¸ ë©”ì¼í•¨</a></li>
+										<li><a href="#">íœ´ì§€í†µ</a></li>
 									</ul></li>
 
-								<li><a><i class="fa fa-desktop"></i> ±ÙÅÂ°ü¸® <span
+								<li><a><i class="fa fa-desktop"></i> ê·¼íƒœê´€ë¦¬ <span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a href="#">Ãâ±Ù µî·Ï</a></li>
-										<li><a href="#">Åð±Ù µî·Ï</a></li>
-										<li><a href="#">¿Ü±Ù µî·Ï</a></li>
-										<li><a href="#">ÃâÀå µî·Ï</a></li>
-										<li><a href="#">ÃÊ°ú ±Ù¹« µî·Ï</a></li>
-										<li><a href="#">ÈÞÀÏ ±Ù¹« µî·Ï</a></li>
+										<li><a href="#">ì¶œê·¼ ë“±ë¡</a></li>
+										<li><a href="#">í‡´ê·¼ ë“±ë¡</a></li>
+										<li><a href="#">ì™¸ê·¼ ë“±ë¡</a></li>
+										<li><a href="#">ì¶œìž¥ ë“±ë¡</a></li>
+										<li><a href="#">ì´ˆê³¼ ê·¼ë¬´ ë“±ë¡</a></li>
+										<li><a href="#">íœ´ì¼ ê·¼ë¬´ ë“±ë¡</a></li>
 									</ul></li>
 
-								<li><a><i class="fa fa-file-text"></i> °áÀç°ü¸® <span
+								<li><a><i class="fa fa-file-text"></i> ê²°ìž¬ê´€ë¦¬ <span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
 										<li><a>Workflow<span class="fa fa-chevron-down"></span></a>
 											<ul class="nav child_menu">
-												<li class="sub_menu"><a href="#">¾ç½ÄÇÔ</a></li>
-												<li><a href="#">°áÀçÇÔ</a></li>
-												<li><a href="#">°áÀçÁøÇàÇÔ</a></li>
-												<li><a href="#">¹Ý·ÁÇÔ</a></li>
-												<li><a href="#">ÀÓ½ÃÀúÀåÇÔ</a></li>
+												<li class="sub_menu"><a href="#">ì–‘ì‹í•¨</a></li>
+												<li><a href="#">ê²°ìž¬í•¨</a></li>
+												<li><a href="#">ê²°ìž¬ì§„í–‰í•¨</a></li>
+												<li><a href="#">ë°˜ë ¤í•¨</a></li>
+												<li><a href="#">ìž„ì‹œì €ìž¥í•¨</a></li>
 											</ul></li>
 
-										<li><a>ºñ¿ë Ã³¸®<span class="fa fa-chevron-down"></span></a>
+										<li><a>ë¹„ìš© ì²˜ë¦¬<span class="fa fa-chevron-down"></span></a>
 											<ul class="nav child_menu">
-												<li class="sub_menu"><a href="#">¹ýÀÎÄ«µå ½ÂÀÎ³»¿ª</a></li>
-												<li><a href="#">ºñ¿ëÃ³¸® ÁøÇàÇÔ</a></li>
-												<li><a href="#">ºñ¿ëÃ³¸® ¿Ï·áÇÔ</a></li>
-												<li><a href="#">ºñ¿ëÃ³¸® Ãë¼ÒÇÔ</a></li>
-												<li><a href="#">ºñ¿ëÃ³¸® ³»¿ª Á¶È¸</a></li>
+												<li class="sub_menu"><a href="#">ë²•ì¸ì¹´ë“œ ìŠ¹ì¸ë‚´ì—­</a></li>
+												<li><a href="#">ë¹„ìš©ì²˜ë¦¬ ì§„í–‰í•¨</a></li>
+												<li><a href="#">ë¹„ìš©ì²˜ë¦¬ ì™„ë£Œí•¨</a></li>
+												<li><a href="#">ë¹„ìš©ì²˜ë¦¬ ì·¨ì†Œí•¨</a></li>
+												<li><a href="#">ë¹„ìš©ì²˜ë¦¬ ë‚´ì—­ ì¡°íšŒ</a></li>
 											</ul></li>
 
-										<li><a>±¸¸Å ¿äÃ»<span class="fa fa-chevron-down"></span></a>
+										<li><a>êµ¬ë§¤ ìš”ì²­<span class="fa fa-chevron-down"></span></a>
 											<ul class="nav child_menu">
-												<li class="sub_menu"><a href="#">°áÀç Àü¼ÛÇÔ</a></li>
-												<li><a href="#">°áÀç ÁøÇàÇÔ</a></li>
-												<li><a href="#">¹Ý·ÁÇÔ</a></li>
-												<li><a href="#">ÀÛ¼ºÁß ¹®¼­</a></li>
+												<li class="sub_menu"><a href="#">ê²°ìž¬ ì „ì†¡í•¨</a></li>
+												<li><a href="#">ê²°ìž¬ ì§„í–‰í•¨</a></li>
+												<li><a href="#">ë°˜ë ¤í•¨</a></li>
+												<li><a href="#">ìž‘ì„±ì¤‘ ë¬¸ì„œ</a></li>
 											</ul></li>
 
-										<li><a>¿¹»ê °ü¸®<span class="fa fa-chevron-down"></span></a>
+										<li><a>ì˜ˆì‚° ê´€ë¦¬<span class="fa fa-chevron-down"></span></a>
 											<ul class="nav child_menu">
-												<li class="sub_menu"><a href="#">ÀÓ½Ã ÀúÀåÇÔ</a></li>
-												<li><a href="#">ÁøÇàÇÔ</a></li>
-												<li><a href="#">¿Ï·áÇÔ</a></li>
-												<li><a href="#">Ãë¼ÒÇÔ</a></li>
+												<li class="sub_menu"><a href="#">ìž„ì‹œ ì €ìž¥í•¨</a></li>
+												<li><a href="#">ì§„í–‰í•¨</a></li>
+												<li><a href="#">ì™„ë£Œí•¨</a></li>
+												<li><a href="#">ì·¨ì†Œí•¨</a></li>
 											</ul></li>
 
-										<li><a>¸íÇÔ ½ÅÃ»<span class="fa fa-chevron-down"></span></a>
+										<li><a>ëª…í•¨ ì‹ ì²­<span class="fa fa-chevron-down"></span></a>
 											<ul class="nav child_menu">
-												<li class="sub_menu"><a href="#">¹Ý·ÁµÈ ¹®¼­</a></li>
-												<li><a href="#">Á¢¼ö ´ë±â ¹®¼­</a></li>
-												<li><a href="#">¿Ï·á ÇöÈ²</a></li>
+												<li class="sub_menu"><a href="#">ë°˜ë ¤ëœ ë¬¸ì„œ</a></li>
+												<li><a href="#">ì ‘ìˆ˜ ëŒ€ê¸° ë¬¸ì„œ</a></li>
+												<li><a href="#">ì™„ë£Œ í˜„í™©</a></li>
 											</ul></li>
 
-										<li><a>ÆÇÃË¹° ½ÅÃ»<span class="fa fa-chevron-down"></span></a>
+										<li><a>íŒì´‰ë¬¼ ì‹ ì²­<span class="fa fa-chevron-down"></span></a>
 											<ul class="nav child_menu">
-												<li class="sub_menu"><a href="#">¹Ý·ÁµÈ ¹®¼­</a></li>
-												<li><a href="#">Á¢¼ö ´ë±â ¹®¼­</a></li>
-												<li><a href="#">¿Ï·á ÇöÈ²</a></li>
+												<li class="sub_menu"><a href="#">ë°˜ë ¤ëœ ë¬¸ì„œ</a></li>
+												<li><a href="#">ì ‘ìˆ˜ ëŒ€ê¸° ë¬¸ì„œ</a></li>
+												<li><a href="#">ì™„ë£Œ í˜„í™©</a></li>
 											</ul></li>
 
-										<li><a>È«º¸ ¾÷¹« ½ÅÃ»<span class="fa fa-chevron-down"></span></a>
+										<li><a>í™ë³´ ì—…ë¬´ ì‹ ì²­<span class="fa fa-chevron-down"></span></a>
 											<ul class="nav child_menu">
-												<li class="sub_menu"><a href="#">¹Ý·ÁµÈ ¹®¼­</a></li>
-												<li><a href="#">ÁøÇà ÇöÈ²</a></li>
-												<li><a href="#">¿Ï·á ÇöÈ²</a></li>
+												<li class="sub_menu"><a href="#">ë°˜ë ¤ëœ ë¬¸ì„œ</a></li>
+												<li><a href="#">ì§„í–‰ í˜„í™©</a></li>
+												<li><a href="#">ì™„ë£Œ í˜„í™©</a></li>
 											</ul></li>
 
-										<li><a>°ÇÃà¹° °ü¸®<span class="fa fa-chevron-down"></span></a>
+										<li><a>ê±´ì¶•ë¬¼ ê´€ë¦¬<span class="fa fa-chevron-down"></span></a>
 											<ul class="nav child_menu">
-												<li class="sub_menu"><a href="#">½ÂÀÎ ´ë±â ¹®¼­</a></li>
-												<li><a href="#">¹Ý·ÁµÈ ¹®¼­</a></li>
-												<li><a href="#">¿Ï·á ÇöÈ²</a></li>
+												<li class="sub_menu"><a href="#">ìŠ¹ì¸ ëŒ€ê¸° ë¬¸ì„œ</a></li>
+												<li><a href="#">ë°˜ë ¤ëœ ë¬¸ì„œ</a></li>
+												<li><a href="#">ì™„ë£Œ í˜„í™©</a></li>
 											</ul></li>
 									</ul></li>
 
-								<li><a><i class="fa fa-newspaper-o"></i> °ø°í <span
+								<li><a><i class="fa fa-newspaper-o"></i> ê³µê³  <span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a>°øÁö »çÇ×<span class="fa fa-chevron-down"></span></a>
+										<li><a>ê³µì§€ ì‚¬í•­<span class="fa fa-chevron-down"></span></a>
 											<ul class="nav child_menu">
-												<li class="sub_menu"><a href="#">ÀÓ½Ã ÀúÀå</a></li>
-												<li><a href="#">½ÂÀÎ ´ë±â</a></li>
-												<li><a href="#">¹Ý·ÁÇÔ</a></li>
-												<li><a href="#">°Ô½Ã ¸¸·á</a></li>
+												<li class="sub_menu"><a href="#">ìž„ì‹œ ì €ìž¥</a></li>
+												<li><a href="#">ìŠ¹ì¸ ëŒ€ê¸°</a></li>
+												<li><a href="#">ë°˜ë ¤í•¨</a></li>
+												<li><a href="#">ê²Œì‹œ ë§Œë£Œ</a></li>
 
 											</ul></li>
 
-										<li><a>¼³¹® Á¶»ç<span class="fa fa-chevron-down"></span></a>
+										<li><a>ì„¤ë¬¸ ì¡°ì‚¬<span class="fa fa-chevron-down"></span></a>
 											<ul class="nav child_menu">
-												<li class="sub_menu"><a href="#">¼³¹® Âü¿©</a></li>
-												<li><a href="#">¼³¹® °á°ú</a></li>
+												<li class="sub_menu"><a href="#">ì„¤ë¬¸ ì°¸ì—¬</a></li>
+												<li><a href="#">ì„¤ë¬¸ ê²°ê³¼</a></li>
 											</ul></li>
 
-										<li><a>¹æ¹® ÀÏÁö<span class="fa fa-chevron-down"></span></a>
+										<li><a>ë°©ë¬¸ ì¼ì§€<span class="fa fa-chevron-down"></span></a>
 											<ul class="nav child_menu">
-												<li class="sub_menu"><a href="#">ÀÏÀÏ ¹æ¹® ÀÏÁö</a></li>
-												<li><a href="#">Àå±â ¹æ¹® ÀÏÁö</a></li>
-												<li><a href="#">Çù·Â ¾÷Ã¼</a></li>
+												<li class="sub_menu"><a href="#">ì¼ì¼ ë°©ë¬¸ ì¼ì§€</a></li>
+												<li><a href="#">ìž¥ê¸° ë°©ë¬¸ ì¼ì§€</a></li>
+												<li><a href="#">í˜‘ë ¥ ì—…ì²´</a></li>
 											</ul></li>
 									</ul></li>
 
-								<li><a><i class="fa fa-briefcase"></i> ¾÷¹« ÀÏÁö <span
+								<li><a><i class="fa fa-briefcase"></i> ì—…ë¬´ ì¼ì§€ <span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a href="#">ÀüÃ¼ ÀÏÁö º¸±â</a></li>
-										<li><a href="#">¾÷¹« ÀÏÁö ÀÛ¼º</a></li>
+										<li><a href="#">ì „ì²´ ì¼ì§€ ë³´ê¸°</a></li>
+										<li><a href="#">ì—…ë¬´ ì¼ì§€ ìž‘ì„±</a></li>
 									</ul></li>
 
 
-								<li><a><i class="fa fa-calendar"></i> ½ºÄÉÁÙ <span
+								<li><a><i class="fa fa-calendar"></i> ìŠ¤ì¼€ì¤„ <span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a href="#">ÀüÃ¼ ÀÏÁ¤ º¸±â</a></li>
-										<li><a href="#">ÀÏÁ¤ ÀÛ¼º</a></li>
+										<li><a href="#">ì „ì²´ ì¼ì • ë³´ê¸°</a></li>
+										<li><a href="#">ì¼ì • ìž‘ì„±</a></li>
 									</ul></li>
 
-								<li><a><i class="fa fa-question-circle"></i> Áö¿ø ¿äÃ» <span
+								<li><a><i class="fa fa-question-circle"></i> ì§€ì› ìš”ì²­ <span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
 										<li><a href="#">Helpdesk</a></li>
-										<li><a href="#">¿Ï·áÇÔ</a></li>
+										<li><a href="#">ì™„ë£Œí•¨</a></li>
 
 									</ul></li>
 
-								<!-- <li><a><i class="fa fa-question-circle"></i> Áö¿ø¿äÃ»</a></li> -->
-								<li><a><i class="fa fa-commenting"></i> ¶ó¿îÁö</a></li>
-								<li><a><i class="fa fa-sitemap"></i> Á¶Á÷µµ</a></li>
+								<!-- <li><a><i class="fa fa-question-circle"></i> ì§€ì›ìš”ì²­</a></li> -->
+								<li><a><i class="fa fa-commenting"></i> ë¼ìš´ì§€</a></li>
+								<li><a href="member.do"><i class="fa fa-sitemap"></i> ì¡°ì§ë„</a></li>
 
 
 							</ul>
@@ -289,16 +291,16 @@
 							<li class=""><a href="javascript:;"
 								class="user-profile dropdown-toggle" data-toggle="dropdown"
 								aria-expanded="false"> <img src="resources/images/img.jpg"
-									alt="">±èÁø¼ö <span class=" fa fa-angle-down"></span>
+									alt="">ê¹€ì§„ìˆ˜ <span class=" fa fa-angle-down"></span>
 							</a>
 								<ul class="dropdown-menu dropdown-usermenu pull-right">
-									<li><a href="javascript:;">ÇÁ·ÎÇÊ</a></li>
+									<li><a href="javascript:;">í”„ë¡œí•„</a></li>
 									<li><a href="javascript:;"> <!-- <span class="badge bg-red pull-right">50%</span> -->
-											<span>Á¤º¸¼öÁ¤</span>
+											<span>ì •ë³´ìˆ˜ì •</span>
 									</a></li>
 									<!-- <li><a href="javascript:;">Help</a></li> -->
 									<li><a href="login.html"><i
-											class="fa fa-sign-out pull-right"></i>·Î±×¾Æ¿ô</a></li>
+											class="fa fa-sign-out pull-right"></i>ë¡œê·¸ì•„ì›ƒ</a></li>
 								</ul></li>
 
 							<li role="presentation" class="dropdown"><a
@@ -310,28 +312,28 @@
 									role="menu">
 									<li><a> <span class="image"><img
 												src="resources/images/img.jpg" alt="Profile Image" /></span> <span>
-												<span>ÀÌÁ¾ÁØ´Ô</span> <span class="time">3 ºÐÀü</span>
-										</span> <span class="message"> ±èÁø¼ö´Ô °áÀçÁ» ºÎÅ¹µå¸³´Ï´Ù. </span>
+												<span>ì´ì¢…ì¤€ë‹˜</span> <span class="time">3 ë¶„ì „</span>
+										</span> <span class="message"> ê¹€ì§„ìˆ˜ë‹˜ ê²°ìž¬ì¢€ ë¶€íƒë“œë¦½ë‹ˆë‹¤. </span>
 									</a></li>
 									<li><a> <span class="image"><img
 												src="resources/images/img.jpg" alt="Profile Image" /></span> <span>
-												<span>ÀÌÁ¾ÁØ´Ô</span> <span class="time">5 ºÐÀü</span>
-										</span> <span class="message"> ±èÁø¼ö´Ô °áÀç ¿Ã·È½À´Ï´Ù. È®ÀÎ ºÎÅ¹µå¸³´Ï´Ù. </span>
+												<span>ì´ì¢…ì¤€ë‹˜</span> <span class="time">5 ë¶„ì „</span>
+										</span> <span class="message"> ê¹€ì§„ìˆ˜ë‹˜ ê²°ìž¬ ì˜¬ë ¸ìŠµë‹ˆë‹¤. í™•ì¸ ë¶€íƒë“œë¦½ë‹ˆë‹¤. </span>
 									</a></li>
 									<li><a> <span class="image"><img
 												src="resources/images/img.jpg" alt="Profile Image" /></span> <span>
-												<span>¾ÆÀÌÀ¯´Ô</span> <span class="time">7 ºÐÀü</span>
-										</span> <span class="message"> ±â¾ÆÀÚµ¿Â÷¿¡¼­ ¼Õ´Ô ¿À¼Ì½À´Ï´Ù. </span>
+												<span>ì•„ì´ìœ ë‹˜</span> <span class="time">7 ë¶„ì „</span>
+										</span> <span class="message"> ê¸°ì•„ìžë™ì°¨ì—ì„œ ì†ë‹˜ ì˜¤ì…¨ìŠµë‹ˆë‹¤. </span>
 									</a></li>
 									<li><a> <span class="image"><img
 												src="resources/images/img.jpg" alt="Profile Image" /></span> <span>
-												<span>John Smith</span> <span class="time">30 ºÐÀü</span>
+												<span>John Smith</span> <span class="time">30 ë¶„ì „</span>
 										</span> <span class="message"> Hello! Jinsu kim. Nice to meet
 												you! </span>
 									</a></li>
 									<li>
 										<div class="text-center">
-											<a> <strong>¸ðµç ÂÊÁö º¸±â</strong> <i
+											<a> <strong>ëª¨ë“  ìª½ì§€ ë³´ê¸°</strong> <i
 												class="fa fa-angle-right"></i>
 											</a>
 										</div>
@@ -354,7 +356,7 @@
 
 					<div class="col-md-3 col-sm-6 col-xs-12 form-group pull-right top_search">
 						<div class="input-group">
-							<input type="text" class="form-control" placeholder="»ç¿ø°Ë»ö">
+							<input type="text" class="form-control" placeholder="ì‚¬ì›ê²€ìƒ‰">
 							<span class="input-group-btn">
 								<button class="btn btn-default" style="margin: 0;" type="button">
 									<i class="fa fa-search" aria-hidden="true"></i>
@@ -367,7 +369,7 @@
 				<!-- <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>³»¿ë µé¾î°¥ ÀÚ¸®</h3>
+                <h3>ë‚´ìš© ë“¤ì–´ê°ˆ ìžë¦¬</h3>
                 
                 
               </div>
@@ -382,7 +384,7 @@
 								<div class="x_panel">
 									<div class="x_title">
 										<h2>
-											°øÁö»çÇ×
+											ê³µì§€ì‚¬í•­
 											<!--  <small>Sessions</small> -->
 										</h2>
 										<!-- <ul class="nav navbar-right panel_toolbox">
@@ -407,8 +409,8 @@
 												<p class="day">08</p>
 											</a>
 											<div class="media-body">
-												<a class="title" href="#">°æ·Â»ç¿ø ¹ß·É</a>
-												<p>ÇØ¿Ü¿µ¾÷ÆÀ¿¡ È²º¸¼® ´ë¸®°¡ ÀÔ»çÇß½À´Ï´Ù.</p>
+												<a class="title" href="#">ê²½ë ¥ì‚¬ì› ë°œë ¹</a>
+												<p>í•´ì™¸ì˜ì—…íŒ€ì— í™©ë³´ì„ ëŒ€ë¦¬ê°€ ìž…ì‚¬í–ˆìŠµë‹ˆë‹¤.</p>
 											</div>
 										</article>
 										<article class="media event">
@@ -417,8 +419,8 @@
 												<p class="day">08</p>
 											</a>
 											<div class="media-body">
-												<a class="title" href="#">16³â °Ç°­°ËÁø ¾È³»</a>
-												<p>16³âµµ °Ç°­°ËÁø ¾È³»ÀÔ´Ï´Ù..</p>
+												<a class="title" href="#">16ë…„ ê±´ê°•ê²€ì§„ ì•ˆë‚´</a>
+												<p>16ë…„ë„ ê±´ê°•ê²€ì§„ ì•ˆë‚´ìž…ë‹ˆë‹¤..</p>
 											</div>
 										</article>
 										<article class="media event">
@@ -427,8 +429,8 @@
 												<p class="day">1</p>
 											</a>
 											<div class="media-body">
-												<a class="title" href="#">9¿ù Ã¹Â°ÁÖ ½Ä´ÜÇ¥ ¾È³»</a>
-												<p>9¿ù 1ÀÏ Çö¹Ì¹ä, ¹é¹Ì¹ä, Àâ°î¹ä, Äá¹ä</p>
+												<a class="title" href="#">9ì›” ì²«ì§¸ì£¼ ì‹ë‹¨í‘œ ì•ˆë‚´</a>
+												<p>9ì›” 1ì¼ í˜„ë¯¸ë°¥, ë°±ë¯¸ë°¥, ìž¡ê³¡ë°¥, ì½©ë°¥</p>
 											</div>
 										</article>
 										<article class="media event">
@@ -437,8 +439,8 @@
 												<p class="day">1</p>
 											</a>
 											<div class="media-body">
-												<a class="title" href="#">9¿ù 8ÀÏ Æ÷·³ ¾È³»</a>
-												<p>9¿ù 8ÀÏ Æ÷·³ ¾È³»</p>
+												<a class="title" href="#">9ì›” 8ì¼ í¬ëŸ¼ ì•ˆë‚´</a>
+												<p>9ì›” 8ì¼ í¬ëŸ¼ ì•ˆë‚´</p>
 											</div>
 										</article>
 										<article class="media event">
@@ -447,8 +449,8 @@
 												<p class="day">1</p>
 											</a>
 											<div class="media-body">
-												<a class="title" href="#">½ÅÀÔ»ç¿ø ±³À° ¾È³»</a>
-												<p>½ÅÀÔ»ç¿øµéÀº ....</p>
+												<a class="title" href="#">ì‹ ìž…ì‚¬ì› êµìœ¡ ì•ˆë‚´</a>
+												<p>ì‹ ìž…ì‚¬ì›ë“¤ì€ ....</p>
 											</div>
 										</article>
 									</div>
@@ -461,7 +463,7 @@
 								<div class="x_panel">
 									<div class="x_title">
 										<h2>
-											¸ÞÀÏÇÔ
+											ë©”ì¼í•¨
 											<!--  <small>Sessions</small> -->
 										</h2>
 										<!-- <ul class="nav navbar-right panel_toolbox">
@@ -486,8 +488,8 @@
 												<p class="day">24</p>
 											</a>
 											<div class="media-body">
-												<a class="title" href="#">¾È³çÇÏ½Ê´Ï±î? ±èºÎÀå´Ô</a>
-												<p>Çö´ëÀÚµ¿Â÷ ±è»óÈ£ ´ë¸® ÀÔ´Ï´Ù.</p>
+												<a class="title" href="#">ì•ˆë…•í•˜ì‹­ë‹ˆê¹Œ? ê¹€ë¶€ìž¥ë‹˜</a>
+												<p>í˜„ëŒ€ìžë™ì°¨ ê¹€ìƒí˜¸ ëŒ€ë¦¬ ìž…ë‹ˆë‹¤.</p>
 											</div>
 										</article>
 										<article class="media event">
@@ -496,8 +498,8 @@
 												<p class="day">24</p>
 											</a>
 											<div class="media-body">
-												<a class="title" href="#">Çö´ëÄ«µå 9¿ù Ä«µå ¸í¼¼¼­</a>
-												<p>¾È³çÇÏ½Ê´Ï±î? ±èÁø¼ö °í°´´Ô. Çö´ë Ä«µå 9¿ù Ä«µå ¸í¼¼¼­¸¦ ¹ß¼Û...</p>
+												<a class="title" href="#">í˜„ëŒ€ì¹´ë“œ 9ì›” ì¹´ë“œ ëª…ì„¸ì„œ</a>
+												<p>ì•ˆë…•í•˜ì‹­ë‹ˆê¹Œ? ê¹€ì§„ìˆ˜ ê³ ê°ë‹˜. í˜„ëŒ€ ì¹´ë“œ 9ì›” ì¹´ë“œ ëª…ì„¸ì„œë¥¼ ë°œì†¡...</p>
 											</div>
 										</article>
 										<article class="media event">
@@ -506,8 +508,8 @@
 												<p class="day">17</p>
 											</a>
 											<div class="media-body">
-												<a class="title" href="#">ÄíÆÎ 10¿ù ÄíÆùÀÌ ¹ß¼ÛµÇ¾ú½À´Ï´Ù.</a>
-												<p>±èÁø¼ö´ÔÀº 10¿ù´Þ VIP°í°´À¸·Î ÄíÆùÀ» ¹ß¼Û...</p>
+												<a class="title" href="#">ì¿ íŒ¡ 10ì›” ì¿ í°ì´ ë°œì†¡ë˜ì—ˆìŠµë‹ˆë‹¤.</a>
+												<p>ê¹€ì§„ìˆ˜ë‹˜ì€ 10ì›”ë‹¬ VIPê³ ê°ìœ¼ë¡œ ì¿ í°ì„ ë°œì†¡...</p>
 											</div>
 										</article>
 										<article class="media event">
@@ -516,8 +518,8 @@
 												<p class="day">14</p>
 											</a>
 											<div class="media-body">
-												<a class="title" href="#">ÀÌÁ¾ÁØ ´ë¸® / ÇØ¿Ü¿µ¾÷ÆÀ°¡ °áÀç¸¦ ¿äÃ»ÇÕ´Ï´Ù.</a>
-												<p>ÀÌÁ¾ÁØ ¤§¸®°¡ °áÀç¸¦ ¿äÃ»ÇÕ´Ï´Ù..</p>
+												<a class="title" href="#">ì´ì¢…ì¤€ ëŒ€ë¦¬ / í•´ì™¸ì˜ì—…íŒ€ê°€ ê²°ìž¬ë¥¼ ìš”ì²­í•©ë‹ˆë‹¤.</a>
+												<p>ì´ì¢…ì¤€ ã„·ë¦¬ê°€ ê²°ìž¬ë¥¼ ìš”ì²­í•©ë‹ˆë‹¤..</p>
 											</div>
 										</article>
 										<article class="media event">
@@ -526,8 +528,8 @@
 												<p class="day">10</p>
 											</a>
 											<div class="media-body">
-												<a class="title" href="#">¾È³çÇÏ¼¼¿ä ±èÁø¼öºÎÀå´Ô..</a>
-												<p>10¿ù¿¡ ¹æ¹®ÇÏ°Ú½À´Ï´Ù.</p>
+												<a class="title" href="#">ì•ˆë…•í•˜ì„¸ìš” ê¹€ì§„ìˆ˜ë¶€ìž¥ë‹˜..</a>
+												<p>10ì›”ì— ë°©ë¬¸í•˜ê² ìŠµë‹ˆë‹¤.</p>
 											</div>
 										</article>
 									</div>
@@ -536,19 +538,24 @@
 						</div>
 					</div>
 					
+					
+					
+					<!-- íƒ€ìž„ë¼ì¸ -->
+					
+					
 					<div class="col-md-6">
 						<div class="message-item top" style="margin-bottom: 15px;">
 								<div class="form-group">
 									<form action="">
 										<div class="row">
 											<div class="col-md-12 col-sm-12 col-xs-12">
-												<textarea class="form-control" id="message" rows="4" style="resize: none; overflow: hidden;" placeholder="Áö±ÝÀÇ »óÅÂ, ±âºÐ µîÀ» ³ª´©¾î º¸¼¼¿ä."></textarea>
+												<textarea class="form-control" id="message" rows="4" style="resize: none; overflow: hidden;" placeholder="ì§€ê¸ˆì˜ ìƒíƒœ, ê¸°ë¶„ ë“±ì„ ë‚˜ëˆ„ì–´ ë³´ì„¸ìš”."></textarea>
 											</div>
 										</div>
 										<div class="row" style="margin-top: 15px;">
-											<div class="col-md-10 col-sm-8 col-xs-6"><h3 style="margin: 4px 0; color: #2A3F54;">ÀÌ¾ß±â</h3></div>
+											<div class="col-md-10 col-sm-8 col-xs-6"><h3 style="margin: 4px 0; color: #2A3F54;">ì´ì•¼ê¸°</h3></div>
 											<div class="col-md-2 col-sm-4 col-xs-6" style="padding-left: 0;">
-												<input type="submit" class="form-control" value="ÀÛ¼º"/>
+												<input type="submit" class="form-control" value="ìž‘ì„±"/>
 											</div>
 										</div>
 									</form>
@@ -558,12 +565,12 @@
 						<div class="row">
 							<div class="col-md-12">
 
-
+								<c:forEach var="tmp" items="${timeline}">
 								<div class="qa-message-list" id="wallmessages">
 
 
-
-									<div class="message-item" id="m18">
+									
+									<div class="message-item">
 										<div class="message-inner">
 											<div class="message-head clearfix">
 												<div class="avatar pull-left">
@@ -572,362 +579,26 @@
 														src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></a>
 												</div>
 												<div class="user-detail">
-													<h5 class="handle">±èÁø¼ö ºÎÀå / PIÆÀ</h5>
+													<h5 class="handle">${tmp.getMem_name()} ${tmp.getMem_grade()} / ${tmp.getMem_team()}</h5>
 													<div class="post-meta">
 														<div class="asker-meta">
 															<span class="qa-message-what"></span> <span
 																class="qa-message-when"> <span
-																class="qa-message-when-data">2016³â 09¿ù 10ÀÏ 09½Ã
-																	27ºÐ</span>
+																class="qa-message-when-data">${tmp.getTime_date()}</span>
 															</span>
-															<!-- <span class="qa-message-who">
-												<span class="qa-message-who-pad">by </span>
-												<span class="qa-message-who-data"><a href="./index.php?qa=user&qa_1=Oleg+Kolesnichenko">Oleg Kolesnichenko</a></span>
-											</span> -->
+															
 														</div>
 													</div>
 												</div>
 											</div>
-											<div class="qa-message-content">¶°³ª ¹ö¸° ³ÊÀÇ ¸ð½ÀÀ»~~ Áö¿ì°í ¹ö¸®°í
-												ºñ¿öµµ~~~ ¾î´À»õ °¡µæ Â÷¹ö¸° ³» »ç¶û</div>
+											<div class="qa-message-content">${tmp.getTime_contents()}</div>
 										</div>
 									</div>
-
-									<div class="message-item" id="m20">
-										<div class="message-inner">
-											<div class="message-head clearfix">
-												<div class="avatar pull-left">
-													<a href="./index.php?qa=user&qa_1=Oleg+Kolesnichenko"><img
-														class="img1"
-														src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></a>
-												</div>
-												<div class="user-detail">
-													<h5 class="handle">±èÁø¼ö ºÎÀå / PIÆÀ</h5>
-													<div class="post-meta">
-														<div class="asker-meta">
-															<span class="qa-message-what"></span> <span
-																class="qa-message-when"> <span
-																class="qa-message-when-data">2016³â 09¿ù 10ÀÏ 09½Ã
-																	27ºÐ</span>
-															</span>
-															<!-- <span class="qa-message-who">
-												<span class="qa-message-who-pad">by </span>
-												<span class="qa-message-who-data"><a href="./index.php?qa=user&qa_1=Oleg+Kolesnichenko">Oleg Kolesnichenko</a></span>
-											</span> -->
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="qa-message-content">ÀØ°í ÀØÇôÁö°í Áö¿ì°í Ã³À½ ¸¸³­ ±×¶§°¡
-												±×¸®¿öÁø »ç¶÷ ´Ù½Ã ¸ø ¿Ã ¸î¹øÀÇ ±× °èÀý</div>
-										</div>
-									</div>
-
-									<div class="message-item" id="m19">
-										<div class="message-inner">
-											<div class="message-head clearfix">
-												<div class="avatar pull-left">
-													<a href="./index.php?qa=user&qa_1=Oleg+Kolesnichenko"><img
-														class="img1"
-														src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></a>
-												</div>
-												<div class="user-detail">
-													<h5 class="handle">ÀÌÁ¾ÁØ ´ë¸® / ÇØ¿Ü¿µ¾÷ÆÀ</h5>
-													<div class="post-meta">
-														<div class="asker-meta">
-															<span class="qa-message-what"></span> <span
-																class="qa-message-when"> <span
-																class="qa-message-when-data">2016³â 09¿ù 10ÀÏ 09½Ã
-																	27ºÐ</span>
-															</span>
-															<!-- <span class="qa-message-who">
-												<span class="qa-message-who-pad">by </span>
-												<span class="qa-message-who-data"><a href="./index.php?qa=user&qa_1=Oleg+Kolesnichenko">Oleg Kolesnichenko</a></span>
-											</span> -->
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="qa-message-content">¸ðµç °Ô ³ª ¤¨¹®ÀÎµ¥ ¿Ö ´Ï°¡ ´õ Èûµé¾î
-												´Ï°¡ ¿Ö ³»¸¾À» À§·ÎÇØ ¿À~~~!!! ¿ö`!!!!!</div>
-										</div>
-									</div>
-
-									<div class="message-item" id="m19">
-										<div class="message-inner">
-											<div class="message-head clearfix">
-												<div class="avatar pull-left">
-													<a href="./index.php?qa=user&qa_1=Oleg+Kolesnichenko"><img
-														class="img1"
-														src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></a>
-												</div>
-												<div class="user-detail">
-													<h5 class="handle">ÀÌÁ¾ÁØ ´ë¸® / ÇØ¿Ü¿µ¾÷ÆÀ</h5>
-													<div class="post-meta">
-														<div class="asker-meta">
-															<span class="qa-message-what"></span> <span
-																class="qa-message-when"> <span
-																class="qa-message-when-data">2016³â 09¿ù 10ÀÏ 09½Ã
-																	27ºÐ</span>
-															</span>
-															<!-- <span class="qa-message-who">
-												<span class="qa-message-who-pad">by </span>
-												<span class="qa-message-who-data"><a href="./index.php?qa=user&qa_1=Oleg+Kolesnichenko">Oleg Kolesnichenko</a></span>
-											</span> -->
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="qa-message-content">ÀØ°í ÀØÇôÁö°í Áö¿ì°í Ã³À½¸¸³­ ±×¶§°¡
-												±×¸®¿öÁø »ç¶÷ ´Ù½Ã ¸ø¿Ã ¸î ¹øÀÇ ±× °èÀý ¶°³ª¹ö¸° ³ÊÀÇ ¸ð½ÀÀ» Áö¿ì°í ¹ö¸®°í ºñ¿öµµ ¾î´À»õ °¡µæ Â÷¹ö¸°
-												³»»ç¶û</div>
-										</div>
-									</div>
-
-									<div class="message-item" id="m18">
-										<div class="message-inner">
-											<div class="message-head clearfix">
-												<div class="avatar pull-left">
-													<a href="./index.php?qa=user&qa_1=Oleg+Kolesnichenko"><img
-														class="img1"
-														src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></a>
-												</div>
-												<div class="user-detail">
-													<h5 class="handle">ÀÌÁ¾ÁØ ´ë¸® / ÇØ¿Ü¿µ¾÷ÆÀ</h5>
-													<div class="post-meta">
-														<div class="asker-meta">
-															<span class="qa-message-what"></span> <span
-																class="qa-message-when"> <span
-																class="qa-message-when-data">2016³â 09¿ù 10ÀÏ 09½Ã
-																	27ºÐ</span>
-															</span>
-															<!-- <span class="qa-message-who">
-												<span class="qa-message-who-pad">by </span>
-												<span class="qa-message-who-data"><a href="./index.php?qa=user&qa_1=Oleg+Kolesnichenko">Oleg Kolesnichenko</a></span>
-											</span> -->
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="qa-message-content">¹Ì¾ÈÇØ ¶ó°í ¾È¾ÆÁÖ°í ½ÍÁö¸¸ Á¡ÀÌ µÅ¹ö¸°
-												±× µÞ¸ð½À ¿À¿À¿À¿À ¿öÇã~</div>
-										</div>
-									</div>
-
-
-									<div class="message-item" id="m17">
-										<div class="message-inner">
-											<div class="message-head clearfix">
-												<div class="avatar pull-left">
-													<a href="./index.php?qa=user&qa_1=Oleg+Kolesnichenko"><img
-														class="img1"
-														src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></a>
-												</div>
-												<div class="user-detail">
-													<h5 class="handle">ÀÌÁ¾ÁØ ´ë¸® / ÇØ¿Ü¿µ¾÷ÆÀ</h5>
-													<div class="post-meta">
-														<div class="asker-meta">
-															<span class="qa-message-what"></span> <span
-																class="qa-message-when"> <span
-																class="qa-message-when-data">2016³â 09¿ù 10ÀÏ 09½Ã
-																	27ºÐ</span>
-															</span>
-															<!-- <span class="qa-message-who">
-												<span class="qa-message-who-pad">by </span>
-												<span class="qa-message-who-data"><a href="./index.php?qa=user&qa_1=Oleg+Kolesnichenko">Oleg Kolesnichenko</a></span>
-											</span> -->
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="qa-message-content">¾ðÁ¦³ª ³» ¸¶À½ÀÌ¶ó »ç¶ûÇÏ´ø ¸¾ ÀÌ¶ó ±×¸®
-												¾ÆÆÄÇÒ ÁÙ ¸ô¶ú¾î</div>
-										</div>
-									</div>
-
-									<div class="message-item" id="m16">
-										<div class="message-inner">
-											<div class="message-head clearfix">
-												<div class="avatar pull-left">
-													<a href="./index.php?qa=user&qa_1=Oleg+Kolesnichenko"><img
-														class="img1"
-														src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></a>
-												</div>
-												<div class="user-detail">
-													<h5 class="handle">ÀÌÁ¾ÁØ ´ë¸® / ÇØ¿Ü¿µ¾÷ÆÀ</h5>
-													<div class="post-meta">
-														<div class="asker-meta">
-															<span class="qa-message-what"></span> <span
-																class="qa-message-when"> <span
-																class="qa-message-when-data">2016³â 09¿ù 10ÀÏ 09½Ã
-																	27ºÐ</span>
-															</span>
-															<!-- <span class="qa-message-who">
-												<span class="qa-message-who-pad">by </span>
-												<span class="qa-message-who-data"><a href="./index.php?qa=user&qa_1=Oleg+Kolesnichenko">Oleg Kolesnichenko</a></span>
-											</span> -->
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="qa-message-content">¾È µÈ´Ù°í »ç¶ûÇÏ¸é ¾ÈµÈ´Ù°í ÇÏÁö¸¸ ¿ì¸°
-												ÇÔ²² ÇßÁö</div>
-										</div>
-									</div>
-
-									<div class="message-item" id="m5">
-										<div class="message-inner">
-											<div class="message-head clearfix">
-												<div class="avatar pull-left">
-													<a href="./index.php?qa=user&qa_1=amiya"><img
-														class="img1"
-														src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></a>
-												</div>
-												<div class="user-detail">
-													<h5 class="handle">±èÁø¼ö ºÎÀå / PIÆÀ</h5>
-													<div class="post-meta">
-														<div class="asker-meta">
-															<span class="qa-message-what"></span> <span
-																class="qa-message-when"> <span
-																class="qa-message-when-data">2016³â 09¿ù 08ÀÏ 11½Ã
-																	37ºÐ</span>
-															</span>
-															<!-- <span class="qa-message-who">
-												<span class="qa-message-who-pad">by </span>
-												<span class="qa-message-who-data"><a href="./index.php?qa=user&qa_1=amiya">amiya</a></span>
-											</span> -->
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="qa-message-content">¾î´À»õ °¡µæ Â÷¹ö¸° ³» »ç¶û</div>
-										</div>
-									</div>
-
-									<div class="message-item" id="m4">
-										<div class="message-inner">
-											<div class="message-head clearfix">
-												<div class="avatar pull-left">
-													<a href="./index.php?qa=user&qa_1=russell"><img
-														class="img1"
-														src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></a>
-												</div>
-												<div class="user-detail">
-													<h5 class="handle">Á¶Àç¿ø »ç¿ø / ÇöÀå</h5>
-													<div class="post-meta">
-														<div class="asker-meta">
-															<span class="qa-message-what"></span> <span
-																class="qa-message-when"> <span
-																class="qa-message-when-data">2016³â 09¿ù 03ÀÏ 10½Ã
-																	27ºÐ</span>
-															</span>
-															<!-- <span class="qa-message-who">
-												<span class="qa-message-who-pad">by </span>
-												<span class="qa-message-who-data"><a href="./index.php?qa=user&qa_1=russell">russell</a></span>
-											</span> -->
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="qa-message-content">´Ù½Ã ¸ø ¿Ã ¸î º¡´Ì ±× °èÀý ¶°³ª¹ö¸°
-												³ÊÀÇ ¸ð½ÀÀ» Áö¿ì°í ¹ö¸®°í ºñ¿öµµ</div>
-										</div>
-									</div>
-
-									<div class="message-item" id="m3">
-										<div class="message-inner">
-											<div class="message-head clearfix">
-												<div class="avatar pull-left">
-													<a href="./index.php?qa=user&qa_1=juggornot"><img
-														class="img1"
-														src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></a>
-												</div>
-												<div class="user-detail">
-													<h5 class="handle">È²º¸¼® ´ë¸® / °æ¿µÁö¿øÆÀ</h5>
-													<div class="post-meta">
-														<div class="asker-meta">
-															<span class="qa-message-what"></span> <span
-																class="qa-message-when"> <span
-																class="qa-message-when-data">2016³â 09¿ù 02ÀÏ 09½Ã
-																	27ºÐ</span>
-															</span>
-															<!-- <span class="qa-message-who">
-												<span class="qa-message-who-pad">by </span>
-												<span class="qa-message-who-data"><a href="./index.php?qa=user&qa_1=juggornot">juggornot</a></span>
-											</span> -->
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="qa-message-content">ÀØ°í ÀØÇôÁö°í Áö¿ì°í Ã³À½ ¸¸³­ ±×¶§°¡
-												±×¸®¿öÁø »ç¶÷</div>
-										</div>
-									</div>
-
-									<div class="message-item" id="m2">
-										<div class="message-inner">
-											<div class="message-head clearfix">
-												<div class="avatar pull-left">
-													<a href="./index.php?qa=user&qa_1=one_eyed"><img
-														class="img1"
-														src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></a>
-												</div>
-												<div class="user-detail">
-													<h5 class="handle">À¯Áø¿­ °úÀå / °æ¿µÁö¿øÆÀ</h5>
-													<div class="post-meta">
-														<div class="asker-meta">
-															<span class="qa-message-what"></span> <span
-																class="qa-message-when"> <span
-																class="qa-message-when-data">2016³â 08¿ù 29ÀÏ 15½Ã
-																	27ºÐ</span>
-															</span>
-															<!-- <span class="qa-message-who">
-												<span class="qa-message-who-pad">by </span>
-												<span class="qa-message-who-data"><a href="./index.php?qa=user&qa_1=one_eyed">one_eyed</a></span>
-											</span> -->
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="qa-message-content">»ç¶ûÇØ ¶ó°í ¸»ÇÏ°í ½Í¾úÁö¸¸ ´Ã
-												¹Ì¾ÈÇÏ´Ù°í¸¸ Çß´ø ³ª</div>
-										</div>
-									</div>
-
-									<div class="message-item" id="m1">
-										<div class="message-inner">
-											<div class="message-head clearfix">
-												<div class="avatar pull-left">
-													<a href="./index.php?qa=user&qa_1=muboy"><img
-														class="img1"
-														src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></a>
-												</div>
-												<div class="user-detail">
-													<h5 class="handle">James / º£Æ®³² °øÀå</h5>
-													<div class="post-meta">
-														<div class="asker-meta">
-															<span class="qa-message-what"></span> <span
-																class="qa-message-when"> <span
-																class="qa-message-when-data">2016³â 08¿ù 27ÀÏ 14½Ã
-																	27ºÐ</span>
-															</span>
-															<!-- 	<span class="qa-message-who">
-												<span class="qa-message-who-pad">by </span>
-												<span class="qa-message-who-data"><a href="./index.php?qa=user&qa_1=muboy">muboy</a></span>
-											</span> -->
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="qa-message-content">¶°³ª°Åµç ³» ¼Ò½ÄÀÌ µé·Á¿À¸é ÀÌÁ¦´Â
-												¸ð¸¥´Ù°í ÇØÁà ¾ðÁ¦³ª ³» ¸¾ ¼Ó¿¡¼­ Ä¿Á®¸¸ °¬´ø ³Ê¸¦ Á¶±Ý¾¿ ³ªµµ Áö¿ì·Á ÇØ</div>
-										</div>
-									</div>
-
 
 
 
 								</div>
+							</c:forEach>
 
 
 
@@ -946,7 +617,7 @@
 								<div class="x_panel">
 									<div class="x_title">
 										<h2>
-											°áÀçÇÒ ¹®¼­
+											ê²°ìž¬í•  ë¬¸ì„œ
 											<!--  <small>Sessions</small> -->
 										</h2>
 										<!-- <ul class="nav navbar-right panel_toolbox">
@@ -971,8 +642,8 @@
 												<p class="day">24</p>
 											</a>
 											<div class="media-body">
-												<a class="title" href="#">¸¶¿ì½º ±¸¸ÅÀÇ °Ç</a>
-												<p>¸¶¿ì½º¸¦ 130°³°¡ ÇÊ¿ä......</p>
+												<a class="title" href="#">ë§ˆìš°ìŠ¤ êµ¬ë§¤ì˜ ê±´</a>
+												<p>ë§ˆìš°ìŠ¤ë¥¼ 130ê°œê°€ í•„ìš”......</p>
 											</div>
 										</article>
 										<article class="media event">
@@ -981,8 +652,8 @@
 												<p class="day">24</p>
 											</a>
 											<div class="media-body">
-												<a class="title" href="#">Å°º¸µå ±¸¸ÅÀÇ °Ç</a>
-												<p>Å°º¸µå°¡ ´Ù °íÀåÀÌ ³ª¼­ 130°³°¡ ÇÊ¿ä....</p>
+												<a class="title" href="#">í‚¤ë³´ë“œ êµ¬ë§¤ì˜ ê±´</a>
+												<p>í‚¤ë³´ë“œê°€ ë‹¤ ê³ ìž¥ì´ ë‚˜ì„œ 130ê°œê°€ í•„ìš”....</p>
 											</div>
 										</article>
 										<article class="media event">
@@ -991,8 +662,8 @@
 												<p class="day">17</p>
 											</a>
 											<div class="media-body">
-												<a class="title" href="#">È¸½Äºñ ¿äÃ»</a>
-												<p>È¸½Äºñ ¿äÃ»....</p>
+												<a class="title" href="#">íšŒì‹ë¹„ ìš”ì²­</a>
+												<p>íšŒì‹ë¹„ ìš”ì²­....</p>
 											</div>
 										</article>
 										<article class="media event">
@@ -1001,8 +672,8 @@
 												<p class="day">14</p>
 											</a>
 											<div class="media-body">
-												<a class="title" href="#">³ëÆ®ºÏ ±¸¸Å ¿äÃ»</a>
-												<p>½ÅÀÔ»ç¿ø ÀÔ»ç·Î ÀÎÇØ ³ëÆ®ºÏÀ» ¿äÃ»ÇÕ´Ï´Ù..</p>
+												<a class="title" href="#">ë…¸íŠ¸ë¶ êµ¬ë§¤ ìš”ì²­</a>
+												<p>ì‹ ìž…ì‚¬ì› ìž…ì‚¬ë¡œ ì¸í•´ ë…¸íŠ¸ë¶ì„ ìš”ì²­í•©ë‹ˆë‹¤..</p>
 											</div>
 										</article>
 										<article class="media event">
@@ -1011,8 +682,8 @@
 												<p class="day">10</p>
 											</a>
 											<div class="media-body">
-												<a class="title" href="#">PC º¯°æ ¿äÃ»</a>
-												<p>PC°¡ ³ëÈÄµÇ¾î ÃÖ½Å »ç¾çÀ¸·Î ±³Ã¼ ¹Ù¶ø´Ï´Ù.</p>
+												<a class="title" href="#">PC ë³€ê²½ ìš”ì²­</a>
+												<p>PCê°€ ë…¸í›„ë˜ì–´ ìµœì‹  ì‚¬ì–‘ìœ¼ë¡œ êµì²´ ë°”ëžë‹ˆë‹¤.</p>
 											</div>
 										</article>
 									</div>
@@ -1024,7 +695,7 @@
 								<div class="x_panel">
 									<div class="x_title">
 										<h2>
-											Áö¿ø¿äÃ»(Helpdesk)
+											ì§€ì›ìš”ì²­(Helpdesk)
 											<!--  <small>Sessions</small> -->
 										</h2>
 										<!-- <ul class="nav navbar-right panel_toolbox">
@@ -1049,8 +720,8 @@
 												<p class="day">24</p>
 											</a>
 											<div class="media-body">
-												<a class="title" href="#">°øÀåµ¿¿¡ POP´Ü¸»±â °íÀåÀÔ´Ï´Ù.</a>
-												<p>¾È³çÇÏ¼¼¿ä. ÇöÀå¿¡ Á¶Àç¿øÀÔ´Ï´Ù. POP´Ü¸»±â °íÀåÀ¸·Î ÀÎÇØ ¼ö¸® ¿äÃ»¹Ù¶ø´Ï´Ù.</p>
+												<a class="title" href="#">ê³µìž¥ë™ì— POPë‹¨ë§ê¸° ê³ ìž¥ìž…ë‹ˆë‹¤.</a>
+												<p>ì•ˆë…•í•˜ì„¸ìš”. í˜„ìž¥ì— ì¡°ìž¬ì›ìž…ë‹ˆë‹¤. POPë‹¨ë§ê¸° ê³ ìž¥ìœ¼ë¡œ ì¸í•´ ìˆ˜ë¦¬ ìš”ì²­ë°”ëžë‹ˆë‹¤.</p>
 											</div>
 										</article>
 										<article class="media event">
@@ -1059,8 +730,8 @@
 												<p class="day">24</p>
 											</a>
 											<div class="media-body">
-												<a class="title" href="#">±¸¸Å°³¹ßÆÀ ÇÁ¸°ÅÍ°¡ ÀÌ»óÇØ¿ä.</a>
-												<p>ÀÎ¼â½Ã A4¿ëÁö¿¡ °ËÀº»ö Åä³Ê°¡ ¹¯¾î³ª¿É´Ï´Ù. È®ÀÎ¹Ù¶ø´Ï´Ù.</p>
+												<a class="title" href="#">êµ¬ë§¤ê°œë°œíŒ€ í”„ë¦°í„°ê°€ ì´ìƒí•´ìš”.</a>
+												<p>ì¸ì‡„ì‹œ A4ìš©ì§€ì— ê²€ì€ìƒ‰ í† ë„ˆê°€ ë¬»ì–´ë‚˜ì˜µë‹ˆë‹¤. í™•ì¸ë°”ëžë‹ˆë‹¤.</p>
 											</div>
 										</article>
 										<article class="media event">
@@ -1069,8 +740,8 @@
 												<p class="day">17</p>
 											</a>
 											<div class="media-body">
-												<a class="title" href="#">°æ¿µÁö¿øÆÀ °ø¿ëPC Á¡°Ë¹Ù¶ø´Ï´Ù.</a>
-												<p>ÀÌÀçÈñ ÀÔ´Ï´Ù. °ÔÀÓ ±ò¾Ò´õ´Ï ÀÌ»óÇØÁ³¾î¿ä. Á¡°Ë¹Ù¶ø´Ï´Ù.</p>
+												<a class="title" href="#">ê²½ì˜ì§€ì›íŒ€ ê³µìš©PC ì ê²€ë°”ëžë‹ˆë‹¤.</a>
+												<p>ì´ìž¬í¬ ìž…ë‹ˆë‹¤. ê²Œìž„ ê¹”ì•˜ë”ë‹ˆ ì´ìƒí•´ì¡Œì–´ìš”. ì ê²€ë°”ëžë‹ˆë‹¤.</p>
 											</div>
 										</article>
 										<article class="media event">
@@ -1079,8 +750,8 @@
 												<p class="day">14</p>
 											</a>
 											<div class="media-body">
-												<a class="title" href="#">SAP°¡ Àß ¾ÈµË´Ï´Ù.</a>
-												<p>¹Ý°©½À´Ï´Ù. ÀÌÁ¾ÁØ ´ë¸® ÀÔ´Ï´Ù. SAP ÇÁ·Î±×·¥ »ç¿ëÁß ÀÚ²Ù ¿¡·¯°¡ ¶ß³×¿ä. Á¡°Ë...</p>
+												<a class="title" href="#">SAPê°€ ìž˜ ì•ˆë©ë‹ˆë‹¤.</a>
+												<p>ë°˜ê°‘ìŠµë‹ˆë‹¤. ì´ì¢…ì¤€ ëŒ€ë¦¬ ìž…ë‹ˆë‹¤. SAP í”„ë¡œê·¸ëž¨ ì‚¬ìš©ì¤‘ ìžê¾¸ ì—ëŸ¬ê°€ ëœ¨ë„¤ìš”. ì ê²€...</p>
 											</div>
 										</article>
 										<article class="media event">
@@ -1089,8 +760,8 @@
 												<p class="day">10</p>
 											</a>
 											<div class="media-body">
-												<a class="title" href="#">±×·ì¿þ¾î¿¡¼­ ÀÎ¼â°¡ ¾ÈµÇ¿ä.</a>
-												<p>½Ä´ÜÇ¥¸¦ ÀÎ¼âÇÏ·Á´Ï ¾ÈµË´Ï´Ù. È®ÀÎ ºÎÅ¹ µå·Á¿ä~</p>
+												<a class="title" href="#">ê·¸ë£¹ì›¨ì–´ì—ì„œ ì¸ì‡„ê°€ ì•ˆë˜ìš”.</a>
+												<p>ì‹ë‹¨í‘œë¥¼ ì¸ì‡„í•˜ë ¤ë‹ˆ ì•ˆë©ë‹ˆë‹¤. í™•ì¸ ë¶€íƒ ë“œë ¤ìš”~</p>
 											</div>
 										</article>
 									</div>

@@ -13,4 +13,8 @@ public class MemberDao extends SqlSessionDaoSupport {
 		return this.getSqlSession().selectList("Member.getMemberList",no);	
 	}
 	
+	
+	
+	
+	
 }
