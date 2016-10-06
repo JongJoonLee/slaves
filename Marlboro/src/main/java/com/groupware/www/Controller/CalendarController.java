@@ -11,4 +11,10 @@ public class CalendarController {
 	public String home() {
 		return "calendar";
 	}
+	
+	
+	@RequestMapping(value="carend.do", method=RequestMethod.GET)
+	public String carend() {
+		return "carend";
+	}
 }

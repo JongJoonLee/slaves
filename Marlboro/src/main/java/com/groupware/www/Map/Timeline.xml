@@ -13,6 +13,13 @@
 		FROM `timeline` INNER JOIN `member`
 		ON timeline.mem_no = member.mem_no ORDER BY time_no DESC;
 	</select>
+	
+	
+	<insert id="insertTimeline" parameterType="com.groupware.www.Vo.TimelineVO">
+        
+        INSERT INTO `timeline`(time_no, mem_no, time_contents, time_date)
+	        VALUES(#{time_no}, #{mem_no}, #{time_contents}, now())
+    </insert>
 
 
 </mapper>

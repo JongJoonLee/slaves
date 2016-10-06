@@ -7,7 +7,7 @@
         <meta charset="utf-8">
         <!-- meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"/ -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>게시판</title>
+        <title>게시팔</title>
         <!-- Bootstrap -->
         <link href="resources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
         <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요한) -->
@@ -84,17 +84,6 @@
                             </tr>
                         </thead>
                     </table>
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
                     <script>
   
                         $(function(){
@@ -107,15 +96,15 @@
                                 var pPassword = $("#commentParentPassword");//패스워드를 노출 시켰는데 저장하고 나서 저장한 날짜를 보여줄 예정
                                 var pText = $("#commentParentText");
                                   
-                                /* if($.trim(pName.val())==""){
+                                if($.trim(pName.val())==""){
                                     alert("이름을 입력하세요.");
                                     pName.focus();
                                     return;
                                 }else if($.trim(pPassword.val())==""){
                                     alert("패스워드를 입력하세요.");
                                     pPassword.focus();
-                                    return; */
-                                if($.trim(pText.val())==""){
+                                    return;
+                                }else if($.trim(pText.val())==""){
                                     alert("내용을 입력하세요.");
                                     pText.focus();
                                     return;
@@ -123,7 +112,7 @@
                                   
                                 var commentParentText = '<tr id="r1" name="commentParentCode">'+
                                                             '<td colspan=2>'+
-                                                                '<strong>'+pName.val()+'</strong> '+pPassword.val()+' <a style="cursor:pointer;" name="pAdd">답글</a> | <a style="cursor:pointer;" name="pDel">삭제</a><p>'+pText.val().replace(/\n/g, "<br>")+'</p>'+
+                                                                '<strong>'+pName.val()+'</strong> '+pPassword.val()+'<a style="cursor:pointer;" name="pDel">삭제</a><p>'+pText.val().replace(/\n/g, "<br>")+'</p>'+
                                                             '</td>'+
                                                         '</tr>';
                                   
@@ -164,7 +153,7 @@
                                 var commentChildText = '<tr name="commentChildCode">'+
                                                             '<td style="width:1%"><span class="glyphicon glyphicon-arrow-right"></span></td>'+
                                                             '<td style="width:99%">'+
-                                                                '<strong>'+cName.val()+'</strong> '+cPassword.val()+' <a style="cursor:pointer;" name="cAdd"></a> | <a style="cursor:pointer;" name="cDel">삭제</a>'+
+                                                                '<strong>'+cName.val()+'</strong> '+cPassword.val()+'<a style="cursor:pointer;" name="cDel">삭제</a>'+
                                                                 '<p>'+cText.val().replace(/\n/g, "<br>")+'</p>'+
                                                             '</td>'+
                                                         '</tr>';

@@ -1,23 +1,26 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html lang="ko">
+
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- À§ 3°³ÀÇ ¸ÞÅ¸ ÅÂ±×´Â *¹Ýµå½Ã* head ÅÂ±×ÀÇ Ã³À½¿¡ ¿Í¾ßÇÕ´Ï´Ù; ¾î¶² ´Ù¸¥ ÄÜÅÙÃ÷µéÀº ¹Ýµå½Ã ÀÌ ÅÂ±×µé *´ÙÀ½¿¡* ¿Í¾ß ÇÕ´Ï´Ù -->
-    <title>µ¿¼º ±×·ì¿þ¾î ·Î±×ÀÎ</title>
+    <!-- ìœ„ 3ê°œì˜ ë©”íƒ€ íƒœê·¸ëŠ” *ë°˜ë“œì‹œ* head íƒœê·¸ì˜ ì²˜ìŒì— ì™€ì•¼í•©ë‹ˆë‹¤; ì–´ë–¤ ë‹¤ë¥¸ ì½˜í…ì¸ ë“¤ì€ ë°˜ë“œì‹œ ì´ íƒœê·¸ë“¤ *ë‹¤ìŒì—* ì™€ì•¼ í•©ë‹ˆë‹¤ -->
+    <title>ë™ì„± ê·¸ë£¹ì›¨ì–´ ë¡œê·¸ì¸</title>
 
-    <!-- ºÎÆ®½ºÆ®·¦ -->
+    <!-- ë¶€íŠ¸ìŠ¤íŠ¸ëž© -->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
     <link href="resources/css/bootstrap.css" rel="stylesheet">
     <link href="resources/css/font-awesome.css" rel="stylesheet">
 	<link href="resources/css/login.css" rel="stylesheet">
     <link href="resources/css/loginstyle.css" rel="stylesheet">
     
-    <!-- IE8 ¿¡¼­ HTML5 ¿ä¼Ò¿Í ¹Ìµð¾î Äõ¸®¸¦ À§ÇÑ HTML5 shim ¿Í Respond.js -->
-    <!-- WARNING: Respond.js ´Â ´ç½ÅÀÌ file:// À» ÅëÇØ ÆäÀÌÁö¸¦ º¼ ¶§´Â µ¿ÀÛÇÏÁö ¾Ê½À´Ï´Ù. -->
+    <!-- IE8 ì—ì„œ HTML5 ìš”ì†Œì™€ ë¯¸ë””ì–´ ì¿¼ë¦¬ë¥¼ ìœ„í•œ HTML5 shim ì™€ Respond.js -->
+    <!-- WARNING: Respond.js ëŠ” ë‹¹ì‹ ì´ file:// ì„ í†µí•´ íŽ˜ì´ì§€ë¥¼ ë³¼ ë•ŒëŠ” ë™ìž‘í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤. -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -41,11 +44,11 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-8 col-sm-offset-2 text">
-                            <h1><strong>(ÁÖ)µ¿¼º¼ÒÇÁÆ®</strong></h1>
+                            <h1><strong>(ì£¼)ë™ì„±ì†Œí”„íŠ¸</strong></h1>
                             <div class="description">
                             	<p>
-                            		¿©·¯ºÐµéÀÇ º¸´Ù ³ªÀº ¹Ì·¡¸¦ À§ÇØ<br/> 
-	                            	Ç×»ó ³ë·ÂÇÏ´Â (ÁÖ)µ¿¼º¼ÒÇÁÆ®°¡ µÇ°Ú½À´Ï´Ù.
+                            		ì—¬ëŸ¬ë¶„ë“¤ì˜ ë³´ë‹¤ ë‚˜ì€ ë¯¸ëž˜ë¥¼ ìœ„í•´<br/> 
+	                            	í•­ìƒ ë…¸ë ¥í•˜ëŠ” (ì£¼)ë™ì„±ì†Œí”„íŠ¸ê°€ ë˜ê² ìŠµë‹ˆë‹¤.
 	                            	
                             	</p>
                             </div>
@@ -55,8 +58,8 @@
                         <div class="col-sm-6 col-sm-offset-3 form-box">
                         	<div class="form-top">
                         		<div class="form-top-left">
-                        			<h3>±×·ì¿þ¾î</h3>
-                            		<p>»ç¹ø°ú ºñ¹Ð¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä</p>
+                        			<h3>ê·¸ë£¹ì›¨ì–´</h3>
+                            		<p>ì‚¬ë²ˆê³¼ ë¹„ë°€ë²ˆí˜¸ë¥¼ ìž…ë ¥í•´ì£¼ì„¸ìš”</p>
                         		</div>
                         		<div class="form-top-right">
                         			<i class="fa fa-lock"></i>
@@ -65,25 +68,25 @@
                             <div class="form-bottom">
 			                    <form role="form" action="index.do" method="post" class="login-form">
 			                    	<div class="form-group">
-			                    		<label class="sr-only" for="form-username">»ç¹ø</label>
-			                        	<input type="text" name="form-username" placeholder="»ç¹ø" class="form-username form-control" id="form-username">
+			                    		<label class="sr-only" for="form-username">ì‚¬ë²ˆ</label>
+			                        	<input type="text" name="form-username" placeholder="ì‚¬ë²ˆ" class="form-username form-control" id="form-username">
 			                        </div>
 			                        <div class="form-group">
-			                        	<label class="sr-only" for="form-password">ºñ¹Ð¹øÈ£</label>
-			                        	<input type="password" name="form-password" placeholder="ºñ¹Ð¹øÈ£" class="form-password form-control" id="form-password">
+			                        	<label class="sr-only" for="form-password">ë¹„ë°€ë²ˆí˜¸</label>
+			                        	<input type="password" name="form-password" placeholder="ë¹„ë°€ë²ˆí˜¸" class="form-password form-control" id="form-password">
 			                        </div>
-			                        <button type="submit" class="btn">·Î±×ÀÎ</button>
+			                        <button type="submit" class="btn">ë¡œê·¸ì¸</button>
 			                    </form>
 		                    </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 social-login">
-                        	<h4>ºñ¹Ð¹øÈ£ ¹®ÀÇ´Â Àü»ê½Ç(9399)¿¡ ¹®ÀÇ ¹Ù¶ø´Ï´Ù.</h4>
+                        	<h4>ë¹„ë°€ë²ˆí˜¸ ë¬¸ì˜ëŠ” ì „ì‚°ì‹¤(9399)ì— ë¬¸ì˜ ë°”ëžë‹ˆë‹¤.</h4>
                         	<div class="social-login-buttons">
 	                        	<a class="btn btn-link-2" href="#"
 	                        	data-toggle="modal" data-target=".bs-example-modal-lg">
-	                        		°³ÀÎÁ¤º¸Ã³¸®¹æÄ§
+	                        		ê°œì¸ì •ë³´ì²˜ë¦¬ë°©ì¹¨
 	                        	</a><br/>
 	                        	<a class="btn btn-link-2" href="login.do">
 	                        		Korean
@@ -101,47 +104,47 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">°³ÀÎÁ¤º¸Ã³¸®¹æÄ§</h4>
+        <h4 class="modal-title" id="myModalLabel">ê°œì¸ì •ë³´ì²˜ë¦¬ë°©ì¹¨</h4>
       </div>
       <div class="modal-body" style="font-size: 14px;" align="left">
-"µ¿¼º¼ÒÇÁÆ® ÁÖ½ÄÈ¸»ç" ´Â (ÀÌÇÏ 'È¸»ç') ÀÌ¿ëÀÚÀÇ °³ÀÎÁ¤º¸¸¦ Áß¿ä½ÃÇÏ¸ç, "Á¤º¸Åë½Å¸Á ÀÌ¿ëÃËÁø ¹× Á¤º¸ º¸È£"¿¡ °üÇÑ ¹ý·üÀ» ÁØ¼öÇÏ°í ÀÖ½À´Ï´Ù.
-È¸»ç´Â °³ÀÎÁ¤º¸Ã³¸®¹æÄ§À» ÅëÇÏ¿© ÀÌ¿ëÀÚ°¡ Á¦°øÇÏ´Â °³ÀÎÁ¤º¸°¡ ¾î¶°ÇÑ ¿ëµµ¿Í ¹æ½ÄÀ¸·Î ÀÌ¿ëµÇ°í ÀÖÀ¸¸ç, °³ÀÎÁ¤º¸º¸È£¸¦ À§ÇØ ¾î¶°ÇÑ Á¶Ä¡°¡ ÃëÇØÁö°í ÀÖ´ÂÁö ¾Ë·Áµå¸³´Ï´Ù.
-È¸»ç´Â °³ÀÎÁ¤º¸Ã³¸®¹æÄ§À» °³Á¤ÇÏ´Â °æ¿ì À¥»çÀÌÆ® °øÁö»çÇ×À» ÅëÇÏ¿© °øÁöÇÒ °ÍÀÔ´Ï´Ù.
+"ë™ì„±ì†Œí”„íŠ¸ ì£¼ì‹íšŒì‚¬" ëŠ” (ì´í•˜ 'íšŒì‚¬') ì´ìš©ìžì˜ ê°œì¸ì •ë³´ë¥¼ ì¤‘ìš”ì‹œí•˜ë©°, "ì •ë³´í†µì‹ ë§ ì´ìš©ì´‰ì§„ ë° ì •ë³´ ë³´í˜¸"ì— ê´€í•œ ë²•ë¥ ì„ ì¤€ìˆ˜í•˜ê³  ìžˆìŠµë‹ˆë‹¤.
+íšŒì‚¬ëŠ” ê°œì¸ì •ë³´ì²˜ë¦¬ë°©ì¹¨ì„ í†µí•˜ì—¬ ì´ìš©ìžê°€ ì œê³µí•˜ëŠ” ê°œì¸ì •ë³´ê°€ ì–´ë– í•œ ìš©ë„ì™€ ë°©ì‹ìœ¼ë¡œ ì´ìš©ë˜ê³  ìžˆìœ¼ë©°, ê°œì¸ì •ë³´ë³´í˜¸ë¥¼ ìœ„í•´ ì–´ë– í•œ ì¡°ì¹˜ê°€ ì·¨í•´ì§€ê³  ìžˆëŠ”ì§€ ì•Œë ¤ë“œë¦½ë‹ˆë‹¤.
+íšŒì‚¬ëŠ” ê°œì¸ì •ë³´ì²˜ë¦¬ë°©ì¹¨ì„ ê°œì •í•˜ëŠ” ê²½ìš° ì›¹ì‚¬ì´íŠ¸ ê³µì§€ì‚¬í•­ì„ í†µí•˜ì—¬ ê³µì§€í•  ê²ƒìž…ë‹ˆë‹¤.
 <br/><br/>
-1. °³ÀÎÁ¤º¸ÀÇ º¸À¯±â°£ ¹× ÀÌ¿ë±â°£<br/> 
-ÀÌ¿ëÀÚ°¡ È¸»ç¿¡¼­ Á¦°øÇÏ´Â ¼­ºñ½º¸¦ ÀÌ¿ëÇÏ´Â µ¿¾È È¸»ç´Â ÀÌ¿ëÀÚÀÇ °³ÀÎÁ¤º¸¸¦ °è¼ÓÀûÀ¸·Î º¸À¯ÇÏ¸ç ¼­ºñ½º Á¦°ø µîÀ» À§ÇØ ÀÌ¿ëÇÕ´Ï´Ù.<br/> 
-ÀÌ¿ëÀÚ°¡ Á÷Á¢ °³ÀÎÁ¤º¸ »èÁ¦¸¦ ¿äÃ»ÇÑ °æ¿ì ÃßÈÄ ¿­¶÷ÀÌ³ª ÀÌ¿ëÀÌ ºÒ°¡´ÉÇÑ »óÅÂ·Î Ã³¸®µË´Ï´Ù. <br/>
+1. ê°œì¸ì •ë³´ì˜ ë³´ìœ ê¸°ê°„ ë° ì´ìš©ê¸°ê°„<br/> 
+ì´ìš©ìžê°€ íšŒì‚¬ì—ì„œ ì œê³µí•˜ëŠ” ì„œë¹„ìŠ¤ë¥¼ ì´ìš©í•˜ëŠ” ë™ì•ˆ íšŒì‚¬ëŠ” ì´ìš©ìžì˜ ê°œì¸ì •ë³´ë¥¼ ê³„ì†ì ìœ¼ë¡œ ë³´ìœ í•˜ë©° ì„œë¹„ìŠ¤ ì œê³µ ë“±ì„ ìœ„í•´ ì´ìš©í•©ë‹ˆë‹¤.<br/> 
+ì´ìš©ìžê°€ ì§ì ‘ ê°œì¸ì •ë³´ ì‚­ì œë¥¼ ìš”ì²­í•œ ê²½ìš° ì¶”í›„ ì—´ëžŒì´ë‚˜ ì´ìš©ì´ ë¶ˆê°€ëŠ¥í•œ ìƒíƒœë¡œ ì²˜ë¦¬ë©ë‹ˆë‹¤. <br/>
 <br/>
-2. °³ÀÎÁ¤º¸ÀÇ ÆÄ±â ÀýÂ÷ ¹× ¹æ¹ý<br/> 
-È¸»ç´Â ¿øÄ¢ÀûÀ¸·Î °³ÀÎÁ¤º¸ ¼öÁý ¹× ÀÌ¿ë¸ñÀûÀÌ ´Þ¼ºµÈ ÈÄ¿¡´Â ÇØ´ç Á¤º¸¸¦ ÁöÃ¼ ¾øÀÌ ÆÄ±âÇÕ´Ï´Ù. ÆÄ±âÀýÂ÷ ¹× ¹æ¹ýÀº ´ÙÀ½°ú °°½À´Ï´Ù.<br/> 
-- ÀüÀÚÀû ÆÄÀÏÇüÅÂ·Î ÀúÀåµÈ °³ÀÎÁ¤º¸´Â ±â·ÏÀ» Àç»ýÇÒ ¼ö ¾ø´Â ±â¼úÀû ¹æ¹ýÀ» »ç¿ëÇÏ¿© »èÁ¦ÇÕ´Ï´Ù. <br/>
-- Á¾ÀÌ¿¡ Ãâ·ÂµÈ °³ÀÎÁ¤º¸´Â ºÐ¼â±â·Î ºÐ¼âÇÏ°Å³ª ¼Ò°¢À» ÅëÇÏ¿© ÆÄ±âÇÕ´Ï´Ù. <br/>
+2. ê°œì¸ì •ë³´ì˜ íŒŒê¸° ì ˆì°¨ ë° ë°©ë²•<br/> 
+íšŒì‚¬ëŠ” ì›ì¹™ì ìœ¼ë¡œ ê°œì¸ì •ë³´ ìˆ˜ì§‘ ë° ì´ìš©ëª©ì ì´ ë‹¬ì„±ëœ í›„ì—ëŠ” í•´ë‹¹ ì •ë³´ë¥¼ ì§€ì²´ ì—†ì´ íŒŒê¸°í•©ë‹ˆë‹¤. íŒŒê¸°ì ˆì°¨ ë° ë°©ë²•ì€ ë‹¤ìŒê³¼ ê°™ìŠµë‹ˆë‹¤.<br/> 
+- ì „ìžì  íŒŒì¼í˜•íƒœë¡œ ì €ìž¥ëœ ê°œì¸ì •ë³´ëŠ” ê¸°ë¡ì„ ìž¬ìƒí•  ìˆ˜ ì—†ëŠ” ê¸°ìˆ ì  ë°©ë²•ì„ ì‚¬ìš©í•˜ì—¬ ì‚­ì œí•©ë‹ˆë‹¤. <br/>
+- ì¢…ì´ì— ì¶œë ¥ëœ ê°œì¸ì •ë³´ëŠ” ë¶„ì‡„ê¸°ë¡œ ë¶„ì‡„í•˜ê±°ë‚˜ ì†Œê°ì„ í†µí•˜ì—¬ íŒŒê¸°í•©ë‹ˆë‹¤. <br/>
  <br/>
-3. °³ÀÎÁ¤º¸ÀÇ Á¦ 3ÀÚ Á¦°ø<br/> 
-È¸»ç´Â ÀÌ¿ëÀÚÀÇ °³ÀÎÁ¤º¸¸¦ ¿øÄ¢ÀûÀ¸·Î ¿ÜºÎ¿¡ Á¦°øÇÏÁö ¾Ê½À´Ï´Ù. ´Ù¸¸, ¾Æ·¡ÀÇ °æ¿ì´Â ¿¹¿Ü·Î ÇÕ´Ï´Ù.<br/> 
-- ÀÌ¿ëÀÚ°¡ »çÀü¿¡ µ¿ÀÇÇÑ °æ¿ì <br/>
-- ¹ý·ÉÀÇ ±ÔÁ¤¿¡ ÀÇ°ÅÇÏ°Å³ª, ¼ö»ç ¸ñÀûÀ¸·Î ¹ý·É¿¡ Á¤ÇØÁø ÀýÂ÷¿Í ¹æ¹ý¿¡ µû¶ó ¼ö»ç±â°üÀÇ ¿ä±¸°¡ ÀÖ´Â °æ¿ì<br/> 
+3. ê°œì¸ì •ë³´ì˜ ì œ 3ìž ì œê³µ<br/> 
+íšŒì‚¬ëŠ” ì´ìš©ìžì˜ ê°œì¸ì •ë³´ë¥¼ ì›ì¹™ì ìœ¼ë¡œ ì™¸ë¶€ì— ì œê³µí•˜ì§€ ì•ŠìŠµë‹ˆë‹¤. ë‹¤ë§Œ, ì•„ëž˜ì˜ ê²½ìš°ëŠ” ì˜ˆì™¸ë¡œ í•©ë‹ˆë‹¤.<br/> 
+- ì´ìš©ìžê°€ ì‚¬ì „ì— ë™ì˜í•œ ê²½ìš° <br/>
+- ë²•ë ¹ì˜ ê·œì •ì— ì˜ê±°í•˜ê±°ë‚˜, ìˆ˜ì‚¬ ëª©ì ìœ¼ë¡œ ë²•ë ¹ì— ì •í•´ì§„ ì ˆì°¨ì™€ ë°©ë²•ì— ë”°ë¼ ìˆ˜ì‚¬ê¸°ê´€ì˜ ìš”êµ¬ê°€ ìžˆëŠ” ê²½ìš°<br/> 
  <br/>
-4. °³ÀÎÁ¤º¸ÀÇ À§Å¹<br/> 
-È¸»ç´Â ¼­ºñ½º ÀÌÇàÀ» À§ÇØ ¾Æ·¡¿Í °°ÀÌ ¿ÜºÎ Àü¹®¾÷Ã¼¿¡ À§Å¹ÇÏ¿© ¿î¿µÇÏ°í ÀÖ½À´Ï´Ù.<br/> 
-- À§Å¹ ´ë»óÀÚ : (ÁÖ)Á¾ÁØ½ÃÅ¥¸®Æ¼ <br/>
-- À§Å¹¾÷¹« ³»¿ë : °³ÀÎ Á¤º¸ °ü¸® <br/>
+4. ê°œì¸ì •ë³´ì˜ ìœ„íƒ<br/> 
+íšŒì‚¬ëŠ” ì„œë¹„ìŠ¤ ì´í–‰ì„ ìœ„í•´ ì•„ëž˜ì™€ ê°™ì´ ì™¸ë¶€ ì „ë¬¸ì—…ì²´ì— ìœ„íƒí•˜ì—¬ ìš´ì˜í•˜ê³  ìžˆìŠµë‹ˆë‹¤.<br/> 
+- ìœ„íƒ ëŒ€ìƒìž : (ì£¼)ì¢…ì¤€ì‹œíë¦¬í‹° <br/>
+- ìœ„íƒì—…ë¬´ ë‚´ìš© : ê°œì¸ ì •ë³´ ê´€ë¦¬ <br/>
  <br/>
-5. °³ÀÎÁ¤º¸ º¸È£Ã¥ÀÓÀÚ ¹× °³ÀÎÁ¤º¸ º¸È£´ã´çÀÚ<br/> 
-È¸»ç´Â ÀÌ¿ëÀÚÀÇ °³ÀÎÁ¤º¸¸¦ º¸È£ÇÏ°í °³ÀÎÁ¤º¸¿Í °ü·ÃÇÑ ºÒ¸¸À» Ã³¸®ÇÏ±â À§ÇÏ¿© ¾Æ·¡¿Í °°ÀÌ °³ÀÎÁ¤º¸ °ü¸®Ã¥ÀÓÀÚ¸¦ ÁöÁ¤ÇÏ°í ÀÖ½À´Ï´Ù.<br/> 
+5. ê°œì¸ì •ë³´ ë³´í˜¸ì±…ìž„ìž ë° ê°œì¸ì •ë³´ ë³´í˜¸ë‹´ë‹¹ìž<br/> 
+íšŒì‚¬ëŠ” ì´ìš©ìžì˜ ê°œì¸ì •ë³´ë¥¼ ë³´í˜¸í•˜ê³  ê°œì¸ì •ë³´ì™€ ê´€ë ¨í•œ ë¶ˆë§Œì„ ì²˜ë¦¬í•˜ê¸° ìœ„í•˜ì—¬ ì•„ëž˜ì™€ ê°™ì´ ê°œì¸ì •ë³´ ê´€ë¦¬ì±…ìž„ìžë¥¼ ì§€ì •í•˜ê³  ìžˆìŠµë‹ˆë‹¤.<br/> 
 <br/>
-(1) °³ÀÎÁ¤º¸ º¸È£Ã¥ÀÓÀÚ<br/> 
-- Á÷Ã¥ : ´ëÇ¥<br/>
-- ¼º¸í : ±èÁø¼ö<br/>
+(1) ê°œì¸ì •ë³´ ë³´í˜¸ì±…ìž„ìž<br/> 
+- ì§ì±… : ëŒ€í‘œ<br/>
+- ì„±ëª… : ê¹€ì§„ìˆ˜<br/>
  <br/>
-(2) °³ÀÎÁ¤º¸ º¸È£´ã´çÀÚ<br/> 
-- ¼Ò¼Ó : °æ¿µÁö¿øÆÀ<br/>
-- Á÷Ã¥ : °úÀå<br/>
-- ¼º¸í : ÀÌÁ¾ÁØ<br/>
-- ÀüÈ­¹øÈ£ : 010-1234-5678<br/>
+(2) ê°œì¸ì •ë³´ ë³´í˜¸ë‹´ë‹¹ìž<br/> 
+- ì†Œì† : ê²½ì˜ì§€ì›íŒ€<br/>
+- ì§ì±… : ê³¼ìž¥<br/>
+- ì„±ëª… : ì´ì¢…ì¤€<br/>
+- ì „í™”ë²ˆí˜¸ : 010-1234-5678<br/>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">´Ý±â</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">ë‹«ê¸°</button>
       </div>
       
     </div>
@@ -155,9 +158,9 @@
 
   
 
-    <!-- jQuery (ºÎÆ®½ºÆ®·¦ÀÇ ÀÚ¹Ù½ºÅ©¸³Æ® ÇÃ·¯±×ÀÎÀ» À§ÇØ ÇÊ¿äÇÕ´Ï´Ù) -->
+    <!-- jQuery (ë¶€íŠ¸ìŠ¤íŠ¸ëž©ì˜ ìžë°”ìŠ¤í¬ë¦½íŠ¸ í”ŒëŸ¬ê·¸ì¸ì„ ìœ„í•´ í•„ìš”í•©ë‹ˆë‹¤) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <!-- ¸ðµç ÄÄÆÄÀÏµÈ ÇÃ·¯±×ÀÎÀ» Æ÷ÇÔÇÕ´Ï´Ù (¾Æ·¡), ¿øÇÏÁö ¾Ê´Â´Ù¸é ÇÊ¿äÇÑ °¢°¢ÀÇ ÆÄÀÏÀ» Æ÷ÇÔÇÏ¼¼¿ä -->
+    <!-- ëª¨ë“  ì»´íŒŒì¼ëœ í”ŒëŸ¬ê·¸ì¸ì„ í¬í•¨í•©ë‹ˆë‹¤ (ì•„ëž˜), ì›í•˜ì§€ ì•ŠëŠ”ë‹¤ë©´ í•„ìš”í•œ ê°ê°ì˜ íŒŒì¼ì„ í¬í•¨í•˜ì„¸ìš” -->
     <script src="resources/js/bootstrap.js"></script>
     <script src="resources/js/jquery.backstretch.js"></script>
     <script src="resources/js/login.js"></script>
