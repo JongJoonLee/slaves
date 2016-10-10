@@ -23,5 +23,14 @@ public class TimelineDao extends SqlSessionDaoSupport {
 	public int insertTimeline(TimelineVO tvo) {
 		return this.getSqlSession().insert("Timeline.insertTimeline", tvo);
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

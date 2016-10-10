@@ -9,6 +9,14 @@ public class NoticeBoardVO{
 	private String title = null;;
 	private String contents = null;
 	private String date = null;
+	private String mem_id=null;
+	
+	public String getMem_id() {
+		return mem_id;
+	}
+	public void setMem_id(String mem_id) {
+		this.mem_id = mem_id;
+	}
 	public int getNo() {
 		return no;
 	}

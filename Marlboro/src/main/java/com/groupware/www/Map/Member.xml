@@ -7,5 +7,9 @@
 		 SELECT * FROM `member` WHERE mem_team = #{no} ORDER BY mem_no DESC
 
 	</select>
+	
+	 <select id="login" parameterType="com.groupware.www.Vo.MemberVO" resultType="com.groupware.www.Vo.MemberVO">
+		SELECT * FROM `member` WHERE mem_id=#{mem_id} AND mem_pw=#{mem_pw}
+	</select>
 
 </mapper>

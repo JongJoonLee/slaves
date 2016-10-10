@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -328,125 +329,75 @@
 							<div class="col-md-12">
 
 
-								<%-- <table>
-				<tr>
-					<td>글번호</td>
-					<td>제목</td>
-					<td>날짜</td>
-				</tr>
+
+								<form:form action="boardwritepost1.do" method="post">
 
 
 
-				<c:forEach var="tmp" items="${blist}">
-
-
-					<tr>
-						<td style="text-align: center">${tmp.getNo()}</td>
-						<td><c:choose>
-								<c:when test="${fn:length(tmp.getTitle())>20}">
-									<a href="boardcontent.do?no=${tmp.getNo()}"><c:out
-											value="${fn:substring(tmp.getTitle(),0,20)}" />...</a>
-								</c:when>
-								<c:otherwise>
-									<a href="boardcontent.do?no=${tmp.getNo()}">${tmp.getTitle()}</a>
-								</c:otherwise>
-							</c:choose></td>
-						<td style="text-align: center"><c:set var="dates"
-								value="${fn:split(tmp.getDate(),' ')}" /> <c:out
-								value="${dates[0]}" /></td>
-					</tr>
-				</c:forEach>
-			</table> --%>
-
-
-
-								<table class="table table-striped table-condensed">
-									<tr style="text-align: center">
-										<th style="text-align: center">번호</th>
-										<th style="text-align: center">제목</th>
-										<!-- <th style="text-align: center">작성자</th> -->
-										<!-- <th style="text-align: center">조회수</th> -->
-										<th style="text-align: center">날짜</th>
-									</tr>
-
-
-
-
-
-									<c:forEach var="tmp" items="${blist}">
+									<table>
 										<tr>
-											<td style="text-align: center">${tmp.getNo()}</td>
-
-											<td><c:choose>
-													<c:when test="${fn:length(tmp.getTitle())>20}">
-														<a href="boardcontent.do?no=${tmp.getNo()}"><c:out
-																value="${fn:substring(tmp.getTitle(),0,20)}" />...</a>
-													</c:when>
-													<c:otherwise>
-														<a href="boardcontent.do?no=${tmp.getNo()}">${tmp.getTitle()}</a>
-													</c:otherwise>
-												</c:choose></td>
-
-											<%-- <td style="text-align: center">${tmp.getId()}</td>
-
-							<td style="text-align: center">${tmp.getHit()}</td> --%>
-
-											<td style="text-align: center"><c:set var="dates"
-													value="${fn:split(tmp.getDate(),' ')}" /> <c:out
-													value="${dates[0]}" /></td>
+											<td><form:input path="title" name="title" type="text"
+													id="_title" class="form-control" placeholder="제목을 입력하세요"
+													style="width: 860px; margin-right: 3px;" /></td>
+											<form:input path="id" type="hidden" id="id" name="id"
+												value="${_id}" />
+											<td><button type="submit" class="btn btn-primary">글쓰기</button></td>
 										</tr>
-									</c:forEach>
-								</table>
 
+									</table>
 
-
-								<table style="width: 100%;">
-									<tr>
-										<td width="80%" align="center" colspan="10"><ul
-												id="pagination-demo" class="pagination-sm"></ul></td>
-										<td width="20%" align="right" colspan="2"><c:set
-												var="session" value="${_id}" /> <c:choose>
-												<c:when test="${session eq null}">
-													<a href="login.do?prev=boardwrite.do"
-														class="btn btn-primary"> 글작성 </a>
-												</c:when>
-												<c:otherwise>
-													<a href="boardwrite.do" class="btn btn-primary"> 글작성 </a>
-
-												</c:otherwise>
-											</c:choose></td>
-
-									</tr>
-								</table>
-
+									<form:textarea path="contents" name="contents" rows="100"
+										id="editor1"></form:textarea>
+								</form:form>
 
 
 							</div>
 
+
+
+
+
+
+
+
+
 						</div>
+
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 
-
-	<!-- jQuery -->
-	<script src="resources/js/jquery-3.1.1.min.js"></script>
-	<!-- Bootstrap -->
-	<script src="resources/js/bootstrap.js"></script>
-	<!-- FastClick -->
-	<script src="resources/js/fastclick.js"></script>
-	<!-- 타임라인 -->
-	<script src="resources/js/timelines.js"></script>
-	<!-- NProgress -->
-	<script src="resources/js/nprogress.js"></script>
-	<!-- jQuery custom content scroller -->
-	<script src="resources/js/jquery.mCustomScrollbar.concat.min.js"></script>
-
-	<!-- Custom Theme Scripts -->
-	<script src="resources/js/custom.js"></script>
+	<script type="text/javascript" src="resources/js/jquery-1.12.3.min.js"></script>
+	<script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
+	<script type="text/javascript"
+		src="resources/js/jquery.twbsPagination.min.js"></script>
+	<script type="text/javascript" src="resources/ckeditor/ckeditor.js"></script>
 
 
+
+	<script type="text/javascript">
+		$(document).ready(
+				function() {
+					$(".dropdown").hover(
+							function() {
+								$('.dropdown-menu', this).not(
+										'.in .dropdown-menu').stop(true, true)
+										.slideDown("400");
+								$(this).toggleClass('open');
+							},
+							function() {
+								$('.dropdown-menu', this).not(
+										'.in .dropdown-menu').stop(true, true)
+										.slideUp("400");
+								$(this).toggleClass('open');
+							});
+				});
+	</script>
+
+	<script>
+		CKEDITOR.replace('editor1');
+	</script>
 </body>
 </html>

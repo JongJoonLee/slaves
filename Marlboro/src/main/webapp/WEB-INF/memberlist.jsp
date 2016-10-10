@@ -7,10 +7,22 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<!-- 부트스트랩 -->
+<link href="resources/css/bootstrap.css" rel="stylesheet">
+<!-- Font Awesome -->
+<link href="resources/css/font-awesome.css"	rel="stylesheet">
+<!-- 엔프로그레스 -->
+<link href="resources/css/nprogress.css" rel="stylesheet">
+<!-- jQuery 커스텀 스크롤바 -->
+<link href="resources/css/jquery.mCustomScrollbar.min.css" rel="stylesheet" />
+
+<!-- Custom Theme Style -->
+<link href="resources/css/custom.css" rel="stylesheet">
+<link href="resources/css/timelinejinsu.css" rel="stylesheet">
 </head>
 <body>
 
-	<table>
+	<table class="table">
 		<tr>
 			<th>이름</th>
 			<th>전화번호</th>

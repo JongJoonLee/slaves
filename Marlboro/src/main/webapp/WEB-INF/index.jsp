@@ -53,7 +53,7 @@
 						</div>
 						<div class="profile_info">
 							<span>환영합니다,</span>
-							<h2>김진수님 (PI팀/부장)</h2>
+							<h2>${_name}님 (PI팀/부장)</h2>
 							<br /> <br />
 
 						</div>
@@ -164,7 +164,7 @@
 								<li><a><i class="fa fa-newspaper-o"></i> 공고 <span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a>공지 사항<span class="fa fa-chevron-down"></span></a>
+										<li><a href="notice_board_test.do">공지 사항<span class="fa fa-chevron-down"></span></a>
 											<ul class="nav child_menu">
 												<li class="sub_menu"><a href="#">임시 저장</a></li>
 												<li><a href="#">승인 대기</a></li>
@@ -292,7 +292,7 @@
 							<li class=""><a href="javascript:;"
 								class="user-profile dropdown-toggle" data-toggle="dropdown"
 								aria-expanded="false"> <img src="resources/images/img.jpg"
-									alt="">김진수 <span class=" fa fa-angle-down"></span>
+									alt="">${_name} <span class=" fa fa-angle-down"></span>
 							</a>
 								<ul class="dropdown-menu dropdown-usermenu pull-right">
 									<li><a href="javascript:;">프로필</a></li>
@@ -300,7 +300,7 @@
 											<span>정보수정</span>
 									</a></li>
 									<!-- <li><a href="javascript:;">Help</a></li> -->
-									<li><a href="login.html"><i
+									<li><a href="logout.do"><i
 											class="fa fa-sign-out pull-right"></i>로그아웃</a></li>
 								</ul></li>
 
@@ -558,7 +558,7 @@
 									<form:form action="timelinepost.do" method="post">
 									
 									
-									<form:input type="hidden" path="mem_no" value="1"/>
+									<form:input type="hidden" path="mem_no" value="${_mem_no}"/>
 									
 										<div class="row">
 											<div class="col-md-12 col-sm-12 col-xs-12">

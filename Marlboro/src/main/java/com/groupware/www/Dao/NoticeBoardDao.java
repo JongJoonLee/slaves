@@ -21,7 +21,7 @@ public class NoticeBoardDao extends SqlSessionDaoSupport {
 		return this.getSqlSession().selectOne("Board.getBoardCount");
 
 	}
-/*	public List<NoticeBoardVO> boardTitle(int cnt) {
+	public List<NoticeBoardVO> boardTitle(int cnt) {
 		return this.getSqlSession().selectList("Board.getBoardTitle", cnt);
 	}
 
@@ -54,5 +54,5 @@ public class NoticeBoardDao extends SqlSessionDaoSupport {
 	public int updateHit(Map<String, Integer> map) {
 
 		return this.getSqlSession().update("Board.updateHit", map);
-	}*/
+	}
 }

@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib uri="http://www.springframework.org/tags/form"  prefix="form" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -66,17 +67,17 @@
                         		</div>
                             </div>
                             <div class="form-bottom">
-			                    <form role="form" action="index.do" method="post" class="login-form">
+			                    <form:form role="form" action="loginpost.do" method="post" class="login-form">
 			                    	<div class="form-group">
 			                    		<label class="sr-only" for="form-username">사번</label>
-			                        	<input type="text" name="form-username" placeholder="사번" class="form-username form-control" id="form-username">
+			                        	<form:input path="mem_id" type="text" name="form-username" placeholder="사번" class="form-username form-control" id="form-username"/>
 			                        </div>
 			                        <div class="form-group">
 			                        	<label class="sr-only" for="form-password">비밀번호</label>
-			                        	<input type="password" name="form-password" placeholder="비밀번호" class="form-password form-control" id="form-password">
+			                        	<form:input path="mem_pw" type="password" name="form-password" placeholder="비밀번호" class="form-password form-control" id="form-password"/>
 			                        </div>
 			                        <button type="submit" class="btn">로그인</button>
-			                    </form>
+			                    </form:form>
 		                    </div>
                         </div>
                     </div>
