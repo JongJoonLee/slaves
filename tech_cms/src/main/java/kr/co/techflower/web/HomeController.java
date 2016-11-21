@@ -43,6 +43,7 @@ public class HomeController extends FrameworkController{
 		String referer = req.getHeader("Referer");
 		req.getSession().setAttribute("prevPage", referer);
 		
+		
 		if("anonymousUser".equals(SecurityContextHolder.getContext().getAuthentication().getPrincipal()) 
 				|| null == SecurityContextHolder.getContext().getAuthentication().getPrincipal()
 				|| "".equals(SecurityContextHolder.getContext().getAuthentication().getPrincipal())){
@@ -67,6 +68,8 @@ public class HomeController extends FrameworkController{
 	@RequestMapping(value = "/Login")
 	public String login(Locale locale, Model model, HttpServletRequest request) throws Exception {
 		model.addAttribute("locale", locale);
+		
+		
 		
 		String referer = request.getHeader("Referer");
 		request.getSession().setAttribute("prevPage", referer);
