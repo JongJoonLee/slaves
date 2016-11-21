@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BannerMapper">
+	
+	<!-- 베너 정보 조회 -->
+	<select id="selectBannerDataList" resultType="map">
+	    SELECT A.BANNER_ID
+	    	 , A.MENU_CD
+	    	 , A.TITLE
+	    	 , A.CONTENTS
+	    	 , Convert(varchar(10),A.STARTDAY,112) AS STARTDAY
+	    	 , Convert(varchar(10),A.ENDDAY,112) AS ENDDAY
+	    	 , A.URL
+	    	 , A.USEYN
+	    	 , A.BANNERIMAGE
+	    	 , A.REG_ID
+	    	 , A.UDT_ID
+	    	 , A.REG_DT
+	    	 , A.UDT_DT
+	    	 , B.FILE_SEQ
+	    	 , B.FILE_NM
+	    	 , B.SVR_FILE_NM
+	    	 , B.FILE_SIZE
+	    	 , B.TBL_NM
+	    	 , B.TBL_PK
+	      FROM TB_BANNER_20150909 A
+	      JOIN TB_FILE B
+	        ON A.BANNER_ID = B.TBL_PK
+	     WHERE B.TBL_NM = 'TB_BANNER'
+	     <if test="title != null and !title.equals('')">
+           AND LOWER(A.TITLE) LIKE LOWER('%' + #{title} + '%')
+         </if>
+         ORDER BY A.TITLE ASC
+	</select>
+	
+	<!-- 단건 조회 -->
+	<select id="selectBannerJustOneDataList" resultType="map">
+	    SELECT COUNT(*) AS CNT
+	      FROM TB_BANNER_20150909 A
+	      JOIN TB_FILE B
+	        ON A.BANNER_ID = B.TBL_PK
+	     WHERE B.TBL_NM = 'TB_BANNER'
+	       AND A.BANNER_ID = #{BANNER_ID}	    
+	</select>
+
+	<!-- 삭제 -->
+	<delete id="deleteBannerDataList" parameterType="map">
+	    DELETE FROM TB_BANNER_20150909
+	     WHERE BANNER_ID = #{BANNER_ID}
+	       AND MENU_CD = #{MENU_CD}
+	</delete>
+	
+	<!-- 삭제 -->
+	<delete id="deleteBannerFileDataList" parameterType="map">
+	    DELETE FROM TB_FILE
+	     WHERE FILE_SEQ = #{FILE_SEQ}
+	       AND TBL_NM = 'TB_BANNER'
+	       AND TBL_PK = #{TBL_PK}
+	</delete>
+	
+	<!-- 수정 -->
+	<update id="updateBannerDataList" parameterType="map">
+	    UPDATE TB_BANNER_20150909
+	       SET TITLE = #{TITLE, jdbcType=VARCHAR}
+	         , CONTENTS = #{CONTENTS, jdbcType=VARCHAR}
+	         , STARTDAY = #{STARTDAY, jdbcType=VARCHAR}
+	         , ENDDAY = #{ENDDAY, jdbcType=VARCHAR}
+	         , URL = #{URL, jdbcType=VARCHAR}
+	         , USEYN = ISNULL(#{USEYN, jdbcType=VARCHAR}, 0)
+	         , BANNERIMAGE = #{BANNERIMAGE, jdbcType=VARCHAR}
+	         , UDT_ID = #{session.userId, jdbcType=VARCHAR}
+	         , UDT_DT = getDate()
+	     WHERE BANNER_ID = #{BANNER_ID}
+	       AND MENU_CD = 'M01'
+	</update>
+	
+	<!-- 수정 -->
+	<update id="updateBannerFileDataList" parameterType="map">
+	    UPDATE TB_FILE
+	       SET FILE_NM = #{FILE_NM, jdbcType=VARCHAR}
+	         , SVR_FILE_NM = #{SVR_FILE_NM, jdbcType=VARCHAR}
+	         , FILE_SIZE = #{FILE_SIZE, jdbcType=VARCHAR}
+	         , UDT_ID = #{session.userId, jdbcType=VARCHAR}
+	         , UDT_DT = getDate()
+	     WHERE FILE_SEQ = #{FILE_SEQ}
+	       AND TBL_NM = 'TB_BANNER'
+	       AND TBL_PK = #{TBL_PK}
+	</update>
+	
+	<!-- 신규 -->
+	<insert id="insertBannerDataList" parameterType="map">
+	    INSERT INTO TB_BANNER_20150909 (
+	    	MENU_CD,
+	    	TITLEM,
+	    	CONTENTS,
+	    	STARTDAY,
+	    	ENDDAY,
+	    	URL,
+	    	USEYN,
+	    	BANNERIMAGE,
+	    	REG_ID,
+	    	UDT_ID,
+	    	REG_DT,
+	    	UDT_DT
+	    )VALUES(
+	    	'M01'
+	    	,#{TITLE, jdbcType=VARCHAR}
+	    	,#{CONTENTS, jdbcType=VARCHAR}
+	    	,ISNULL(#{STARTDAY, jdbcType=VARCHAR}, getDate())
+	    	,ISNULL(#{ENDDAY, jdbcType=VARCHAR}, '20171231')
+	    	,#{URL, jdbcType=VARCHAR}
+	    	,ISNULL(#{USEYN, jdbcType=VARCHAR}, 0)
+	    	,#{BANNERIAMGE, jdbcType=VARCHAR}
+	    	,#{session.userId, jdbcType=VARCHAR}
+	    	,''
+	    	,getDate()
+	    	,''
+	    )
+	</insert>
+	
+	<!-- 신규 -->
+	<insert id="insertBannerFileDataList" parameterType="map">
+	    INSERT INTO TB_FILE (
+	    	FILE_NM,
+	    	SVR_FILE_NM,
+	    	FILE_SIZE,
+	    	TBL_NM,
+	    	TBL_PK,
+	    	REG_ID,
+	    	UDT_ID,
+	    	REG_DT,
+	    	UDT_DT,
+	    	DOWN_CNT
+	    )VALUES(
+	    	#{FILE_NM, jdbcType=VARCHAR}
+	    	,#{SVR_FILE_NM, jdbcType=VARCHAR}
+	    	,#{FILE_SIZE, jdbcType=VARCHAR}
+	    	,'TB_BANNER'
+	    	,#{TBL_PK, jdbcType=VARCHAR}
+	    	,#{session.userId, jdbcType=VARCHAR}
+	    	,''
+	    	,getDate()
+	    	,''
+	    	,0
+	    )
+	</insert>
+	
+	<select id="selectNewBannerId" resultType="map">
+	    SELECT MAX(ISNULL(BANNER_ID, 0))+1 AS NEW_BANNER FROM TB_BANNER_20150909 WHERE MENU_CD = 'M01'	    
+	</select>
+	
+</mapper>

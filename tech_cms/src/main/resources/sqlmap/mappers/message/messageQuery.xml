@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="msgMapper">
+	
+	<select id="loadAllMessages" resultType="messageResource">
+		SELECT
+			MSG_CODE AS MSGCODE,
+			LOCALE,
+			MESSAGE,
+			DESCRIPTION,
+			URL,
+			USE_YN AS USEYN
+		FROM TB_I18N
+	</select>
+	
+	<select id="loadUseLocale" resultType="map">
+		SELECT DISTINCT
+			i18n.LOCALE,
+			locale.COUNTRY_NM
+		FROM TB_I18N i18n, TB_LOCALE_20190909 locale
+		WHERE i18n.LOCALE = locale.LOCALE
+		  AND i18n.USE_YN = 'Y'
+	</select>
+	
+</mapper>

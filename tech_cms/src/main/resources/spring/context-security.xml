@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:egov-security="http://www.egovframe.go.kr/schema/egov-security"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd
+		http://www.egovframe.go.kr/schema/egov-security http://www.egovframe.go.kr/schema/egov-security/egov-security-3.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+	
+	<http pattern="/resources/**" security="none"/>
+		
+	<egov-security:config id="securityConfig"
+		loginUrl="/j_spring_security_check"
+		loginFailureUrl="/Login"
+		accessDeniedUrl="/accessDenied"
+		logoutSuccessUrl="/"
+		defaultTargetUrl="/main"
+		
+		dataSource="dataSource"
+		jdbcUsersByUsernameQuery="SELECT MEMINFO.USER_ID, 
+									LOWER(MEMID.PW) AS PASSWORD, 
+									'1' AS ENABLED, 
+									MEMINFO.USER_NM AS USERNAME, 
+									USER_EMAIL, 
+									MEMBER_CLASS_CD AS MEMBER_AUTH 
+								FROM TB_MEMBERINFO AS MEMINFO, 
+									TB_MEMBER_ID AS MEMID 
+								WHERE MEMINFO.USER_ID = MEMID.USER_ID
+								AND MEMBER_CLASS_CD IN (SELECT BASIC_CD FROM TB_BASIC_CD WHERE BASIC_CD IN ('00','10','20')) 
+								AND MEMINFO.USER_ID = ?"
+		jdbcAuthoritiesByUsernameQuery="SELECT USER_ID, 
+											CONCAT('ROLE_',MEMBER_CLASS_CD) FROM TB_MEMBER_ID WHERE '1'='1'
+										AND MEMBER_CLASS_CD IN (SELECT BASIC_CD FROM TB_BASIC_CD WHERE BASIC_CD IN ('00','10','20')) 
+										AND USER_ID = ?"
+		hash="sha-256" hashBase64="false"
+	/>
+	<!-- 
+		TODO :: 패스워드가 암호화 후 소문자로 변경되는데 기존에 입력된 암호화 패스워드는 대분자로 들어가있으므로 로그인을 위해 LOWER함수 사용. user 생성 및 패스워드 변경 시에는 UPPER를 사용하여 패스워드 저장 필수!! 안할 경우 CMS 로그인 안될 수 있음.
+	 -->
+	<egov-security:initializer id="initializer"   
+		supportMethod="false"
+	/>
+		
+	<egov-security:secured-object-config id="securedObjectConfig"
+		roleHierarchyString="
+						ROLE_50 > ROLE_40
+						ROLE_40 > ROLE_30
+						ROLE_30 > ROLE_20
+						ROLE_20 > ROLE_10
+						ROLE_10 > ROLE_00
+						ROLE_00 > IS_AUTHENTICATED_ANONYMOUSLY"
+		sqlRolesAndUrl="
+				        SELECT '\A/\Z' AS URL, 'IS_AUTHENTICATED_ANONYMOUSLY' AS AUTHORITY
+				        UNION ALL
+				        SELECT '\A/index\Z' AS URL, 'IS_AUTHENTICATED_ANONYMOUSLY' AS AUTHORITY
+				        UNION ALL
+				        SELECT '\A/Login.*\Z' AS URL, 'IS_AUTHENTICATED_ANONYMOUSLY' AS AUTHORITY
+				        UNION ALL
+				        SELECT '\A/DesignView.*\Z' AS URL, 'IS_AUTHENTICATED_ANONYMOUSLY' AS AUTHORITY
+				        UNION ALL
+				        SELECT '\A/URL/Member/UserJoin/*.*\Z' AS URL, 'IS_AUTHENTICATED_ANONYMOUSLY' AS AUTHORITY
+				        UNION ALL
+				        SELECT '\A/URL/Member/FindIDPWD/*.*\Z' AS URL, 'IS_AUTHENTICATED_ANONYMOUSLY' AS AUTHORITY
+				        UNION ALL
+				        SELECT '\A/.*\.*\Z' AS URL, 'ROLE_00' AS AUTHORITY
+				        UNION ALL
+				        SELECT '\A/.*\.*\Z' AS URL, 'ROLE_10' AS AUTHORITY
+				        UNION ALL
+				        SELECT '\A/.*\.*\Z' AS URL, 'ROLE_20' AS AUTHORITY
+				        UNION ALL
+				        SELECT '\A/.*\.*\Z' AS URL, 'ROLE_30' AS AUTHORITY
+				        UNION ALL
+				        SELECT '\A/.*\.*\Z' AS URL, 'ROLE_40' AS AUTHORITY
+				        UNION ALL
+				        SELECT '\A/.*\.*\Z' AS URL, 'ROLE_50' AS AUTHORITY
+				        "
+	/>
+	
+	<beans:bean id="passwordEncoder" class="org.springframework.security.crypto.password.StandardPasswordEncoder"/>
+	<beans:bean id="webexpressionHandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler"/>
+		
+</beans:beans>

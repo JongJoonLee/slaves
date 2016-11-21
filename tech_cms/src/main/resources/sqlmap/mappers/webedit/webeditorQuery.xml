@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="WebeditorMapper">
+	
+    <!-- 웹에디터 조회 -->
+	<select id="selectEditorComboList" resultType="map">
+		SELECT DISTINCT
+			i18n.LOCALE AS COM_CD,
+			locale.COUNTRY_NM AS COM_NM
+		FROM TB_I18N i18n, TB_LOCALE_20190909 locale
+		WHERE i18n.LOCALE = locale.LOCALE
+		  AND i18n.USE_YN = 'Y'
+	</select>
+    
+    <!-- 웹에디터 조회 -->
+	<select id="selectEditorList" resultType="map">
+		SELECT DESIGN_PAGE_ID
+		     , DESIGN_PAGE_NM
+		     , DESIGN_LOCALE
+		     , DESIGN_HTML
+		     , REG_ID
+		     , UDT_ID
+		     , convert(varchar, REG_DT,120) AS REG_DT
+			 , convert(varchar, UDT_DT,120) AS UDT_DT
+		  FROM TB_DESIGN_PAGES
+		 WHERE 1=1
+		 <if test="title != null and !title.equals('')">
+           AND LOWER(DESIGN_PAGE_NM) LIKE LOWER('%' + #{title} + '%')
+         </if>
+         <if test="locale != null and !locale.equals('')">
+           AND LOWER(DESIGN_LOCALE) LIKE LOWER('%' + #{locale} + '%')
+         </if>
+	</select>
+
+	<!-- 웹에디터 해당 데이터 단건 조회 -->
+	<select id="selectEditorDetailList" resultType="map">
+		SELECT DESIGN_PAGE_ID
+		     , DESIGN_PAGE_NM
+		     , DESIGN_HTML
+		     , DESIGN_LOCALE
+		     , REG_ID
+		     , UDT_ID
+		     , convert(varchar, REG_DT,120) AS REG_DT
+			 , convert(varchar, UDT_DT,120) AS UDT_DT
+		  FROM TB_DESIGN_PAGES
+		 WHERE 1=1
+		   AND DESIGN_PAGE_ID = #{DESIGN_PAGE_ID}
+		   AND DESIGN_LOCALE = #{DESIGN_LOCALE}
+	</select>
+	
+	<delete id="deleteEditorList" parameterType="map">
+	    DELETE FROM TB_DESIGN_PAGES
+	     WHERE DESIGN_PAGE_ID = #{DESIGN_PAGE_ID}
+	       AND DESIGN_LOCALE = #{DESIGN_LOCALE}
+	</delete>
+	
+	<update id="updateEditorList" parameterType="map">
+	    UPDATE TB_DESIGN_PAGES
+	       SET DESIGN_PAGE_NM = #{DESIGN_PAGE_NM, jdbcType=VARCHAR}
+	         , DESIGN_HTML = #{DESIGN_HTML, jdbcType=VARCHAR}
+	         , UDT_ID = #{session.userId, jdbcType=VARCHAR}
+		     , UDT_DT = GetDate()
+		 WHERE DESIGN_PAGE_ID = #{DESIGN_PAGE_ID}
+		   AND DESIGN_LOCALE = #{DESIGN_LOCALE}
+	</update>
+	
+	<insert id="insertEditorList" parameterType="map">
+	    INSERT INTO TB_DESIGN_PAGES (
+	    	DESIGN_PAGE_ID,
+	    	DESIGN_LOCALE,
+	    	DESIGN_PAGE_NM,
+	    	DESIGN_HTML,
+	    	REG_ID,
+	    	UDT_ID,
+	    	REG_DT,
+	    	UDT_DT
+	    )VALUES(
+	    	 #{DESIGN_PAGE_ID}
+	    	,#{DESIGN_LOCALE}
+	    	,#{DESIGN_PAGE_NM, jdbcType=VARCHAR}
+	    	,''
+	    	,#{session.userId, jdbcType=VARCHAR}
+	    	,''
+	    	,GetDate()
+	    	,''
+	    )
+	</insert>
+	<!-- (SELECT ISNULL(MAX(DESIGN_PAGE_ID), 0)+1 FROM TB_DESIGN_PAGES) -->
+	
+	<select id="selectMaxIdList" resultType="map">
+	    SELECT ISNULL(MAX(DESIGN_PAGE_ID), 0)+1 AS DESIGN_PAGE_ID FROM TB_DESIGN_PAGES
+	</select>
+	
+	<!-- ============================ 백업 테이블 관련 =============================== -->
+	
+	<!-- 백업 웹에디터 조회 -->
+	<select id="selectBackupEditorList" resultType="map">
+		SELECT DESIGN_PAGE_ID
+		     , BACKUP_SEQ
+		     , DESIGN_HTML
+		     , DESIGN_LOCALE
+		     , REG_ID
+		     , convert(varchar, REG_DT,120) AS REG_DT
+		  FROM TB_DESIGN_PAGE_BACKUP
+		 WHERE 1=1
+		 <if test="DESIGN_PAGE_ID != null and !DESIGN_PAGE_ID.equals('')">
+           AND DESIGN_PAGE_ID = #{DESIGN_PAGE_ID}
+         </if>
+         <if test="BACKUP_SEQ != null and !BACKUP_SEQ.equals('')">
+           AND BACKUP_SEQ = #{BACKUP_SEQ}
+         </if>
+         <if test="DESIGN_LOCALE != null and !DESIGN_LOCALE.equals('')">
+           AND DESIGN_LOCALE = #{DESIGN_LOCALE}
+         </if>
+	</select>
+
+	<!-- 백업 웹에디터 해당 데이터 단건 조회 -->
+	<select id="selectBackupEditorDetailList" resultType="map">
+		SELECT DESIGN_PAGE_ID
+		     , BACKUP_SEQ
+		     , DESIGN_HTML
+		     , DESIGN_LOCALE
+		     , REG_ID
+		     , convert(varchar, REG_DT,120) AS REG_DT
+		  FROM TB_DESIGN_PAGE_BACKUP
+		 WHERE 1=1
+           AND DESIGN_PAGE_ID = #{DESIGN_PAGE_ID}
+           AND BACKUP_SEQ = #{BACKUP_SEQ}
+           AND DESIGN_LOCALE = #{DESIGN_LOCALE}
+	</select>
+	
+	<delete id="deleteBackupEditorList" parameterType="map">
+	    DELETE FROM TB_DESIGN_PAGE_BACKUP
+	     WHERE DESIGN_PAGE_ID = #{DESIGN_PAGE_ID}
+           AND BACKUP_SEQ = #{BACKUP_SEQ}
+           AND DESIGN_LOCALE = #{DESIGN_LOCALE}
+	</delete>
+	
+	<update id="updateBackupEditorList" parameterType="map">
+	    UPDATE TB_DESIGN_PAGE_BACKUP
+	       SET DESIGN_HTML = #{DESIGN_HTML, jdbcType=VARCHAR}
+	         , UDT_ID = #{session.userId, jdbcType=VARCHAR}
+		     , UDT_DT = GetDate()
+		 WHERE DESIGN_PAGE_ID = #{DESIGN_PAGE_ID}
+           AND BACKUP_SEQ = #{BACKUP_SEQ}
+           AND DESIGN_LOCALE = #{DESIGN_LOCALE}
+	</update>
+
+	<insert id="insertBackupEditorList" parameterType="map">
+	    INSERT INTO TB_DESIGN_PAGE_BACKUP (
+	    	DESIGN_PAGE_ID,
+	    	DESIGN_LOCALE,
+	    	DESIGN_HTML,
+	    	REG_ID,
+	    	REG_DT
+	    )VALUES(
+	    	#{DESIGN_PAGE_ID}
+	    	,#{DESIGN_LOCALE}
+	    	,#{DESIGN_HTML, jdbcType=VARCHAR}
+	    	,#{session.userId, jdbcType=VARCHAR}
+	    	,GetDate()
+	    )
+	</insert>
+			
+</mapper>
