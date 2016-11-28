@@ -19,8 +19,12 @@ public interface NoticeSevice {
 
 	int getTotgl1();
 
-	int getNoticeSearch(Locale locale, Model model, int cnt, String s_type, String s_text)
+	void getNoticeSearch(Map<String, Object> map, Model model, int cnt, String s_type, String s_text)
 			throws UnsupportedEncodingException;
+
+	
+
+	int getSearchTotgl1(String s_type, String s_text);
 
 
 	

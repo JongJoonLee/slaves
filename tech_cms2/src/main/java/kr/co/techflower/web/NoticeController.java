@@ -37,51 +37,34 @@ public class NoticeController extends FrameworkController{
 		
 		//String mem = (String) session.getAttribute("_name");
 		Map<String, Object> list = new HashMap<String, Object>();
-	
-		
-		
 		int totgle = noticeService.getTotgl1();
-		
-		
-
 		int bopage = 10;
-
 		int totpage = totgle / bopage + 1;
-		
-
-		// System.out.println(cnt);
-
-		// 1 0
-		// 2 10
-		// 3 20
-
 		model.addAttribute("cont", totpage);
 		noticeService.getNoticeList(list, model, cnt);
 		
-		
+		System.out.println("삐삐삐삐삐삐삐삐삐삐삐삐삐삐삐삐삐삐삐삐삐삐삐삐삐삐삐삐삐삐삐삐삐삐삐삐");
 		return "tiles.notice";
 	};
 	
 	@RequestMapping(value = "/cms/notice_boardsearch.do", method = RequestMethod.GET)
 	public String notice_customsearch(Locale locale, Model model,
 			@RequestParam(value = "page", required = false, defaultValue = "1") int cnt,
-			@RequestParam(value = "s_type") String s_type, @RequestParam(value = "s_text") String s_text)
+			@RequestParam(value = "s_type") String s_type, 
+			@RequestParam(value = "s_text") String s_text)
 			throws UnsupportedEncodingException {
+		Map<String, Object> list = new HashMap<String, Object>();
+		noticeService.getNoticeSearch(list, model, cnt, s_type, s_text);
 		
-		int tot=0;
-		
-		tot= noticeService.getNoticeSearch(locale, model, cnt, s_type, s_text);
-		noticeService.getNoticeSearch(locale, model, cnt, s_type, s_text);
+		int totgle = noticeService.getSearchTotgl1(s_type, s_text);
 		int bopage = 10;
-		
-
-		int totpage = tot / bopage + 1;
+		int totpage = totgle / bopage + 1;
 		model.addAttribute("cont", totpage);
 		//System.out.println("컨트롤러 s_type : "+s_type);
-		System.out.println("cnt : "+cnt);
+		/*System.out.println("cnt : "+cnt);
 		System.out.println("s_type : "+s_type);
 		System.out.println("s_text : "+s_text);
-		System.out.println("totpage : " + totpage);
+		System.out.println("totpage : " + totpage);*/
 		
 		
 		

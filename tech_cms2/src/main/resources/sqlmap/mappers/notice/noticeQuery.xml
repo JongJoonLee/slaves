@@ -12,28 +12,14 @@
 		LIMIT #{cnt} , 10
 
 	</select>
-	
-	<!-- <select id="getNotice_BoardList" parameterType="int" resultType="map">
-
-		SELECT 
-		B.*,A.admin_name 
-		FROM `notice_board` AS B 
-		INNER JOIN `admin_member` AS A  
-		WHERE B.admin_no = A.admin_no
-		ORDER BY B.notice_board_no DESC LIMIT #{cnt} , 20
-
-	</select>	 -->
-
 	<select id="getNotice_BoardContents" parameterType="int"
 		resultType="map">
-		
 		SELECT 
 		B.*,A.admin_name 
 		FROM `notice_board` AS B 
 		INNER JOIN `admin_member` AS A  
 		WHERE B.notice_board_no = #{notice_board_no}
 		AND B.admin_no = A.admin_no
-		
 	</select>
 
 
