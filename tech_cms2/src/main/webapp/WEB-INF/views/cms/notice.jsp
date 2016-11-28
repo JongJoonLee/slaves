@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+	
+<script type="text/javascript"
+	src="../resources/js/jquery.twbsPagination.js"></script>
+
+
+
+	
 
 <div class="ad_tit">공지사항 관리</div>
 
@@ -100,21 +107,29 @@
 
 
 </div>
-
-<script type="text/javascript"
-	src="../resources/js/jquery.twbsPagination.js"></script>
 <script>
-	$('#pagination-demo')
-			.twbsPagination(
-					{
-						totalPages : "<c:out value='${cont}'/>",
+	
 
-						visiblePages : 10,
-						/* href : '?&page={{number}}', */
-						href : "?page={{number}}&s_type=<c:out value='${s_type}'/>&s_text=<c:out value='${s_text}'/>",
-						onPageClick : function(event, page) {
-							//alert(page);
-							$('#page-content').text('Page ' + page);
-						}
-					});
+	
+	$('#pagination-demo').twbsPagination({
+		totalPages : "<c:out value='${cont}'/>",
+		visiblePages : 10,
+		startPage: 1,
+        
+        initiateStartPageClick: false,
+		
+		/* href : '?&page={{number}}', */
+		href : "?page={{number}}&s_type=<c:out value='${s_type}'/>&s_text=<c:out value='${s_text}'/>",
+		onPageClick : function(event, page) {
+			
+			
+			$('#page-content').text('Page' + page);
+		}
+	});
+	/* alert(page); */
+
+
 </script>
+
+
+

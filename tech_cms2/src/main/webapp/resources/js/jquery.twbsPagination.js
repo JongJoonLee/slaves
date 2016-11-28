@@ -267,7 +267,7 @@
         totalPages: 0,
         startPage: 1,
         visiblePages: 5,
-        initiateStartPageClick: true,
+        initiateStartPageClick: false,
         href: false,
         hrefVariable: '{{number}}',
         first: 'First',

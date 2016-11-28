@@ -4,6 +4,8 @@
 	<classpath>
 		<dir name="C:/Users/LJJ/workspace/tech_cms/target/classes">
 		</dir>
+		<dir name="C:/Users/LJJ/workspace/tech_cms/target/test-classes">
+		</dir>
 	</classpath>
 
 	<web>
