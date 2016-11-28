@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SurveysaveMapper">
+	
+    <!-- ================================= doDeleteJustZero. 0 ================================== -->
+	<select id="selectDetailZeroList" resultType="map">
+	    SELECT SURVEY_DID
+	         , SURVEY_ID
+	    	 , SURVEY_NO
+	    	 , SURVEY_DNO
+	    	 , SURVEY_CONTENT
+	    	 , SURVEY_TYPE
+	    	 , DEL_GBN
+	    	 , DEL_DATE
+	    	 , DEL_ID
+	     FROM TB_SURVEY_DETAIL
+	    WHERE 1=1
+	      AND ISNULL(DEL_GBN,0) != 1
+	      AND SURVEY_ID = #{SURVEY_ID}
+          AND SURVEY_NO = #{SURVEY_NO}
+	</select>
+    
+    <!-- ================================= doDeleteJustOne. 1 ================================== -->
+	<select id="selectDetailOneList" resultType="map">
+	    SELECT SURVEY_DID
+	         , SURVEY_ID
+	    	 , SURVEY_NO
+	    	 , SURVEY_DNO
+	    	 , SURVEY_CONTENT
+	    	 , SURVEY_TYPE
+	    	 , DEL_GBN
+	    	 , DEL_DATE
+	    	 , DEL_ID
+	     FROM TB_SURVEY_DETAIL
+	    WHERE 1=1
+	      AND ISNULL(DEL_GBN,0) != 1
+	      AND SURVEY_ID = #{SURVEY_ID}
+          AND SURVEY_NO = #{SURVEY_NO}
+          AND SURVEY_DNO > #{SURVEY_DNO}          
+	</select>
+	
+	<!-- ================================= doDeleteJustTwo. 2 ================================== -->
+	<select id="selectDetailTwoList" resultType="map">
+	    SELECT SURVEY_DID
+	         , SURVEY_ID
+	    	 , SURVEY_NO
+	    	 , SURVEY_DNO
+	    	 , SURVEY_CONTENT
+	    	 , SURVEY_TYPE
+	    	 , DEL_GBN
+	    	 , DEL_DATE
+	    	 , DEL_ID
+	     FROM TB_SURVEY_DETAIL
+	    WHERE 1=1
+	      AND ISNULL(DEL_GBN,0) != 1
+	      AND SURVEY_ID = #{SURVEY_ID}
+          AND SURVEY_NO = #{SURVEY_NO}
+          AND (SURVEY_DNO > #{SURVEY_DNO} OR #{SURVEY_DNO} > SURVEY_DNO)          
+	</select>
+	
+	<update id="deleteCaseZero" parameterType="map">
+		UPDATE A
+  		   SET SURVEY_NO = SURVEY_NO-1
+		  FROM TB_SURVEY_DETAIL A
+		 WHERE A.SURVEY_NO > #{SURVEY_NO}
+		   AND A.SURVEY_ID = #{SURVEY_ID}
+	</update>
+	
+	<update id="deleteCaseZeroMe" parameterType="map">
+		UPDATE TB_SURVEY_DETAIL
+  		   SET DEL_GBN = 1
+  		     , DEL_DATE = GetDate()
+  		     , DEL_ID = #{session.userId, jdbcType=VARCHAR}
+		  FROM TB_SURVEY_DETAIL
+		 WHERE SURVEY_NO = #{SURVEY_NO}
+		   AND SURVEY_ID = #{SURVEY_ID}
+	</update>
+	
+	<update id="deleteCaseOne" parameterType="map">
+		UPDATE A
+  		   SET SURVEY_DNO = SURVEY_DNO-1
+		  FROM TB_SURVEY_DETAIL A
+		 WHERE A.SURVEY_NO = #{SURVEY_NO}
+		   AND A.SURVEY_DNO > #{SURVEY_DNO}
+		   AND A.SURVEY_ID = #{SURVEY_ID}
+	</update>
+	
+	<update id="deleteCaseOneMe" parameterType="map">
+		UPDATE TB_SURVEY_DETAIL
+  		   SET DEL_GBN = 1
+  		     , DEL_DATE = GetDate()
+  		     , DEL_ID = #{session.userId, jdbcType=VARCHAR}
+		  FROM TB_SURVEY_DETAIL
+		 WHERE SURVEY_NO = #{SURVEY_NO}
+		   AND SURVEY_DNO = #{SURVEY_DNO}
+		   AND SURVEY_ID = #{SURVEY_ID}
+	</update>
+	
+	<update id="deleteChildAll" parameterType="map">
+		UPDATE TB_SURVEY_DETAIL_EXAMPLE
+  		   SET DEL_GBN = 1
+  		     , DEL_DATE = GetDate()
+		  FROM TB_SURVEY_DETAIL_EXAMPLE
+		 WHERE SURVEY_ID = #{SURVEY_ID}
+		   AND SURVEY_DID = #{SURVEY_DID}
+	</update>
+	
+	<select id="selectMaxSmallList" resultType="map">
+	    SELECT SURVEY_DID
+	         , SURVEY_ID
+	    	 , SURVEY_NO
+	    	 , SURVEY_DNO
+	    	 , SURVEY_CONTENT
+	    	 , SURVEY_TYPE
+	    	 , DEL_GBN
+	    	 , DEL_DATE
+	    	 , DEL_ID
+	     FROM TB_SURVEY_DETAIL
+	    WHERE 1=1
+	      AND ISNULL(DEL_GBN,0) != 1
+	      AND SURVEY_ID = #{SURVEY_ID}
+          AND SURVEY_NO = #{SURVEY_NO}
+          AND SURVEY_DNO = (SELECT MAX(SURVEY_DNO) 
+          					  FROM TB_SURVEY_DETAIL 
+          					 WHERE ISNULL(DEL_GBN,0) != 1 
+          					   AND SURVEY_ID = #{SURVEY_ID} 
+          					   AND SURVEY_NO = #{SURVEY_NO})           
+	</select>
+	
+	<!-- 이전추가, 다음추가, 수정, 항목추가 관련 쿼리 모음 -->
+	
+	<select id="selectOriginData" resultType="map">
+	    SELECT MASTER.SURVEY_NM
+	         , MASTER.SURVEY_CONT
+	         , MASTER.SURVEY_IMG
+	         , MASTER.SURVEY_TARGET
+	         , MASTER.SURVEY_MAIN
+	         , MASTER.SURVEY_STARTDT
+	         , MASTER.SURVEY_ENDDT
+	         , DETAIL.SURVEY_ID
+	         , DETAIL.SURVEY_DID
+	         , DETAIL.SURVEY_NO
+	         , DETAIL.SURVEY_DNO
+	         , DETAIL.SURVEY_CONTENT
+	         , DETAIL.SURVEY_TYPE
+	      FROM TB_SURVEY_MASTER MASTER JOIN TB_SURVEY_DETAIL DETAIL
+	        ON MASTER.SURVEY_ID = DETAIL.SURVEY_ID
+	     WHERE 1=1
+	      AND ISNULL(DETAIL.DEL_GBN,0) != 1
+          AND DETAIL.SURVEY_ID = #{SURVEY_ID}
+       	  AND DETAIL.SURVEY_DID = #{SURVEY_DID}
+	</select>
+	
+	<!-- 수정 -->
+	<select id="selectTbSurveyDetailExampleList" resultType="map">
+	    SELECT DETAIL.SURVEY_ID
+			 , DETAIL.SURVEY_DID
+			 , DETAIL.SURVEY_NO
+			 , DETAIL.SURVEY_DNO
+			 , DETAIL.SURVEY_CONTENT
+			 , DETAIL.SURVEY_TYPE
+			 , EXAMPLE.SURVEY_DE_ID
+			 , EXAMPLE.SURVEY_DE_NO
+			 , EXAMPLE.SURVEY_CONTENT AS E_SURVEY_CONTENT
+			 , EXAMPLE.SURVEY_ETC
+			 , EXAMPLE.SURVEY_SCORE
+		  FROM TB_SURVEY_DETAIL DETAIL
+		  JOIN TB_SURVEY_DETAIL_EXAMPLE EXAMPLE
+		    ON DETAIL.SURVEY_ID = EXAMPLE.SURVEY_ID
+		   AND DETAIL.SURVEY_DID = EXAMPLE.SURVEY_DID
+		 WHERE ISNULL(DETAIL.DEL_GBN,0) != 1
+		   AND ISNULL(EXAMPLE.DEL_GBN,0) != 1
+		   AND EXAMPLE.SURVEY_ID = #{SURVEY_ID}
+	       AND EXAMPLE.SURVEY_DID = #{SURVEY_DID}
+	     ORDER BY EXAMPLE.SURVEY_DE_NO
+	</select>
+	
+	<select id="selectTbSurveyDetailExampleNotList" parameterType="map" resultType="map">
+	    SELECT SURVEY_DE_ID
+	         , SURVEY_DID
+	         , SURVEY_ID
+	         , SURVEY_DE_NO
+	         , SURVEY_CONTENT
+	         , SURVEY_ETC
+	         , SURVEY_SCORE
+	         , DEL_ID
+	         , INS_DATE
+	         , INS_ID
+	         , UPT_DATE
+	         , UPT_ID
+	         , DEL_GBN
+	         , DEL_DATE
+	      FROM TB_SURVEY_DETAIL_EXAMPLE
+	     WHERE ISNULL(DEL_GBN,0) != 1
+	       AND SURVEY_ID = #{SURVEY_ID}
+	       AND SURVEY_DID = #{SURVEY_DID}
+	       AND SURVEY_DE_ID NOT IN 
+	     <foreach collection="list" index="idx" item="item" separator="," open="(" close=")">
+			#{item.SURVEY_DE_ID}
+  		</foreach>
+	</select>
+	
+	<!-- 설문이 주관식을 경우 설문내용만 바꾸어 준다. -->
+	<update id="updateTbSurveyDetailContent" parameterType="map">
+	    UPDATE TB_SURVEY_DETAIL
+	       SET SURVEY_CONTENT = #{SURVEY_CONTENT, jdbcType=VARCHAR}
+	         , UPT_DATE = GetDate()
+	         , UPT_ID = #{session.userId, jdbcType=VARCHAR}
+	     WHERE ISNULL(DEL_GBN,0) != 1
+	       AND SURVEY_ID = #{SURVEY_ID}
+	       AND SURVEY_DID = #{SURVEY_DID}
+	</update>
+	
+	<update id="updateTbSurveyDetailExampleEqu" parameterType="map">
+	    UPDATE TB_SURVEY_DETAIL_EXAMPLE
+	       SET SURVEY_CONTENT = #{E_SURVEY_CONTENT, jdbcType=VARCHAR}
+	         , UPT_DATE = GetDate()
+	         , UPT_ID = #{session.userId, jdbcType=VARCHAR}
+	     WHERE ISNULL(DEL_GBN,0) != 1
+	       AND SURVEY_ID = #{SURVEY_ID}
+	       AND SURVEY_DID = #{SURVEY_DID}
+	       AND SURVEY_DE_ID = #{SURVEY_DE_ID}
+	</update>
+	
+	<insert id="insertTbSurveyDetailExample" parameterType="map">
+	    INSERT INTO TB_SURVEY_DETAIL_EXAMPLE(
+	    	SURVEY_DID,
+	    	SURVEY_ID,
+	    	SURVEY_DE_NO,
+	    	SURVEY_CONTENT,
+	    	SURVEY_ETC,
+	    	SURVEY_SCORE,
+	    	INS_DATE,
+	    	INS_ID
+	    ) VALUES(
+	    	#{SURVEY_DID},
+	    	#{SURVEY_ID},
+	    	(SELECT ISNULL(MAX(SURVEY_DE_ID),0)+1
+	    	   FROM TB_SURVEY_DETAIL_EXAMPLE 
+	    	  WHERE ISNULL(DEL_GBN,0) != 1
+	    	    AND ISNULL(SURVEY_DE_NO,0) != 0
+	    	    AND SURVEY_ID = #{SURVEY_ID}
+	    	    AND SURVEY_DID = #{SURVEY_DID}),
+	    	#{E_SURVEY_CONTENT, jdbcType=VARCHAR},
+	    	#{SURVEY_ETC, jdbcType=VARCHAR},
+	    	#{SORVEY_SCORE, jdbcType=VARCHAR},
+	    	GetDate(),
+	    	#{session.userId, jdbcType=VARCHAR}
+	    )
+	</insert>
+	
+	<update id="deleteTbSurveyDetailExample" parameterType="map">
+		UPDATE TB_SURVEY_DETAIL_EXAMPLE
+  		   SET DEL_GBN = 1
+  		     , DEL_DATE = GetDate()
+  		     , DEL_ID = #{session.userId, jdbcType=VARCHAR}
+		 WHERE 1=1
+		   AND SURVEY_DE_ID = #{SURVEY_DE_ID}
+		   AND SURVEY_DID = #{SURVEY_DID}
+		   AND SURVEY_ID = #{SURVEY_ID}
+	</update>
+	
+	<update id="deleteTbSurveyDetailExampleFilter" parameterType="map">
+		UPDATE TB_SURVEY_DETAIL_EXAMPLE
+  		   SET DEL_GBN = 1
+  		     , DEL_DATE = GetDate()
+  		     , DEL_ID = #{session.userId, jdbcType=VARCHAR}
+		 WHERE 1=1
+		   AND SURVEY_ID = #{SURVEY_ID}
+		   AND SURVEY_DID = #{SURVEY_DID}
+	</update>
+	
+	<update id="updateTbSurveyDetailTypeAndContent" parameterType="map">
+	    UPDATE TB_SURVEY_DETAIL
+	       SET SURVEY_CONTENT = #{SURVEY_CONTENT, jdbcType=VARCHAR}
+	         , SURVEY_TYPE = #{SURVEY_TYPE, jdbcType=VARCHAR}
+	         , UPT_DATE = GetDate()
+	         , UPT_ID = #{session.userId, jdbcType=VARCHAR}
+	     WHERE ISNULL(DEL_GBN,0) != 1
+	       AND SURVEY_ID = #{SURVEY_ID}
+	       AND SURVEY_DID = #{SURVEY_DID}
+	</update>
+	
+	<insert id="insertTbSurveyDetailExampleInData" parameterType="map">
+	    INSERT INTO TB_SURVEY_DETAIL_EXAMPLE(
+	    	SURVEY_DID,
+	    	SURVEY_ID,
+	    	SURVEY_DE_NO,
+	    	SURVEY_CONTENT,
+	    	SURVEY_ETC,
+	    	SURVEY_SCORE,
+	    	INS_DATE,
+	    	INS_ID
+	    ) VALUES(
+	    	#{SURVEY_DID},
+	    	#{SURVEY_ID},
+	    	#{SURVEY_DE_NO},
+	    	#{SURVEY_CONTENT, jdbcType=VARCHAR},
+	    	#{SURVEY_ETC, jdbcType=VARCHAR},
+	    	#{SURVEY_SCORE, jdbcType=VARCHAR},
+	    	GetDate(),
+	    	#{session.userId, jdbcType=VARCHAR}
+	    )
+	</insert>
+	
+	<!-- 이전 추가 -->
+	<update id="updateBefInsertOriginSmallData" parameterType="map">
+		UPDATE A
+  		   SET SURVEY_DNO = SURVEY_DNO+1
+		  FROM TB_SURVEY_DETAIL A
+		 WHERE A.SURVEY_NO = #{SURVEY_NO}
+		   AND A.SURVEY_DNO >= #{SURVEY_DNO}
+		   AND A.SURVEY_ID = #{SURVEY_ID}
+		   AND ISNULL(A.DEL_GBN,0) != 1
+	</update>
+	
+	<update id="updateBefInsertOriginBigData" parameterType="map">
+		UPDATE A
+  		   SET SURVEY_NO = SURVEY_NO+1
+		  FROM TB_SURVEY_DETAIL A
+		 WHERE A.SURVEY_NO >= #{SURVEY_NO}
+		   AND A.SURVEY_ID = #{SURVEY_ID}
+		   AND ISNULL(A.DEL_GBN,0) != 1
+	</update>
+	
+	<!-- 다음 추가  -->
+	<update id="updateAftInsertOriginSmallData" parameterType="map">
+		UPDATE A
+  		   SET SURVEY_DNO = SURVEY_DNO+1
+		  FROM TB_SURVEY_DETAIL A
+		 WHERE A.SURVEY_NO = #{SURVEY_NO}
+		   AND A.SURVEY_DNO >= #{SURVEY_DNO}
+		   AND A.SURVEY_ID = #{SURVEY_ID}
+		   AND ISNULL(A.DEL_GBN,0) != 1
+	</update>
+	
+	<update id="updateAftInsertOriginBigData" parameterType="map">
+		UPDATE A
+  		   SET SURVEY_NO = SURVEY_NO+1
+		  FROM TB_SURVEY_DETAIL A
+		 WHERE A.SURVEY_NO >= #{SURVEY_NO}
+		   AND A.SURVEY_ID = #{SURVEY_ID}
+		   AND ISNULL(A.DEL_GBN,0) != 1
+	</update>
+	
+	
+	<!-- 항목 추가 -->
+	<select id="selectMaxNewDataDetail" resultType="map">
+	    SELECT MAX(SURVEY_DID) AS SURVEY_DID
+	      FROM TB_SURVEY_DETAIL
+	     WHERE SURVEY_ID = #{SURVEY_ID}
+	</select>
+	
+	<insert id="insertLastInsertDetail" parameterType="map">
+	    INSERT INTO TB_SURVEY_DETAIL(
+	    	SURVEY_ID,
+	    	SURVEY_NO,
+	    	SURVEY_DNO,
+	    	SURVEY_CONTENT,
+	    	SURVEY_TYPE,
+	    	INS_DATE,
+	    	INS_ID
+	    ) VALUES(
+	    	#{SURVEY_ID},
+	    	#{SURVEY_NO},
+	    	#{SURVEY_DNO},
+	    	#{SURVEY_CONTENT, jdbcType=VARCHAR},
+	    	#{SURVEY_TYPE},
+	    	GetDate(),
+	    	#{session.userId, jdbcType=VARCHAR}
+	    )
+	</insert>
+	
+	<update id="deleteTbSurveyDetailAll" parameterType="map">
+		UPDATE TB_SURVEY_DETAIL
+  		   SET DEL_GBN = 1
+  		     , DEL_DATE = GetDate()
+  		     , DEL_ID = #{session.userId, jdbcType=VARCHAR}
+		 WHERE 1=1
+		   AND ISNULL(DEL_GBN,0) != 1
+		   AND SURVEY_ID = #{SURVEY_ID}
+	</update>
+	
+	<update id="deleteTbSurveyDetailExampleAll" parameterType="map">
+		UPDATE TB_SURVEY_DETAIL_EXAMPLE
+  		   SET DEL_GBN = 1
+  		     , DEL_DATE = GetDate()
+  		     , DEL_ID = #{session.userId, jdbcType=VARCHAR}
+		 WHERE 1=1
+		   AND ISNULL(DEL_GBN,0) != 1
+		   AND SURVEY_ID = #{SURVEY_ID}
+	</update>
+	
+</mapper>

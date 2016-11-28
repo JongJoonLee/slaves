@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CommonMapper">
+	
+	<select id="selectCategoryList" resultType="map">
+		SELECT * FROM dbo.TB_BOARD
+	</select>
+	
+	<select id="selectMainIDXList" resultType="map">
+		SELECT A.* FROM (
+			SELECT 'FREIGHT' as SECTION
+				 , IDX_CATE_ID
+				 , IDX_DESC
+				 , IDX_VALUE
+				 , IDX_UPDOWN
+				 , ISSU_DT
+				 , REG_DT
+				 , ODBY
+			  FROM TB_WEB_MAINPAGE_IDX_TMP
+			 WHERE IDX_CATE_ID IN (SELECT IDX_CATE_ID FROM TB_IDX_CATE_CD WHERE BOM_CD.ToString() LIKE '/3/2_/_%')
+			UNION ALL
+			SELECT 'COMMODITIES' AS SECTION
+				 , IDX_CATE_ID
+				 , IDX_DESC
+				 , IDX_VALUE
+				 , IDX_UPDOWN
+				 , ISSU_DT
+				 , REG_DT
+				 , ODBY
+			  FROM TB_WEB_MAINPAGE_IDX_TMP
+			 WHERE IDX_CATE_ID IN (SELECT IDX_CATE_ID FROM TB_IDX_CATE_CD WHERE BOM_CD.ToString() LIKE '/4/[1,2,4]/_%')
+			UNION ALL
+			SELECT 'BUNKER' AS SECTION
+				 , IDX_CATE_ID
+				 , IDX_DESC
+				 , IDX_VALUE
+				 , IDX_UPDOWN
+				 , ISSU_DT
+				 , REG_DT
+				 , ODBY
+			  FROM TB_WEB_MAINPAGE_IDX_TMP
+			 WHERE IDX_CATE_ID IN (SELECT IDX_CATE_ID FROM TB_IDX_CATE_CD WHERE BOM_CD.ToString() LIKE '/4/3/_%')
+		) AS A
+		ORDER BY SECTION DESC, ODBY
+	</select>
+	
+	<select id="selectMainPopup" resultType="map">
+		SELECT
+			POPUP.POPUP_ID
+			,POPUP.MENU_CD
+			,POPUP.TITLE
+			,POPUP.WIDTH
+			,POPUP.HEIGHT
+			,POPUP.XGPS
+			,POPUP.YGPS
+			,POPUP.CONTENTS
+			,POPUP.STARTDAY
+			,POPUP.ENDDAY
+			,POPUP.USEYN
+			,POPUP.INNER_POPUP
+			,TB_FILE.SVR_FILE_NM
+			,TB_FILE.FILE_NM
+		FROM TB_POPUP AS POPUP
+		LEFT JOIN TB_FILE
+		  ON POPUP.POPUP_ID = TB_FILE.TBL_PK
+		 AND TB_FILE.TBL_NM='TB_POPUP'
+		WHERE POPUP.USEYN = '1'
+		  AND GETDATE() > POPUP.STARTDAY
+		  AND POPUP.ENDDAY >= CONVERT(VARCHAR(10),GETDATE(),120)
+		ORDER BY POPUP.REG_DT DESC
+	</select>
+	
+	<select id="selectMainBanner" resultType="map">
+		SELECT
+			BANNER.BANNER_ID
+			,BANNER.MENU_CD
+			,BANNER.TITLE
+			,BANNER.CONTENTS
+			,BANNER.STARTDAY
+			,BANNER.ENDDAY
+			,BANNER.URL
+			,BANNER.USEYN
+			,BANNER.BANNERIMAGE
+			,BANNER.REG_ID
+			,BANNER.REG_DT
+			,TB_FILE.SVR_FILE_NM
+			,TB_FILE.FILE_NM
+		FROM TB_BANNER_20150909 AS BANNER
+		LEFT JOIN TB_FILE
+		  ON BANNER.BANNER_ID = TB_FILE.TBL_PK
+		 AND TB_FILE.TBL_NM='TB_BANNER'
+		WHERE BANNER.USEYN = '1'
+		ORDER BY REG_DT DESC
+	</select>
+</mapper>

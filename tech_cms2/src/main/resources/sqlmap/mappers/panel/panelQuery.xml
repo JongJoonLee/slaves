@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="PanelMapper">
+	
+    <!-- 사용자 구분 콤보박스 조회 -->
+	<select id="selectPanelDivList" resultType="map">
+		SELECT BASIC_CD, CD_NM, CD_DESCRIPTION FROM TB_BASIC_CD
+  		 WHERE BASIC_CD IN ('*','00','10','20','30','40','50')
+	</select>
+	
+	<!-- 사용자 정보 조회(paging) -->
+	<select id="selectPanelDataList" resultType="map">
+	    SELECT A.TOT_CNT - (A.rownum - 1) AS RNUM
+	  		  ,A.*
+	  		  ,A.TOT_CNT
+	  		  ,CEILING(A.TOT_CNT / 15) AS TOT_PAGE
+  		  FROM (SELECT Row_Number() OVER (ORDER BY X.TT DESC) AS rownum
+	  				  ,X.*
+	  				  ,COUNT(X.CNT) OVER() AS TOT_CNT
+  				  FROM (SELECT 'tt' AS TT
+	  						  , 1 AS CNT
+							  ,A.*
+							  ,B.USER_NM
+					      FROM TB_MEMBER_ID A
+						  JOIN TB_MEMBERINFO B
+							ON A.USER_ID = B.USER_ID) X
+         		) A
+         WHERE A.rownum > (#{pageNo} - 1) * 15
+		   AND #{pageNo} * 15 >= A.rownum
+		ORDER BY A.USER_NM, A.USER_ID
+	</select>
+	
+	<!-- 사용자 정보 조회 (non paging) -->
+	<select id="selectPanelDataNonPagingList" resultType="map">
+	    SELECT A.USER_ID
+	    	 , A.MEMBER_CLASS_CD
+	    	 , A.LEAVE_DESCRIPTION
+	    	 , convert(varchar(10), A.LEAVE_DT, 112) AS LEAVE_DT
+			 , B.USER_NM
+			 , B.USER_PHONE
+			 , B.USER_MOBILE
+			 , B.USER_EMAIL
+			 , ISNULL(B.USER_MAIL_RECEIVE,'0') AS USER_MAIL_RECEIVE
+			 , ISNULL(B.DESCRIPTION,'0') AS DESCRIPTION 
+			 , ISNULL(B.DEL_YN,'0') AS DEL_YN
+			 , B.COMP_NM
+			 , B.PART_NM
+			 , B.POSITION
+			 , B.COMP_PHONE
+			 , B.CERTIFY_KEY
+			 , convert(varchar(10), B.CERTIFY_DT, 112) AS CERTIFY_DT
+			 , B.REG_ID
+			 , B.UDT_ID
+			 , convert(varchar, B.REG_DT, 120) AS REG_DT
+	    	 , convert(varchar, B.UDT_DT, 120) AS UDT_DT
+			 , ISNULL(B.STATUS,'0') AS STATUS
+			 , B.COMP_CLASS_CD
+		  FROM TB_MEMBER_ID A
+		  JOIN TB_MEMBERINFO B
+			ON A.USER_ID = B.USER_ID
+		 WHERE 1=1
+		 <if test="panelId != null and !panelId.equals('')">
+           AND B.USER_NM LIKE '%' + #{panelId} + '%'
+         </if>
+	     <if test="panelDiv != null and !panelDiv.equals('')">
+           AND A.MEMBER_CLASS_CD = #{panelDiv}
+         </if>
+         <if test="receive != null and !receive.equals('')">
+           AND B.USER_MAIL_RECEIVE = #{receive}
+         </if>
+		 ORDER BY B.USER_NM, A.USER_ID
+	</select>
+	
+	<!-- 좌측  panel 별 지수그리드 조회-->
+	<select id="selectPanelIdxList" resultType="map">
+	    SELECT A.IDX_PAGE_NM
+		     , A.IDX_VIEW_PROGRAM
+			 , A.IDX_MENU
+		     , C.IDX_GRP_ID
+			 , C.IDX_GRP_NM
+			 , #{panelId} AS PANEL_ID
+		 FROM TB_IDX_PAGE A
+		RIGHT OUTER JOIN (SELECT B.IDX_GRP_ID
+		     , C.IDX_GRP_NM
+		 FROM TB_IDX_MANAGE_AUTH A
+		 JOIN TB_IDX_GRP_CATE B
+		   ON A.IDX_CATE_ID = B.IDX_CATE_ID
+		 LEFT OUTER JOIN TB_IDX_GRP C
+		   ON B.IDX_GRP_ID = C.IDX_GRP_ID
+		WHERE PANEL_ID = #{panelId}
+		GROUP BY B.IDX_GRP_ID, C.IDX_GRP_NM) C
+		   ON A.IDX_GRP_ID = C.IDX_GRP_ID	    
+	</select>
+	
+	<!-- 지수조회 = 좌측 패널지수 그리드 데이터 조회 -->
+	<select id="selectPanelIdxPanelList" resultType="map">
+	    SELECT C.IDX_GRP_ID
+     		 , A.IDX_CATE_ID
+			 , B.IDX_NM
+			 , ISNULL(D.IDX_DD, #{idxDD}) AS IDX_DD
+			 , D.IDX_VALUE
+		  FROM TB_IDX_MANAGE_AUTH A
+		  JOIN TB_IDX_CATE_CD B
+    		ON A.IDX_CATE_ID = B.IDX_CATE_ID
+		  LEFT OUTER JOIN TB_IDX_GRP_CATE C
+		    ON A.IDX_CATE_ID = C.IDX_CATE_ID
+		  LEFT OUTER JOIN (SELECT *
+        		             FROM TB_PANEL_REG
+							WHERE IDX_DD = #{idxDD}) D
+		    ON A.PANEL_ID = D.PANEL_ID
+		 WHERE A.PANEL_ID = #{panelId}
+		   AND C.IDX_GRP_ID = #{idxGrpCd}
+	</select>
+	
+	<!-- 지수조회 = 우측 센터지수 그리드 데이터 조회
+	<select id="selectPanelIdxCenterList" resultType="map">
+	    
+	</select> -->
+	
+	<!-- 사용자 ID 체크 -->
+	<select id="selectUserIdCnt" resultType="map">
+	    SELECT COUNT(*) AS USER_CNT
+		  FROM TB_MEMBER_ID A
+		  JOIN TB_MEMBERINFO B
+			ON A.USER_ID = B.USER_ID
+		 WHERE 1=1
+           AND A.USER_ID = #{USER_ID}
+	</select>
+	
+	<!-- 패널 신규 등록   :: TB_MEMBER_ID 테이블  -->
+	<insert id="insertPanelList" parameterType="map">
+	    INSERT INTO TB_MEMBER_ID VALUES(
+	    	#{USER_ID}
+	    	,#{PW}
+	    	,ISNULL(#{MEMBER_CLASS_CD}, 30)
+	    	,#{LEAVE_DESCRIPTION, jdbcType=VARCHAR}
+	    	,#{LEAVE_DT, jdbcType=VARCHAR}
+	    )
+	</insert>
+	
+	<!-- 패널 신규 등록  :: TB_MEMBERINFO 테이블  -->
+	<insert id="insertPanelInfoList" parameterType="map">
+	    INSERT INTO TB_MEMBERINFO (
+	    	USER_ID,
+	    	USER_NM,
+	    	USER_PHONE,
+	    	USER_MOBILE,
+	    	USER_EMAIL,
+	    	USER_MAIL.RECEIVE,
+	    	DESCRIPTION,
+	    	DEL_YN,
+	    	COMP_NM,
+	    	PART_NM,
+	    	POSITION,
+	    	COMP_PHONE,
+	    	CERTIFY_KEY,
+	    	CERTIFY_DT,
+	    	REG_ID,
+	    	UDT_ID,
+	    	REG_DT,
+	    	UDT_DT,
+	    	STATUS,
+	    	COMP_CLASS_CD,
+	    	BIZ_CATE_CD
+	    )VALUES(
+	    	#{USER_ID}
+	    	,#{USER_NM, jdbcType=VARCHAR}
+	    	,#{USER_PHONE, jdbcType=VARCHAR}
+	    	,#{USER_MOBILE, jdbcType=VARCHAR}
+	    	,#{USER_EMAIL, jdbcType=VARCHAR}
+	    	,ISNULL(#{USER_MAIL_RECEIVE, jdbcType=VARCHAR}, 0)
+	    	,#{DESCRIPTION, jdbcType=VARCHAR}
+	    	,ISNULL(#{DEL_YN, jdbcType=VARCHAR}, 0)
+	    	,#{COMP_NM, jdbcType=VARCHAR}
+	    	,#{PART_NM, jdbcType=VARCHAR}
+	    	,#{POSITION, jdbcType=VARCHAR}
+	    	,#{COMP_PHONE, jdbcType=VARCHAR}
+	    	,#{CERTIFY_KEY, jdbcType=VARCHAR}
+	    	,#{CERTIFY_DT, jdbcType=VARCHAR}
+	    	,#{session.userId, jdbcType=VARCHAR}
+	    	,''
+	    	,getDate()
+	    	,''
+	    	,ISNULL(#{STATUS, jdbcType=VARCHAR}, 1)
+	    	,#{COMP_CLASS_CD, jdbcType=VARCHAR}
+	    	,#{BIZ_CATE_CD, jdbcType=VARCHAR}
+	    )
+	</insert>
+	
+	<!-- 패널 업데이트  :: TB_MEMBER_ID 테이블  -->
+	<update id="updatePanelList" parameterType="map">
+	    UPDATE TB_MEMBER_ID
+	       SET MEMBER_CLASS_CD = #{MEMBER_CLASS_CD ,jdbcType=VARCHAR}
+	         , LEAVE_DESCRIPTION = #{LEAVE_DESCRIPTION ,jdbcType=VARCHAR}
+	         , LEAVE_DT = #{LEAVE_DT}
+		 WHERE USER_ID = #{USER_ID}
+	</update>
+	
+	<!-- 패널 업데이트  :: TB_MEMBERINFO 테이블  -->
+	<update id="updatePanelInfoList" parameterType="map">
+	    UPDATE TB_MEMBERINFO
+	       SET USER_NM = #{USER_NM ,jdbcType=VARCHAR}
+	         , USER_PHONE = #{USER_PHONE ,jdbcType=VARCHAR}
+	         , USER_MOBILE = #{USER_MOBILE ,jdbcType=VARCHAR}
+	         , USER_EMAIL = #{USER_EMAIL ,jdbcType=VARCHAR}
+	         , USER_MAIL_RECEIVE = #{USER_MAIL_RECEIVE ,jdbcType=VARCHAR}
+	         , DESCRIPTION = #{DESCRIPTION ,jdbcType=VARCHAR}
+	         , DEL_YN = #{DEL_YN ,jdbcType=VARCHAR}
+	         , COMP_NM = #{COMP_NM ,jdbcType=VARCHAR}
+	         , PART_NM = #{PART_NM ,jdbcType=VARCHAR}
+	         , POSITION = #{POSITION ,jdbcType=VARCHAR}
+	         , COMP_PHONE = #{COMP_PHONE ,jdbcType=VARCHAR}
+	         , CERTIFY_KEY = #{CERTIFY_KEY ,jdbcType=VARCHAR}
+	         <!-- , CERTIFY_DT -->
+	         , STATUS = #{STATUS ,jdbcType=VARCHAR}
+	         , COMP_CLASS_CD = #{COMP_CLASS_CD ,jdbcType=VARCHAR}
+	         , UDT_ID = #{session.userId, jdbcType=VARCHAR}
+	         , UDT_DT = getDate()
+		 WHERE USER_ID = #{USER_ID}
+	</update>
+	
+	<update id="updatePanelDelYnInfoList" parameterType="map">
+	    UPDATE TB_MEMBERINFO
+	       SET DEL_YN = '1'
+	         , UDT_ID = #{session.userId, jdbcType=VARCHAR}
+	         , UDT_DT = getDate()
+		 WHERE USER_ID = #{USER_ID}
+	</update>
+	
+	<update id="updatePanelDelYnIdList" parameterType="map">
+	    UPDATE TB_MEMBER_ID
+	       SET LEAVE_DT = getDate()
+	         , LEAVE_DESCRIPTION = #{LEAVE_DESCRIPTION, jdbcType=VARCHAR}
+		 WHERE USER_ID = #{USER_ID}
+	</update>
+	
+</mapper>

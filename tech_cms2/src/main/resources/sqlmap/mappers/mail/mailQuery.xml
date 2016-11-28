@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MailMapper">
+	
+	<select id="selectBoardList" resultType="map">
+		SELECT 
+			BOARD_CD 
+			,TITLE 
+			,FILE_UPLOAD 
+			,COMMENT_REG 
+			,REG 
+			,VW_YN 
+			,RSS_YN
+			,SUBSCRIPTION 
+			,DESCRIPTION 
+			,REG_ID 
+			,UDT_ID 
+			,UDT_DT 
+			,REG_DT 
+		 FROM TB_BOARD_SETUP 
+		WHERE SUBSCRIPTION = 1 
+	</select>	
+
+	<select id="selectUserList" parameterType="map" resultType="map">
+		SELECT 
+			MEMINFO.USER_ID 
+			,USERCLASS.CD_NM AS TMPMEMBER_CLASS_ID
+			,MEMINFO.USER_NM 
+			,MEMINFO.USER_EMAIL 
+			,MEMINFO.USER_PHONE
+			,MEMINFO.USER_MOBILE 
+			,MAILUSER.BOARD_CD 
+			,MAILUSER.MAIL_RECEIVE
+			,MAILUSER.REG_DT 
+			,MAILUSER.REG_ID 
+			,MAILUSER.UDT_DT 
+			,MAILUSER.UDT_ID
+		 FROM TB_MAIL_USER_RECEIVE_INFO AS MAILUSER 
+		INNER JOIN TB_MEMBERINFO AS MEMINFO 
+		INNER JOIN TB_MEMBER_ID AS MEM 
+		 LEFT OUTER JOIN FUNC_GET_TB_BASIC_CD('USERCLASS',1) AS USERCLASS 
+		   ON MEM.MEMBER_CLASS_CD = USERCLASS.BASIC_CD 
+		   ON MEMINFO.USER_ID = MEM.USER_ID 
+		   ON MEM.USER_ID = MAILUSER.USER_ID 
+		WHERE '*' = '*' 
+		  AND MAILUSER.BOARD_CD = #{BOARD_CD} 
+	</select>	
+	
+	<update id="saveUserMailReceive" parameterType="map">
+		 UPDATE TB_MAIL_USER_RECEIVE_INFO
+			SET MAIL_RECEIVE = #{MAIL_RECEIVE}
+			  , UDT_ID = #{session.userId} 
+			  , UDT_DT = GETDATE()
+		WHERE USER_ID = #{USER_ID}
+		  AND BOARD_CD = #{BOARD_CD}
+	</update>
+	
+</mapper>

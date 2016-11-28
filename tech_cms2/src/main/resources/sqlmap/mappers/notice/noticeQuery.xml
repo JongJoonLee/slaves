@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Board">
+
+	<!-- 공지사항 -->
+	
+	<select id="getNotice_BoardList" parameterType="int" resultType="map">
+
+		SELECT * 
+		FROM `notice_board`
+		ORDER BY notice_board_no DESC
+		LIMIT #{cnt} , 10
+
+	</select>
+	
+	<!-- <select id="getNotice_BoardList" parameterType="int" resultType="map">
+
+		SELECT 
+		B.*,A.admin_name 
+		FROM `notice_board` AS B 
+		INNER JOIN `admin_member` AS A  
+		WHERE B.admin_no = A.admin_no
+		ORDER BY B.notice_board_no DESC LIMIT #{cnt} , 20
+
+	</select>	 -->
+
+	<select id="getNotice_BoardContents" parameterType="int"
+		resultType="map">
+		
+		SELECT 
+		B.*,A.admin_name 
+		FROM `notice_board` AS B 
+		INNER JOIN `admin_member` AS A  
+		WHERE B.notice_board_no = #{notice_board_no}
+		AND B.admin_no = A.admin_no
+		
+	</select>
+
+
+
+	<select id="getNotice_BoardCount" resultType="int">
+		SELECT COUNT(*) FROM `notice_board`
+	</select>
+
+	
+
+	<insert id="insertNotice_Board" parameterType="map">
+
+		INSERT INTO `notice_board`
+		(admin_no, 
+		notice_board_title, 
+		notice_board_contents, 
+		notice_board_regdate, 
+		notice_board_moddate,
+		notice_board_ishidden,
+		notice_board_istop
+		)
+		VALUES
+		(#{admin_no}, 
+		#{notice_board_title}, 
+		#{notice_board_contents}, 
+		now(),
+		now(),
+		"N",
+		"N"
+		)
+
+	</insert>
+
+<!-- 
+	<update id="updateNotice_Board" parameterType="BoardVO">
+
+		UPDATE `notice_board` SET notice_board_title=#{notice_board_title} , notice_board_contents=#{notice_board_contents}, notice_board_moddate=now()
+		WHERE no=#{no}
+	</update>
+
+	<delete id="getNotice_BoardDelete" parameterType="int">
+
+		DELETE FROM `notice_board` WHERE notice_board_no = #{notice_board_no}
+
+	</delete>
+	 -->
+	
+	<update id="notice_updateHit" parameterType="map">
+		UPDATE `notice_board` SET notice_board_hit=#{notice_board_hit} WHERE notice_board_no=#{notice_board_no}
+	</update>
+	
+	
+	
+	<select id="getNotice_BoardSearch" resultType="map" parameterType="map">
+		SELECT *
+		FROM `notice_board`
+		WHERE ${s_type} LIKE CONCAT('%',#{s_text},'%')
+		ORDER BY notice_board_no DESC 
+		LIMIT #{cnt}, 10
+		
+		
+	</select>
+	
+    <!-- <select id="getNotice_BoardSearchTot" resultType="int" parameterType="CustomSearchVO">
+		SELECT count(*) FROM `notice_board` WHERE ${type} LIKE CONCAT('%',#{txt},'%') 
+	</select> -->
+	<select id="getNotice_BoardSearchTot" resultType="int" parameterType="map">
+		SELECT count(*) 
+		FROM `notice_board`
+		WHERE ${s_type} LIKE CONCAT('%',#{s_text},'%')
+	</select>
+	
+	
+	
+	<select id="getNotice_Board_Prev" resultType="map" parameterType="int">
+	
+		select notice_board_no, notice_board_title 
+		from `notice_board` 
+		where notice_board_no=(select max(notice_board_no) 
+		from `notice_board`
+		<![CDATA[
+		where notice_board_no < #{notice_board_no});
+		]]> 
+		
+	
+	
+	</select>
+	
+	
+	<select id="getNotice_Board_Next" resultType="map" parameterType="int">
+	
+		select notice_board_no, notice_board_title 
+		from `notice_board` 
+		where notice_board_no=(select min(notice_board_no) 
+		from `notice_board`
+		<![CDATA[
+		where notice_board_no > #{notice_board_no});
+		]]> 
+		
+	
+	
+	</select>
+
+	
+
+
+
+</mapper>

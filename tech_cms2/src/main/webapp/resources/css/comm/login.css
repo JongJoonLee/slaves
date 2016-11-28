@@ -1,0 +1,164 @@
+@charset "utf-8";
+
+/* 기본 CSS */
+/* 1024 login */
+#wrap.lo {width:100%; margin:0 auto;}
+.login {
+	width:480px; 
+	min-height:100%; 
+	margin:0 auto; 
+	margin-top:12%; 
+		/* 1024 login /		
+	border:1px solid #eee; 
+	padding:65px 35px; 	
+	-moz-border-radius: 2em;
+	border-radius:2em; 
+	moz-box-shadow: 4px 4px #eee;
+	-webkit-box-shadow: 4px 4px #eee;
+	box-shadow: 4px 4px #eee;
+	/* 1024 login */
+	}
+	
+.logo {width:100%; display:block; text-align:center; margin-bottom:40px;}
+.logo img {width:70%;}
+ 
+.tt {padding:5px 0; color:#aaa; font-size:.85em;}
+	.tt img {ertical-align:middle; margin-right:2px;}	
+
+.in {width:100%; padding:20px 0;}
+.in p {display:block; padding:4px 3%; border:1px solid #ddd; margin-bottom:10px;}
+.in p span.tx {width:22%; display:inline-block; padding:10px 0; color:#b7bdbd;}
+.in p span input {width:73%;display:inline-block; padding:11px 2%; border:0;}
+
+.in p.on {border:1px solid #63b7f5; background:#fdfdff;}
+.in p.on span.tx {color:#3e9ae5; font-weight:600;}
+.in p.on span input { background:#fdfdff;}
+
+p.ch_btn {width:94%; 
+		 display:block; 
+		 border:none; 
+		 background:#f0f0f0; 
+		 padding:15px 3%; 
+		 font-size:.9em; 
+		 color:#ccc; 
+		 font-weight:600; 
+		 border-top:1px dotted #bbb; 
+		 text-align:right;
+		 }
+p.ch_btn span.ch {width:25px; height:25px; display:inline-block; background:url(../../images/ch_non.png) no-repeat; vertical-align:middle; margin-right:5px;}	
+
+p.ch_btn.on {color:#126bda; border:none; background:#e6ecf1;  border-top:1px dotted #bbb;}
+p.ch_btn.on span.ch {background:url(../../images/ch.png) no-repeat;}		
+	 
+
+.in p.tts {border:none; background:#fff; padding:4px 0; font-size:.9em; color:#0091e4; font-weight:600;}
+
+.lg_btn {width:100%; display:block; text-align:center; padding:25px 0; background:#385a87; color:#fff; font-size:1.4em;}
+
+.footer {width:100%; font-size:.75em; text-align:center; padding-top:30px;}
+	.footer img {vertical-align:middle; margin-right:5px;}
+
+@media screen and (max-width:780px){
+.login {
+	width:70%; 
+	min-height:100%; 
+	margin:0 auto; 
+	border:0; 
+	padding:5% 15%; 			
+	-moz-border-radius:0;
+	border-radius:0;
+	moz-box-shadow:0;
+	-webkit-box-shadow:none;
+	margin-top:5%;
+	box-shadow:none;
+	}
+	
+.logo img {width:70%;}
+
+.in {width:100%; padding:20px 0;}
+.in p {display:block; padding:15px 3%; border:1px solid #ddd; margin-bottom:10px;}
+.in p span.tx {width:18%; display:inline-block; padding:10px 0; color:#b7bdbd;}
+.in p span input {width:75%;display:inline-block; padding:11px 2%; border:0;}
+	
+}
+
+@media screen and (max-width:640px){
+.login {
+	width:80%; 
+	min-height:100%; 
+	margin:0 auto; 
+	border:0; 
+	padding:5% 10%; 			
+	-moz-border-radius:0;
+	border-radius:0;
+	moz-box-shadow:0;
+	-webkit-box-shadow:none;
+	margin-top:5%;
+	box-shadow:none;
+	}
+	
+.logo img {width:70%;}
+
+.in {width:100%; padding:20px 0;}
+.in p {display:block; padding:15px 3%; border:1px solid #ddd; margin-bottom:10px;}
+.in p span.tx {width:18%; display:inline-block; padding:10px 0; color:#b7bdbd;}
+.in p span input {width:75%;display:inline-block; padding:11px 2%; border:0;}
+	
+}
+
+@media screen and (max-width:480px){
+.login {
+	width:80%; 
+	min-height:100%; 
+	margin:0 auto; 
+	border:0; 
+	padding:5% 10%; 			
+	-moz-border-radius:0;
+	border-radius:0;
+	moz-box-shadow:0;
+	-webkit-box-shadow:none;
+	margin-top:5%;
+	box-shadow:none;
+	}
+	
+.logo img {width:90%;}
+
+.in p span.tx {width:18%; display:inline-block; padding:10px 0; color:#b7bdbd; font-size:.85em;}
+	
+}
+
+@media screen and (max-width:320px){
+.login {
+	width:80%; 
+	min-height:100%; 
+	margin:0 auto; 
+	border:0; 
+	padding:5% 10%; 			
+	-moz-border-radius:0;
+	border-radius:0;
+	moz-box-shadow:0;
+	-webkit-box-shadow:none;
+	margin-top:10%;
+	box-shadow:none;
+	}
+	
+.logo img {width:100%;}
+
+.in p {display:block; padding:5px 3%; border:1px solid #ddd; margin-bottom:10px;}
+.in p span.tx {width:25%; display:inline-block; padding:10px 0; color:#b7bdbd; font-size:.85em;}
+.in p span input {width:65%;display:inline-block; padding:11px 2%; border:0;}
+
+.footer {display:none;}
+	
+}
+
+
+
+
+
+
+
+
+
+
+

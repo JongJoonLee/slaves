@@ -1,0 +1,35 @@
+<!DOCTYPE tiles-definitions PUBLIC 
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" 
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+	<definition name="tilesbase" template="/WEB-INF/views/template/template.jsp">
+		<put-attribute name="css" value="/WEB-INF/views/inc/css.jsp" />
+		<put-attribute name="scripts" value="/WEB-INF/views/inc/scripts.jsp" />
+		<put-attribute name="top" value="/WEB-INF/views/template/top.jsp"/>
+	    <put-attribute name="left" value="/WEB-INF/views/template/left.jsp"/>
+	    <put-attribute name="contents" value=""/>	    
+		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp" />
+	</definition>
+	
+	<definition name="tiles.*" extends="tilesbase">
+		<put-attribute name="contents" value="/WEB-INF/views/cms/{1}.jsp"/>
+		<put-attribute name="menuCd" value="{1}"/>
+	</definition>
+	
+	<definition name="body.main" template="/WEB-INF/views/template/template.jsp">
+	    <put-attribute name="css" value="/WEB-INF/views/inc/css.jsp" />
+		<put-attribute name="scripts" value="/WEB-INF/views/inc/scripts.jsp" />
+	    <put-attribute name="top" value="/WEB-INF/views/template/top.jsp"/>
+	    <put-attribute name="left" value="/WEB-INF/views/template/left.jsp"/>
+	    <put-attribute name="contents" value="/WEB-INF/views/cms/product.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp" />
+	</definition>
+
+	<definition name="body.login" template="/WEB-INF/views/template/templateLogin.jsp">
+	    <put-attribute name="css" value="/WEB-INF/views/inc/css.jsp" />
+		<put-attribute name="scripts" value="/WEB-INF/views/inc/scripts.jsp" />
+		<put-attribute name="contents" value="/WEB-INF/views/login/Login.jsp"/>
+	</definition>
+
+</tiles-definitions>
