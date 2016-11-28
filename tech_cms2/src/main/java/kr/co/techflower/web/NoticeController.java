@@ -44,6 +44,14 @@ public class NoticeController extends FrameworkController{
 		noticeService.getNoticeList(list, model, cnt);
 		
 		
+		
+		PageTool pt = new PageTool();
+		int[] pagination = pt.makePagination(totgle, cnt, 10, 10); 
+		
+		model.addAttribute("pg", pagination);
+		
+		
+		
 		return "tiles.notice";
 	};
 	
