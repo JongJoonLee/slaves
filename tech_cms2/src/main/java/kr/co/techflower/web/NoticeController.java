@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.techflower.service.NoticeSevice;
 
@@ -44,37 +45,60 @@ public class NoticeController extends FrameworkController{
 		noticeService.getNoticeList(list, model, cnt);
 		
 		
-		
-		PageTool pt = new PageTool();
-		int[] pagination = pt.makePagination(totgle, cnt, 10, 10); 
-		
-		model.addAttribute("pg", pagination);
-		
-		
-		
 		return "tiles.notice";
 	};
 	
 	@RequestMapping(value = "/cms/notice_boardsearch.do", method = RequestMethod.GET)
 	public String notice_customsearch(Locale locale, Model model, HttpSession session,
 			@RequestParam(value = "page", required = false, defaultValue = "1") int cnt,
-			@RequestParam(value = "s_type") String s_type, 
-			@RequestParam(value = "s_text") String s_text)
-			throws UnsupportedEncodingException {
+			@RequestParam(value = "stype") String stype, 
+			@RequestParam(value = "stext") String stext)
+			throws UnsupportedEncodingException{
 		
 		
 		Map<String, Object> list = new HashMap<String, Object>();
-		int totgle = noticeService.getSearchTotgl1(s_type, s_text);
+		int totgle = noticeService.getSearchTotgl1(stype, stext);
 		int bopage = 10;
 		int totpage = totgle / bopage + 1;
 		System.out.println("전체글갯수"+totgle);
 		
-		System.out.println(s_text);
+		System.out.println(stext);
 		model.addAttribute("cont", totpage);
-		noticeService.getNoticeSearch(list, model, cnt, s_type, s_text);
+		noticeService.getNoticeSearch(list, model, cnt, stype, stext);
 		model.addAttribute("cnt", cnt);
 		return "tiles.notice";
 	}
 	
+	
+	@RequestMapping(value = "/cms/notice_boardwrite.do", method = RequestMethod.GET)
+	public String notice_BoardWrite(Locale locale, Model model,HttpSession session) {
+		
+		
+
+		
+
+		// login1.jsp
+		return "tiles.notice_boardwrite";
+	}
+
+	@RequestMapping(value = "/cms/notice_boardwritepost1.do", method = RequestMethod.POST)
+	public String notice_oardWritePost(Locale locale, Model model, HttpSession session, String notice_board_title,
+			String notice_board_contents) {
+		
+		Map<String, Object> bdwrite = new HashMap<String, Object>();
+		bdwrite.put("notice_board_title", notice_board_title);
+		bdwrite.put("notice_board_contents", notice_board_contents);
+		
+		
+		
+		//System.out.println(bdwrite.get("notice_board_title"));
+		//System.out.println(bdwrite.get("notice_board_contents"));
+		/*boardDAO.insertNotice_Board(board);*/
+		// System.out.println(board.getContents());
+		
+		return "redirect:/cms/notice.do";
+
+		
+	}
 	
 }

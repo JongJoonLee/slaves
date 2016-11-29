@@ -22,18 +22,17 @@ public class NoticeSeviceImpl extends AbstractCommonService implements NoticeSev
 	}
 	@Override
 	public void getNoticeSearch (Map<String, Object> map, Model model,
-	@RequestParam(value = "page", required = false, defaultValue = "1") int cnt,
-	@RequestParam(value = "s_type") String s_type, 
-	@RequestParam(value = "s_text") String s_text)
-	throws UnsupportedEncodingException{
-		System.out.println("서비스 cnt : "+cnt);
+		@RequestParam(value = "page", required = false, defaultValue = "1") int cnt,
+		@RequestParam(value = "stype") String stype, 
+		@RequestParam(value = "stext") String stext)
+		throws UnsupportedEncodingException{
 		Map<String, Object> tptx = new HashMap<String, Object>();
-		tptx.put("s_text", s_text);
-		tptx.put("s_type", s_type);
+		tptx.put("stext", stext);
+		tptx.put("stype", stype);
 		tptx.put("cnt", (cnt-1)*10);
 		model.addAttribute("list", mapper.selectList("Board.getNotice_BoardSearch",tptx));
-		model.addAttribute("s_type", s_type);
-		model.addAttribute("s_text", s_text);
+		model.addAttribute("stype", stype);
+		model.addAttribute("stext", stext);
 		model.addAttribute("cnt", cnt);
 	}
 	
@@ -49,11 +48,11 @@ public class NoticeSeviceImpl extends AbstractCommonService implements NoticeSev
 	
 	
 	@Override
-	public int getSearchTotgl1(@RequestParam(value = "s_type") String s_type, 
-			@RequestParam(value = "s_text") String s_text){
+	public int getSearchTotgl1(@RequestParam(value = "stype") String stype, 
+			@RequestParam(value = "stext") String stext){
 		Map<String, Object> cntsearchtot = new HashMap<String, Object>();
-		cntsearchtot.put("s_text", s_text);
-		cntsearchtot.put("s_type", s_type);
+		cntsearchtot.put("stext", stext);
+		cntsearchtot.put("stype", stype);
 		int tot=0;
 		tot=mapper.selectOne("Board.getNotice_BoardSearchTot",cntsearchtot);
 		

@@ -76,7 +76,7 @@
 	<select id="getNotice_BoardSearch" resultType="map" parameterType="map">
 		SELECT *
 		FROM `notice_board`
-		WHERE ${s_type} LIKE CONCAT('%',#{s_text},'%')
+		WHERE ${stype} LIKE CONCAT('%',#{stext},'%')
 		ORDER BY notice_board_no DESC 
 		LIMIT #{cnt}, 10
 		
@@ -89,7 +89,7 @@
 	<select id="getNotice_BoardSearchTot" resultType="int" parameterType="map">
 		SELECT count(*) 
 		FROM `notice_board`
-		WHERE ${s_type} LIKE CONCAT('%',#{s_text},'%')
+		WHERE ${stype} LIKE CONCAT('%',#{stext},'%')
 	</select>
 	
 	

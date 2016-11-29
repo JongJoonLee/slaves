@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-	
+<link type="text/css" rel="stylesheet" href="../resources/css/simplePagination.css"/>
 <script type="text/javascript"
 	src="../resources/js/jquery.twbsPagination.js"></script>
 
 
 
-	
 
 <div class="ad_tit">공지사항 관리</div>
 
@@ -17,7 +16,7 @@
 			<div class="form-inline" align="right"
 				style="padding-top: 5px; padding-bottom: 5px;">
 				<div class="form-group">
-					<select id="s_type" name="s_type" class="form-control">
+					<select id="stype" name="stype" class="form-control">
 						<option value="notice_board_title"
 							${param.s_type=="notice_board_title" ? 'selected="selected"':''}>제목</option>
 						<option value="notice_board_writter"
@@ -29,7 +28,7 @@
 
 				<div class="form-group">
 					<input style="padding-top: 0px; padding-bottom: 0px;" type="text"
-						name="s_text" id="s_text" class="form-control" />
+						name="stext" id="stext" class="form-control" />
 					<button type="submit" class="btn btn-primary">검색</button>
 				</div>
 			</div>
@@ -79,10 +78,13 @@
 				</tr>
 			</c:forEach>
 		</table>
-		
+
 		<ul id="pagination-demo" class="pagination-sm"></ul>
-
-
+		
+		
+		<!-- <div id="light-pagination" class="pagination"></div> -->
+		
+		
 
 		<table style="width: 100%;">
 			<tr>
@@ -91,11 +93,11 @@
 				<td width="20%" align="right" colspan="2"><c:set var="session"
 						value="${_id}" /> <c:choose>
 						<c:when test="${session eq null}">
-							<a href="login.do?prev=notice_boardwrite.do"
+							<a href="${pageContext.request.contextPath}/cms/notice_boardwrite.do"
 								class="btn btn-primary"> 글작성 </a>
 						</c:when>
 						<c:otherwise>
-							<a href="notice_boardwrite.do" class="btn btn-primary"> 글작성 </a>
+							<a href="${pageContext.request.contextPath}/cms/notice_boardwrite.do" class="btn btn-primary"> 글작성 </a>
 
 						</c:otherwise>
 					</c:choose></td>
@@ -107,29 +109,48 @@
 
 
 </div>
-<script>
-	
 
+<!--
+<script type="text/javascript"
+	src="../resources/js/jquery.simplePagination.js"></script>
 	
-	$('#pagination-demo').twbsPagination({
-		totalPages : "<c:out value='${cont}'/>",
-		visiblePages : 10,
-		startPage: 1,
-        
-        initiateStartPageClick: false,
-		
-		/* href : '?&page={{number}}', */
-		href : "?page={{number}}&s_type=<c:out value='${s_type}'/>&s_text=<c:out value='${s_text}'/>",
-		onPageClick : function(event, page) {
+ <script>
+
+$(document).ready(function(){
+	$(selector).pagination({
+        items: 50,
+        itemsOnPage: 10,
+        cssStyle: 'light-theme'
+    });
+	 
+
+});
+
+</script> -->
+
+
+
+
+<script>
+
+	$('#pagination-demo')
+	.twbsPagination(
+			{
+				totalPages : "<c:out value='${cont}'/>",
+				visiblePages : 10,
+				/* href : '?&page={{number}}', */
+				href : "?page={{number}}&stype=<c:out value='${stype}'/>&stext=<c:out value='${stext}'/>",
+				onPageClick : function(event, page) {
+					//alert(page);
+					$('#page-content').text('Page' + page);
+				}
 			
-			
-			$('#page-content').text('Page' + page);
-		}
-	});
-	/* alert(page); */
+		});
 
 
 </script>
+
+
 
 
 

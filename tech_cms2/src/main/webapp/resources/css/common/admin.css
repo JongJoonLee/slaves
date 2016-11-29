@@ -436,13 +436,13 @@
 	line-height: 1.6em;
 }
 
-.sur_add p input[type="text"] {
+./* sur_add p input[type="text"] {
 	width: 505px;
 	padding: 10px;
 	background: #fff;
 	border: 1px solid #ccc;
 }
-
+ */
 .sur_add p input.m1 {
 	width: 30px;
 }

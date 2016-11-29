@@ -10,11 +10,6 @@
 
 	<web>
 		<link target="/">
-			<dir name="C:/Users/LJJ/workspace/tech_cms/target/m2e-wtp/web-resources">
-				<exclude name="/"/>
-			</dir>
-		</link>
-		<link target="/">
 			<dir name="C:/Users/LJJ/workspace/tech_cms/src/main/webapp">
 			</dir>
 		</link>
