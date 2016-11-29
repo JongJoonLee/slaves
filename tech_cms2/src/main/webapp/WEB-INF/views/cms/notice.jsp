@@ -59,9 +59,9 @@
 					<td style="text-align: center">${tmp.notice_board_no}</td>
 
 					<td><c:choose>
-							<c:when test="${fn:length(tmp.notice_board_title)>40}">
+							<c:when test="${fn:length(tmp.notice_board_title)>30}">
 								<a href="#"><c:out
-										value="${fn:substring(tmp.notice_board_title,0,40)}" />...</a>
+										value="${fn:substring(tmp.notice_board_title,0,30)}" />...</a>
 							</c:when>
 							<c:otherwise>
 								<a href="#">${tmp.notice_board_title}</a>

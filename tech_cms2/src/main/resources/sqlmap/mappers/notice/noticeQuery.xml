@@ -32,23 +32,21 @@
 
 	<insert id="insertNotice_Board" parameterType="map">
 
-		INSERT INTO `notice_board`
-		(admin_no, 
-		notice_board_title, 
-		notice_board_contents, 
-		notice_board_regdate, 
-		notice_board_moddate,
-		notice_board_ishidden,
-		notice_board_istop
+		INSERT INTO `notice_board`( 
+			notice_board_title, 
+			notice_board_contents, 
+			notice_board_regdate, 
+			notice_board_moddate,
+			notice_board_writter,
+			notice_board_hit
 		)
-		VALUES
-		(#{admin_no}, 
-		#{notice_board_title}, 
-		#{notice_board_contents}, 
-		now(),
-		now(),
-		"N",
-		"N"
+		VALUES(
+			#{notice_board_title}, 
+			#{notice_board_contents}, 
+			now(),
+			now(),
+			#{notice_board_writter},
+			0
 		)
 
 	</insert>

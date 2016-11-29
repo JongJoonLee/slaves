@@ -10,9 +10,8 @@
 				<input name="notice_board_title" type="text" id="notice_board_title"
 					placeholder="제목을 입력하세요" class="form-control"/>
 			</td>
-			<%-- <form type="hidden" id="admin_no"
-				name="admin_no" value="${_adminno}" /> --%>
 			<td>
+				<input type="hidden" id="notice_board_writter" name="notice_board_writter" value="${userBeans.username}"/>
 				<button type="submit" class="btn btn-primary" style="margin-bottom: 5px; margin-left: 5px;">글쓰기</button>
 			</td>
 		</tr>

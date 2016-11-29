@@ -83,13 +83,16 @@ public class NoticeController extends FrameworkController{
 
 	@RequestMapping(value = "/cms/notice_boardwritepost1.do", method = RequestMethod.POST)
 	public String notice_boardWritePost(Locale locale, Model model, HttpSession session, String notice_board_title,
-			String notice_board_contents) {
+			String notice_board_contents, String notice_board_writter ) {
 		
 		Map<String, Object> bdwrite = new HashMap<String, Object>();
 		bdwrite.put("notice_board_title", notice_board_title);
 		bdwrite.put("notice_board_contents", notice_board_contents);
+		bdwrite.put("notice_board_writter", notice_board_writter);
 		
+		noticeService.inputNotice(bdwrite, model);
 		
+		System.out.println(bdwrite.get("notice_board_writter"));
 		
 		//System.out.println(bdwrite.get("notice_board_title"));
 		//System.out.println(bdwrite.get("notice_board_contents"));

@@ -26,6 +26,8 @@ public interface NoticeSevice {
 
 	int getSearchTotgl1(String stype, String stext);
 
+	void inputNotice(Map<String, Object> bdwrite, Model model);
+
 
 	
 }
