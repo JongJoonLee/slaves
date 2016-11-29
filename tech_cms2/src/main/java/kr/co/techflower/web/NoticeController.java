@@ -82,7 +82,7 @@ public class NoticeController extends FrameworkController{
 	}
 
 	@RequestMapping(value = "/cms/notice_boardwritepost1.do", method = RequestMethod.POST)
-	public String notice_oardWritePost(Locale locale, Model model, HttpSession session, String notice_board_title,
+	public String notice_boardWritePost(Locale locale, Model model, HttpSession session, String notice_board_title,
 			String notice_board_contents) {
 		
 		Map<String, Object> bdwrite = new HashMap<String, Object>();
