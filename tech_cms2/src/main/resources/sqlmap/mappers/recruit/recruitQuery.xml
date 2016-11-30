@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Recruit">
+
+	<!-- 공지사항 -->
+	
+	<select id="getRecruit_BoardList" parameterType="int" resultType="map">
+
+		SELECT * 
+		FROM `tb_recruit`
+		ORDER BY tb_recruit_no DESC
+		LIMIT #{cnt} , 10
+
+	</select>
+	<select id="getRecruit_BoardContents" parameterType="int"
+		resultType="map">
+		SELECT 
+		*
+		FROM `tb_recruit`
+		WHERE tb_recruit_no = #{tb_recruit_no}
+	</select>
+
+
+
+	<select id="getRecruit_BoardCount" resultType="int">
+		SELECT COUNT(*) FROM `tb_recruit`
+	</select>
+
+	
+
+	<insert id="insertRecruit" parameterType="map">
+
+		INSERT INTO `tb_recruit`( 
+			tb_recruit_title, 
+			tb_recruit_contents, 
+			tb_recruit_regdate, 
+			tb_recruit_moddate,
+			tb_recruit_writter,
+			tb_recruit_hit,
+			tb_recruit_ishidden,
+			tb_recruit_istop,
+			tb_recruit_isfile
+		)
+		VALUES(
+			#{tb_recruit_title}, 
+			#{tb_recruit_contents}, 
+			now(),
+			now(),
+			#{tb_recruit_writter},
+			0,
+			"N",
+			"N",
+			"N"
+		)
+
+	</insert>
+
+<!-- 
+	<update id="updateTb_recruit" parameterType="BoardVO">
+
+		UPDATE `tb_recruit` SET tb_recruit_title=#{tb_recruit_title} , tb_recruit_contents=#{tb_recruit_contents}, tb_recruit_moddate=now()
+		WHERE no=#{no}
+	</update>
+
+	<delete id="getTb_recruitDelete" parameterType="int">
+
+		DELETE FROM `tb_recruit` WHERE tb_recruit_no = #{tb_recruit_no}
+
+	</delete>
+	 -->
+	
+	<update id="recruit_updateHit" parameterType="map">
+		UPDATE `tb_recruit` SET tb_recruit_hit=#{tb_recruit_hit} WHERE tb_recruit_no=#{tb_recruit_no}
+	</update>
+	
+	
+	
+	<select id="getRecruit_BoardSearch" resultType="map" parameterType="map">
+		SELECT *
+		FROM `tb_recruit`
+		WHERE ${stype} LIKE CONCAT('%',#{stext},'%')
+		ORDER BY tb_recruit_no DESC 
+		LIMIT #{cnt}, 10
+	</select>
+	<select id="getRecruit_hit"  parameterType="int" resultType="int">
+		SELECT tb_recruit_hit
+		FROM `tb_recruit`
+		WHERE tb_recruit_no=#{tb_recruit_no}
+	</select>
+	
+    <!-- <select id="getTb_recruitSearchTot" resultType="int" parameterType="CustomSearchVO">
+		SELECT count(*) FROM `tb_recruit` WHERE ${type} LIKE CONCAT('%',#{txt},'%') 
+	</select> -->
+	<select id="getRecruit_BoardSearchTot" resultType="int" parameterType="map">
+		SELECT count(*) 
+		FROM `tb_recruit`
+		WHERE ${stype} LIKE CONCAT('%',#{stext},'%')
+	</select>
+	
+	
+	
+	<select id="getRecruit_Board_Prev" resultType="map" parameterType="int">
+	
+		select tb_recruit_no, tb_recruit_title 
+		from `tb_recruit` 
+		where tb_recruit_no=(select max(tb_recruit_no) 
+		from `tb_recruit`
+		<![CDATA[
+		where tb_recruit_no < #{tb_recruit_no});
+		]]> 
+		
+	
+	
+	</select>
+	
+	
+	<select id="getRecruit_Board_Next" resultType="map" parameterType="int">
+	
+		select tb_recruit_no, tb_recruit_title 
+		from `tb_recruit` 
+		where tb_recruit_no=(select min(tb_recruit_no) 
+		from `tb_recruit`
+		<![CDATA[
+		where tb_recruit_no > #{tb_recruit_no});
+		]]> 
+		
+	
+	
+	</select>
+
+	
+
+
+
+</mapper>

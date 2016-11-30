@@ -28,9 +28,9 @@ $(function(){
 	$("#promote").click(function(){
 		$.doLoadPage("promote");
 	});
-	$("#recruit").click(function(){
+	/* $("#recruit").click(function(){
 		$.doLoadPage("recruit");
-	});
+	}); */
 	
 	$("#online").click(function(){
 		$.doLoadPage("online");
@@ -90,7 +90,7 @@ $(window).load(function(){
 	<span id="webEdit">웹에디터</span>
 	<a href="${pageContext.request.contextPath}/cms/notice.do"><span id="notice">공지사항관리</span></a>
 	<span id="promote">대외홍보 관리</span>
-	<span id="recruit">채용공고 관리</span>
+	<a href="${pageContext.request.contextPath}/cms/recruit.do"><span id="recruit">채용공고 관리</span></a>
 	<span id="online">온라인접수 관리</span>
 	<span id="manager">담당자관리</span> 
 	
