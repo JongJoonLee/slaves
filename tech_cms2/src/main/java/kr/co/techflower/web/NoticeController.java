@@ -16,7 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
+
 
 import kr.co.techflower.service.NoticeSevice;
 
@@ -103,5 +103,39 @@ public class NoticeController extends FrameworkController{
 
 		
 	}
+	
+	@RequestMapping(value = "/cms/notice_boardcontents.do", method = RequestMethod.GET)
+	public String notice_boardcontents(Locale locale, Model model, HttpSession session,
+			@RequestParam(value = "notice_board_no") int notice_board_no){
+		
+		noticeService.getBoardContents(notice_board_no, model) ;
+		
+		
+		//model.addAttribute("ctntpre", boardDAO.getNotice_Prev(notice_board_no));
+		//model.addAttribute("ctntnext", boardDAO.getNotice_Next(notice_board_no));
+
+		
+		// 조회수증가
+		//int hit = boardDAO.notice_boardcontents(notice_board_no).getNotice_board_hit();
+		//Map<String, Integer> map = new HashMap<String, Integer>();
+		//map.put("notice_board_hit", hit + 1);
+		//map.put("notice_board_no", notice_board_no);
+
+		//boardDAO.notice_updateHit(map);
+
+		// System.out.println("한글");
+		return "tiles.notice_boardcontents";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

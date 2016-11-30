@@ -28,6 +28,14 @@ public interface NoticeSevice {
 
 	void inputNotice(Map<String, Object> bdwrite, Model model);
 
+	
+
+	
+
+	//Map<String, Object> getBoardContents(int notice_board_no, Model model);
+
+	void getBoardContents(int notice_board_no, Model model);
+
 
 	
 }

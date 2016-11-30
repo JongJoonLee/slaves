@@ -15,11 +15,9 @@
 	<select id="getNotice_BoardContents" parameterType="int"
 		resultType="map">
 		SELECT 
-		B.*,A.admin_name 
-		FROM `notice_board` AS B 
-		INNER JOIN `admin_member` AS A  
-		WHERE B.notice_board_no = #{notice_board_no}
-		AND B.admin_no = A.admin_no
+		*
+		FROM `notice_board`
+		WHERE notice_board_no = #{notice_board_no}
 	</select>
 
 

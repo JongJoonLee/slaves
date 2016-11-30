@@ -62,10 +62,28 @@ public class NoticeSeviceImpl extends AbstractCommonService implements NoticeSev
 	@Override
 	public void inputNotice(Map<String, Object> bdwrite, Model model){
 		
-		System.out.println("제목은 : "+bdwrite.get("notice_board_title"));
+		//System.out.println("제목은 : "+bdwrite.get("notice_board_title"));
 		mapper.insert("Board.insertNotice_Board", bdwrite);
 		
 	}
+	
+	
+	@Override
+	public void getBoardContents(@RequestParam(value = "notice_board_no")int notice_board_no,Model model){
+		System.out.println("서비스 글번호 : "+notice_board_no);
+		
+		
+		
+		
+		model.addAttribute("ctnt", mapper.selectOne("Board.getNotice_BoardContents", notice_board_no));
+		//System.out.println("서비스제목 : "+ctnt.get("notice_board_title"));
+		
+		
+	}
+	
+	
+	
+	
 	
 	
 	

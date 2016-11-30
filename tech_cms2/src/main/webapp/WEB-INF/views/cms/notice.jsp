@@ -60,11 +60,15 @@
 
 					<td><c:choose>
 							<c:when test="${fn:length(tmp.notice_board_title)>30}">
-								<a href="#"><c:out
-										value="${fn:substring(tmp.notice_board_title,0,30)}" />...</a>
+								<a href="${pageContext.request.contextPath}/cms/notice_boardcontents.do?notice_board_no=${tmp.notice_board_no}">
+								<c:out value="${fn:substring(tmp.notice_board_title,0,30)}" />
+								...
+								</a>
 							</c:when>
 							<c:otherwise>
-								<a href="#">${tmp.notice_board_title}</a>
+								<a href="${pageContext.request.contextPath}/cms/notice_boardcontents.do?notice_board_no=${tmp.notice_board_no}"">
+								${tmp.notice_board_title}
+								</a>
 							</c:otherwise>
 						</c:choose></td>
 
