@@ -110,20 +110,9 @@ public class NoticeController extends FrameworkController{
 		
 		noticeService.getBoardContents(notice_board_no, model) ;
 		
-		
-		//model.addAttribute("ctntpre", boardDAO.getNotice_Prev(notice_board_no));
-		//model.addAttribute("ctntnext", boardDAO.getNotice_Next(notice_board_no));
-
-		
 		// 조회수증가
-		//int hit = boardDAO.notice_boardcontents(notice_board_no).getNotice_board_hit();
-		//Map<String, Integer> map = new HashMap<String, Integer>();
-		//map.put("notice_board_hit", hit + 1);
-		//map.put("notice_board_no", notice_board_no);
-
-		//boardDAO.notice_updateHit(map);
-
-		// System.out.println("한글");
+		noticeService.updateHit(notice_board_no, model);
+		
 		return "tiles.notice_boardcontents";
 	}
 	

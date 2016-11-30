@@ -3,7 +3,7 @@
 
 <div class="ad_tit">공지사항 글쓰기</div>
 
-<form action="notice_boardwritepost1.do" method="post"	id="frm" onsubmit="return validateForm('frm');">
+<form action="notice_boardwritepost1.do" enctype="multipart/form-data" method="post"	id="frm" onsubmit="return validateForm('frm');">
 	<table>
 		<tr>
 			<td style="width:150%">

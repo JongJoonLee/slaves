@@ -73,11 +73,30 @@ public class NoticeSeviceImpl extends AbstractCommonService implements NoticeSev
 		System.out.println("서비스 글번호 : "+notice_board_no);
 		
 		
-		
+				
 		
 		model.addAttribute("ctnt", mapper.selectOne("Board.getNotice_BoardContents", notice_board_no));
+		model.addAttribute("ctntpre", mapper.selectOne("Board.getNotice_Board_Prev",notice_board_no));
+		model.addAttribute("ctntnext", mapper.selectOne("Board.getNotice_Board_Next",notice_board_no));
+		
+		
+		
+		
+		
 		//System.out.println("서비스제목 : "+ctnt.get("notice_board_title"));
 		
+		
+	}
+	@Override
+	public void updateHit(@RequestParam(value = "notice_board_no")int notice_board_no,Model model){
+		// 조회수증가
+		Map<String, Object> map = new HashMap<String, Object>();
+		int hit = mapper.selectOne("Board.getNotice_hit",notice_board_no);
+		System.out.println("조회수 : " + hit);
+		map.put("notice_board_hit", (hit + 1));
+		map.put("notice_board_no", notice_board_no);
+		mapper.update("Board.notice_updateHit", map);
+		System.out.println("업데이트 후 : "+mapper.selectOne("Board.getNotice_hit",notice_board_no));
 		
 	}
 	

@@ -63,7 +63,7 @@
 }
 
 .nav span {
-	width: 90%;
+	
 	padding: 20px 0 20px 10%;
 	display: block;
 	text-align: left;
@@ -87,7 +87,7 @@
 	width: 81%;
 	min-height: 800px;
 	background: #fff;
-	padding: 0 3% 80px 3%;
+	padding: 0 3% 80px 1%;
 	float: left;
 }
 

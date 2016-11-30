@@ -36,7 +36,10 @@
 			notice_board_regdate, 
 			notice_board_moddate,
 			notice_board_writter,
-			notice_board_hit
+			notice_board_hit,
+			notice_board_ishidden,
+			notice_board_istop,
+			notice_board_isfile
 		)
 		VALUES(
 			#{notice_board_title}, 
@@ -44,7 +47,10 @@
 			now(),
 			now(),
 			#{notice_board_writter},
-			0
+			0,
+			"N",
+			"N",
+			"N"
 		)
 
 	</insert>
@@ -75,8 +81,11 @@
 		WHERE ${stype} LIKE CONCAT('%',#{stext},'%')
 		ORDER BY notice_board_no DESC 
 		LIMIT #{cnt}, 10
-		
-		
+	</select>
+	<select id="getNotice_hit"  parameterType="int" resultType="int">
+		SELECT notice_board_hit
+		FROM `notice_board`
+		WHERE notice_board_no=#{notice_board_no}
 	</select>
 	
     <!-- <select id="getNotice_BoardSearchTot" resultType="int" parameterType="CustomSearchVO">

@@ -36,6 +36,10 @@ public interface NoticeSevice {
 
 	void getBoardContents(int notice_board_no, Model model);
 
+	
+
+	void updateHit(int notice_board_no, Model model);
+
 
 	
 }
