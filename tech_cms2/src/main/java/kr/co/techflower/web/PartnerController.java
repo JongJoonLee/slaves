@@ -34,6 +34,9 @@ public class PartnerController extends FrameworkController {
 	partnerService.doPartnerList(list, model);
 	
 	
+	
+	
+	
 	return "tiles.partner";
 	
 	
