@@ -6,9 +6,9 @@ $(function(){
 	var contextRoot = "${context_root}";
 	
 	
-	$("#product").click(function(){
+	/* $("#product").click(function(){
 		$.doLoadPage("product");
-	});
+	}); */
 	/* 
 	$("#partner").click(function(){
 		$.doLoadPage("partner");
@@ -83,7 +83,7 @@ $(window).load(function(){
 });
 </script>
 <div class="nav">
-	<span id="product">PRODUCT 관리</span>
+	<a href="${pageContext.request.contextPath}/cms/product.do"><span id="product">PRODUCT 관리</span></a>
 	<a href="${pageContext.request.contextPath}/cms/partner.do"><span id="partner">주요고객사 관리</span></a>
 	<span id="history">연혁 관리</span>
 	<span id="research">연구개발내역 관리</span>
