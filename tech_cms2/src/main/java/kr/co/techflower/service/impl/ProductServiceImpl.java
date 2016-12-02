@@ -1,5 +1,8 @@
 package kr.co.techflower.service.impl;
 
+import java.util.ArrayList;
+
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Service;
@@ -15,14 +18,19 @@ public class ProductServiceImpl extends AbstractCommonService implements Product
 	public void ProductList(Map<String, Object> map,Model model){
 		
 		model.addAttribute("list", mapper.selectList("Product.getProductTitle", map));
-		model.addAttribute("listsub", mapper.selectList("Product.getProductSubTitle", map));
+		//model.addAttribute("listsub", mapper.selectList("Product.getProductSubTitle", map));
 	}
 	
 	@Override
 	public void ProductSubList(Map<String, Object> map,Model model){
+		List<Object> listsub = new ArrayList<Object>();
 		
+		listsub=mapper.selectList("Product.getProductSubTitle", map);
 		
-		model.addAttribute("listsub", mapper.selectList("Product.getProductSubTitle", map));
+		System.out.println(listsub);
+		
+		//model.addAttribute("listsub", mapper.selectList("Product.getProductSubTitle", map));
+		model.addAttribute("listsub",listsub);
 	}
 	
 	

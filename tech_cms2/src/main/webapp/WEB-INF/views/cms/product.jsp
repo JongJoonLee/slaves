@@ -53,7 +53,7 @@
 										<div id="collapse${tmp.tb_product_no}" class="panel-collapse collapse">
 											
 											
-											<c:forEach var="tmpsub" items="${listsub}">
+											<c:forEach var="tmpsub" items="${listsub}" begin="${tmp.tb_product_no}">
 													<div class="list-group">
 														<a href="#" class="list-group-item"
 															onclick="sendAjax('productDetail.do?tmpsub.tb_product_sub_no=${tmpsub.tb_product_sub_no}')">${tmpsub.tb_product_sub_title}</a> 

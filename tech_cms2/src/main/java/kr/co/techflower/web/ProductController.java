@@ -31,7 +31,7 @@ public class ProductController extends FrameworkController{
 		productservice.ProductList(list, model);
 		
 		
-		//productservice.ProductSubList(listsub, model);
+		productservice.ProductSubList(listsub, model);
 		
 		return "tiles.product";
 	}
