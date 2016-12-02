@@ -31,8 +31,7 @@ public class HomeController extends FrameworkController{
 	
 	@Autowired
 	HomeService homeService;
-	@Autowired
-	PartnerService partnerService;
+	
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -51,7 +50,7 @@ public class HomeController extends FrameworkController{
 				|| "".equals(SecurityContextHolder.getContext().getAuthentication().getPrincipal())){
 			return "body.login";
 		}	
-		return "tiles.menu";
+		return "tiles.product";
 		
 	}
 	
