@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Product">
+
+	<select id = "getProductTitle" resultType="map">
+		
+		SELECT * FROM tb_product
+	
+	</select>
+	
+	<select id="getProductSubTitle" resultType="map">
+	SELECT A.tb_product_no as tb_product_no, B.tb_product_no as pdseq, A.tb_product_sub_title as tb_product_sub_title, B.tb_product_name as tb_product_name, A.tb_product_sub_no as tb_product_sub_no
+		FROM `tb_product_sub` AS A
+		INNER JOIN `tb_product` AS B
+		WHERE A.tb_product_no = B.tb_product_no
+	</select>
+
+
+
+
+</mapper>
