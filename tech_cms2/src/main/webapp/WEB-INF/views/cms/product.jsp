@@ -33,21 +33,14 @@
 									<div class="panel panel-default">
 
 
-										<%-- <c:forEach var="tmp" items="${list}">
-											<tr>
-												<td><c:out value="${tmp.partner_name}" /></td>
-												<td><img style="height: 30px;"
-													src="${pageContext.request.contextPath}/<c:out value="${tmp.partner_ci}"/>" /></td>
-												<td><c:out value="${tmp.partner_url}" /></td>
-												<td><button class="btn btn-danger">삭제</button></td>
-											</tr>
-										</c:forEach> --%>
+										
 										<c:forEach var="tmp" items="${list}">
+										
 										<div class="panel-heading">
 											<h4 class="panel-title">
 												<a data-toggle="collapse" data-parent="#accordion"
 													href="#collapse${tmp.tb_product_no}" aria-expanded="true"
-													aria-controls="#collapseFour"> 
+													aria-controls="#collapse${tmp.tb_product_no}"> 
 													<c:out value="${tmp.tb_product_name}" />
 												</a>
 											</h4>
@@ -60,19 +53,13 @@
 										<div id="collapse${tmp.tb_product_no}" class="panel-collapse collapse">
 											
 											
-											<c:forEach var="tmpsub" items="${listsub}" begin="1">
-												
-													
-												
-												
+											<c:forEach var="tmpsub" items="${listsub}">
 													<div class="list-group">
 														<a href="#" class="list-group-item"
 															onclick="sendAjax('productDetail.do?tmpsub.tb_product_sub_no=${tmpsub.tb_product_sub_no}')">${tmpsub.tb_product_sub_title}</a> 
 													</div>
-												
-													 
-												
 											</c:forEach>
+											
 										</div>
 										
 										

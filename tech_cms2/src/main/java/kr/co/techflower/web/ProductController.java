@@ -27,8 +27,11 @@ public class ProductController extends FrameworkController{
 	@RequestMapping(value="/cms/product.do")
 	public String doProductList(Model model, HttpServletRequest req, HttpServletResponse res) throws Exception{
 		Map<String, Object> list = new HashMap<String, Object>();
+		Map<String, Object> listsub = new HashMap<String, Object>();
 		productservice.ProductList(list, model);
 		
+		
+		//productservice.ProductSubList(listsub, model);
 		
 		return "tiles.product";
 	}

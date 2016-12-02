@@ -18,6 +18,13 @@ public class ProductServiceImpl extends AbstractCommonService implements Product
 		model.addAttribute("listsub", mapper.selectList("Product.getProductSubTitle", map));
 	}
 	
+	@Override
+	public void ProductSubList(Map<String, Object> map,Model model){
+		
+		
+		model.addAttribute("listsub", mapper.selectList("Product.getProductSubTitle", map));
+	}
+	
 	
 	
 

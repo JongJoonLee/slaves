@@ -22,11 +22,11 @@
 		<property name="fallbackToSystemLocale" value="false"/>
 	</bean> 
 	
-	<!-- <bean id="messageSource" class="kr.co.techflower.locale.DatabaseDrivenMessageSource">
+	<bean id="messageSource" class="kr.co.techflower.locale.DatabaseDrivenMessageSource">
 		<constructor-arg ref="messageResourceService"/>
 		<property name="parentMessageSource" ref="propertiesMessageSource"/>
 	</bean>
- -->
+
 	
 	<bean id="leaveaTrace" class="egovframework.rte.fdl.cmmn.trace.LeaveaTrace">
 		<property name="traceHandlerServices">
