@@ -9,6 +9,14 @@ public interface ProductService {
 	void ProductList(Map<String, Object> map, Model model);
 
 	void ProductSubList(Map<String, Object> map, Model model);
+
+	
+
+	
+
+	
+
+	void getProductDetailTitle(Map<String, Object> map, Model model, String tb_product_sub_no);
 	
 	
 	

@@ -12,6 +12,7 @@
   padding: 15px;
 }
 .panel-heading {
+  background-color: #197AD9;
   padding: 10px 15px;
   border-bottom: 1px solid transparent;
   border-top-left-radius: 3px;

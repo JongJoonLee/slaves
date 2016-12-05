@@ -14,6 +14,60 @@
 		INNER JOIN `tb_product` AS B
 		WHERE A.tb_product_no = B.tb_product_no
 	</select>
+	
+	<select id="getProductSubNo1" resultType="map">
+	SELECT A.tb_product_no as tb_product_no, A.tb_product_sub_title as tb_product_sub_title, B.tb_product_name as tb_product_name, A.tb_product_sub_no as tb_product_sub_no
+		FROM `tb_product_sub` AS A
+		INNER JOIN `tb_product` AS B
+		WHERE A.tb_product_no = "1"
+        AND B.tb_product_no = "1"
+	</select>
+	
+	<select id="getProductSubNo2" resultType="map">
+	SELECT A.tb_product_no as tb_product_no, A.tb_product_sub_title as tb_product_sub_title, B.tb_product_name as tb_product_name, A.tb_product_sub_no as tb_product_sub_no
+		FROM `tb_product_sub` AS A
+		INNER JOIN `tb_product` AS B
+		WHERE A.tb_product_no = "2"
+        AND B.tb_product_no = "2"
+	</select>
+	
+	<select id="getProductSubNo3" resultType="map">
+	SELECT A.tb_product_no as tb_product_no, A.tb_product_sub_title as tb_product_sub_title, B.tb_product_name as tb_product_name, A.tb_product_sub_no as tb_product_sub_no
+		FROM `tb_product_sub` AS A
+		INNER JOIN `tb_product` AS B
+		WHERE A.tb_product_no = "3"
+        AND B.tb_product_no = "3"
+	</select>
+	
+	<select id="getProductSubNo4" resultType="map">
+	SELECT A.tb_product_no as tb_product_no, A.tb_product_sub_title as tb_product_sub_title, B.tb_product_name as tb_product_name, A.tb_product_sub_no as tb_product_sub_no
+		FROM `tb_product_sub` AS A
+		INNER JOIN `tb_product` AS B
+		WHERE A.tb_product_no = "4"
+        AND B.tb_product_no = "4"
+	</select>
+	
+	
+	<select id="getProductDetailTitle" parameterType="int" resultType="map">
+	SELECT 
+		A.tb_product_detail_no AS tb_product_detail_no,
+		B.tb_product_sub_no AS tb_product_sub_no,
+    	A.tb_product_detail_title AS tb_product_detail_title,
+   		B.tb_product_sub_title AS tb_product_sub_title
+	FROM 
+		tb_product_detail AS A
+	INNER JOIN 
+		tb_product_sub AS B
+	WHERE 
+		A.tb_product_sub_no = B.tb_product_sub_no
+	AND 
+		A.tb_product_sub_no = #{tb_product_sub_no}
+	
+	</select>
+	
+	
+	
+	
 
 
 
