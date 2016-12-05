@@ -8,6 +8,31 @@
 	
 	</select>
 	
+	<update id="updatePartner" parameterType="map">
+	
+		UPDATE `tb_partner`
+		SET
+			partner_name = #{partner_name},
+			partner_url = #{partner_url}
+		WHERE partner_no=#{partner_no}
+	
+	</update>
+	
+	<insert id="insertPartner" parameterType="map">
+	
+		INSERT INTO `tb_partner`
+			(partner_name, partner_url)
+		VALUES
+			(#{partner_name},#{partner_url})
+	
+	</insert>
+	
+	<delete id="deletePartner" parameterType="int">
+		DELETE FROM `tb_partner`
+		WHERE partner_no = #{partner_no}
+		
+	</delete>
+	
 	
 
 

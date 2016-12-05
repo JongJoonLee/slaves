@@ -25,9 +25,21 @@ public class PartnerServiceImpl extends AbstractCommonService implements Partner
 		
 		
 	}
-
+	@Override
+	public void updatePartner(Map<String, Object> map,Model model){
+		
+		mapper.update("PartnerMapper.updatePartner", map);
+		
+	}
+	@Override
+	public void insertPartner(Map<String, Object> map,Model model){
+		mapper.insert("PartnerMapper.insertPartner", map);
+	}
 	
-	
+	@Override
+	public void deletePartner(Map<String, Object> map,Model model){
+		mapper.delete("PartnerMapper.deletePartner", map);
+	}
 	
 	
 
