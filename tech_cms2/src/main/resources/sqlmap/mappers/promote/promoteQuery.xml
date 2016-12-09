@@ -28,7 +28,7 @@
 		
 	</insert>
 	
-	<update id="updatePromote" parameterType="map">
+	<update id="update_Promote" parameterType="map">
 	
 		UPDATE `tb_promote`
 		SET 
@@ -75,6 +75,21 @@
 		SELECT tb_promote_hit
 		FROM `tb_promote`
 		WHERE tb_promote_no=#{tb_promote_no}
+	</select>
+	
+	
+	
+	<select id="getPromoteSearchTot" resultType="int" parameterType="map">
+		SELECT count(*) 
+		FROM `tb_promote`
+		WHERE ${stype} LIKE CONCAT('%',#{stext},'%')
+	</select>
+	<select id="getPromoteSearch" resultType="map" parameterType="map">
+		SELECT *
+		FROM `tb_promote`
+		WHERE ${stype} LIKE CONCAT('%',#{stext},'%')
+		ORDER BY tb_promote_no DESC 
+		LIMIT #{cnt}, 10
 	</select>
 
 

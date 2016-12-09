@@ -10,20 +10,18 @@
 <div class="ad_tit">대외홍보 관리</div>
 <!-- 검색 시작 -->
 
-<%-- <div class="row">
+<div class="row">
 
 	<div class="col-md-10">
-		<form action="notice_boardsearch.do" method="get">
+		<form action="promote_search.do" method="get">
 			<div class="form-inline" align="right"
 				style="padding-top: 5px; padding-bottom: 5px;">
 				<div class="form-group">
 					<select id="stype" name="stype" class="form-control">
-						<option value="notice_board_title"
-							${param.s_type=="notice_board_title" ? 'selected="selected"':''}>제목</option>
-						<option value="notice_board_writter"
-							${param.s_type=="notice_board_writter" ? 'selected="selected"':''}>글쓴이</option>
-						<option value="notice_board_contents"
-							${param.s_type=="notice_board_contents" ? 'selected="selected"':''}>내용</option>
+						<option value="tb_promote_title"
+							${param.s_type=="tb_promote_title" ? 'selected="selected"':''}>제목</option>
+						<option value="tb_promote_contents"
+							${param.s_type=="tb_promote_contents" ? 'selected="selected"':''}>내용</option>
 					</select>
 				</div>
 
@@ -35,7 +33,7 @@
 			</div>
 		</form>
 	</div>
-</div> --%>
+</div>
 <!-- 검색 끝 -->
 
 <div class="row">
@@ -62,7 +60,7 @@
 					<td><c:choose>
 							<c:when test="${fn:length(tmp.tb_promote_title)>30}">
 								<a href="${pageContext.request.contextPath}/cms/promote_contents.do?tb_promote_no=${tmp.tb_promote_no}">
-								<c:out value="${fn:substring(tmp.notice_board_title,0,30)}" />
+								<c:out value="${fn:substring(tmp.tb_promote_title,0,30)}" />
 								...
 								</a>
 							</c:when>

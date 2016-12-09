@@ -114,7 +114,37 @@ public class NoticeController extends FrameworkController{
 	}
 	
 	
+	@RequestMapping(value = "/cms/notice_boardEdit.do", method = RequestMethod.GET)
+	public String notice_boardEdit(Locale locale, Model model, HttpSession session,
+			@RequestParam(value = "notice_board_no") int notice_board_no){
+		
+		noticeService.getBoardContents(notice_board_no, model);
+		
+		return "tiles.notice_boardEdit";
+	}
 	
+	
+	@RequestMapping(value = "/cms/notice_boardupdatepost1.do", method = RequestMethod.POST)
+	public String notice_boardupdatepost(Locale locale, Model model, HttpSession session, String notice_board_title,
+			String notice_board_contents, int notice_board_no ) {
+		
+		Map<String, Object> bdupdate = new HashMap<String, Object>();
+		bdupdate.put("notice_board_title", notice_board_title);
+		bdupdate.put("notice_board_contents", notice_board_contents);
+		bdupdate.put("notice_board_no", notice_board_no);
+		
+		noticeService.updateNotice(bdupdate, notice_board_no, model);
+		System.out.println(bdupdate.get("notice_board_writter"));
+		
+		//System.out.println(bdwrite.get("notice_board_title"));
+		//System.out.println(bdwrite.get("notice_board_contents"));
+		/*boardDAO.insertNotice_Board(board);*/
+		// System.out.println(board.getContents());
+		
+		return "redirect:/cms/notice.do";
+
+		
+	}
 	
 	
 	

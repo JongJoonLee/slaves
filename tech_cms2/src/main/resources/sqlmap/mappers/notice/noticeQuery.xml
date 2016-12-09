@@ -55,11 +55,17 @@
 
 	</insert>
 
-<!-- 
-	<update id="updateNotice_Board" parameterType="BoardVO">
+ 
+	<update id="updateNotice_Board" parameterType="map">
 
-		UPDATE `notice_board` SET notice_board_title=#{notice_board_title} , notice_board_contents=#{notice_board_contents}, notice_board_moddate=now()
-		WHERE no=#{no}
+		UPDATE 
+			`notice_board` 
+		SET 
+			notice_board_title=#{notice_board_title}, 
+			notice_board_contents=#{notice_board_contents}, 
+			notice_board_moddate=now()
+		WHERE 
+			notice_board_no=#{notice_board_no}
 	</update>
 
 	<delete id="getNotice_BoardDelete" parameterType="int">
@@ -67,7 +73,7 @@
 		DELETE FROM `notice_board` WHERE notice_board_no = #{notice_board_no}
 
 	</delete>
-	 -->
+	
 	
 	<update id="notice_updateHit" parameterType="map">
 		UPDATE `notice_board` SET notice_board_hit=#{notice_board_hit} WHERE notice_board_no=#{notice_board_no}
@@ -75,13 +81,7 @@
 	
 	
 	
-	<select id="getNotice_BoardSearch" resultType="map" parameterType="map">
-		SELECT *
-		FROM `notice_board`
-		WHERE ${stype} LIKE CONCAT('%',#{stext},'%')
-		ORDER BY notice_board_no DESC 
-		LIMIT #{cnt}, 10
-	</select>
+	
 	<select id="getNotice_hit"  parameterType="int" resultType="int">
 		SELECT notice_board_hit
 		FROM `notice_board`
@@ -95,6 +95,13 @@
 		SELECT count(*) 
 		FROM `notice_board`
 		WHERE ${stype} LIKE CONCAT('%',#{stext},'%')
+	</select>
+	<select id="getNotice_BoardSearch" resultType="map" parameterType="map">
+		SELECT *
+		FROM `notice_board`
+		WHERE ${stype} LIKE CONCAT('%',#{stext},'%')
+		ORDER BY notice_board_no DESC 
+		LIMIT #{cnt}, 10
 	</select>
 	
 	

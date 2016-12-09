@@ -34,6 +34,7 @@
 <div class="row">
 	<div align="right">
 		<a href="${pageContext.request.contextPath}/cms/promote.do"><button class="btn btn-primary">목록</button></a>
+			<a href="${pageContext.request.contextPath}/cms/promote_edit.do?tb_promote_no=${ctnt.tb_promote_no}"><button class="btn btn-success">수정</button></a>
 		<button class="btn btn-danger">삭제</button>
 	</div>
 </div>

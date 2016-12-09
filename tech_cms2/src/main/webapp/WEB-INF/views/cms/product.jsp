@@ -39,7 +39,9 @@
 												<a data-toggle="collapse" data-parent="#accordion"
 													href="#collapseOne" aria-expanded="true"
 													aria-controls="#collapseOne">DEFENCE EQUIPMENT</a>
+													<button class="btn btn-info btn-xs"> +</button>
 											</h4>
+											
 										</div>
 										<!-- div id인 collapse*는 위의 데이터토글을 위해 DB값에서 받아옴 -->
 										<div id="collapseOne" class="panel-collapse collapse">
@@ -164,6 +166,46 @@
 
 
 </div>
+
+
+
+
+<!--중메뉴 추가 Modal -->
+	<div class="modal fade" id="BclassModal" tabindex="-1" role="dialog" aria-labelledby="BclassModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">주요 고객사 추가</h4>
+	      </div>
+	       <form method="post" action="productPost.do">
+		      <div class="modal-body">
+			    	
+			    	<input name="tb_product_sub_title" id="tb_product_sub_title" type="text" class="form-control" placeholder="중분류 제목 입력"/>
+				   	<input type="hidden" name="tb_product_no" value="">
+			      
+		      </div>
+		      <div class="modal-footer">
+			     	<button type="button" class="btn btn-success" data-dismiss="modal">로고첨부</button>
+			     	<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+			     	<button type="submit" class="btn btn-primary">저장</button>
+		     </div>
+	      </form>
+	    </div>
+	  </div>
+	</div>
+	<!--중메뉴 추가 Modal 끝 -->	
+
+
+
+
+
+
+
+
+
+
+
 
 <script type="text/javascript">
 	var sendAjax = function(url) {

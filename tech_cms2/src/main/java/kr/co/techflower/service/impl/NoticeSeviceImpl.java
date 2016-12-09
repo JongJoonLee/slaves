@@ -4,6 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.xmlbeans.impl.xb.xsdschema.Public;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,6 +21,17 @@ public class NoticeSeviceImpl extends AbstractCommonService implements NoticeSev
 			throws Exception {
 		model.addAttribute("list", mapper.selectList("Board.getNotice_BoardList", (cnt-1)*10));
 	}
+	
+	
+	@Override
+	public int getTotgl1(){
+		
+		int tot=0;
+		tot=mapper.selectOne("Board.getNotice_BoardCount");
+		return tot;
+	}
+	
+	
 	@Override
 	public void getNoticeSearch (Map<String, Object> map, Model model,
 		@RequestParam(value = "page", required = false, defaultValue = "1") int cnt,
@@ -35,17 +47,6 @@ public class NoticeSeviceImpl extends AbstractCommonService implements NoticeSev
 		model.addAttribute("stext", stext);
 		model.addAttribute("cnt", cnt);
 	}
-	
-	@Override
-	public int getTotgl1(){
-		
-		int tot=0;
-		tot=mapper.selectOne("Board.getNotice_BoardCount");
-		return tot;
-	}
-	
-	
-	
 	
 	@Override
 	public int getSearchTotgl1(@RequestParam(value = "stype") String stype, 
@@ -100,6 +101,12 @@ public class NoticeSeviceImpl extends AbstractCommonService implements NoticeSev
 		
 	}
 	
+	@Override
+	public void updateNotice(Map<String, Object> map, @RequestParam(value = "notice_board_no")int notice_board_no, Model model){
+		
+		
+		mapper.update("Board.updateNotice_Board",map);
+	}
 	
 	
 	

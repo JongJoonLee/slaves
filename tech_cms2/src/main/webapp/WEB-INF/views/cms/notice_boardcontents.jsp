@@ -35,6 +35,7 @@
 <div class="row">
 	<div align="right">
 		<a href="${pageContext.request.contextPath}/cms/notice.do"><button class="btn btn-primary">목록</button></a>
+		<a href="${pageContext.request.contextPath}/cms/notice_boardEdit.do?notice_board_no=${ctnt.notice_board_no}"><button class="btn btn-success">수정</button></a>
 		<button class="btn btn-danger">삭제</button>
 	</div>
 </div>

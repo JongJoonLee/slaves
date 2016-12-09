@@ -40,6 +40,8 @@ public interface NoticeSevice {
 
 	void updateHit(int notice_board_no, Model model);
 
+	void updateNotice(Map<String, Object> map, int notice_board_no, Model model);
+
 
 	
 }
