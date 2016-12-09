@@ -101,6 +101,13 @@ public class RecruitServiceImpl extends AbstractCommonService implements Recruit
 		
 	}
 	
+	@Override
+	public void updateRecruit(Map<String, Object> map, @RequestParam(value = "tb_recruit_no")int tb_recruit_no, Model model){
+		
+		
+		mapper.update("Recruit.update_Recruit",map);
+	}
+	
 	
 	
 }

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <div class="ad_tit">채용공고 ${ctnt.tb_recruit_no}번 글</div>
-<div class="row"> 
+
 <table class="table table-striped">
 	<tr class="info" style="text-align: center">
 		<td style="text-align: left" width="20%">글번호 : ${ctnt.tb_recruit_no}</td>
@@ -13,7 +13,7 @@
 		<td width="10%"> 조회수 : ${ctnt.tb_recruit_hit}</td>
 	</tr>
 </table>
-</div>  		
+		
 
 
 <div style="display: block; min-height: 350px;" >${ctnt.tb_recruit_contents}</div>

@@ -23,6 +23,8 @@ public interface RecruitService {
 
 	void getRecruitContents(int tb_recruit_no, Model model);
 
+	void updateRecruit(Map<String, Object> map, int tb_recruit_no, Model model);
+
 	
 
 	

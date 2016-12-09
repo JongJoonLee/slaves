@@ -20,7 +20,7 @@
 
 	</table>
 	
-	<textarea name="notice_board_contents"rows="100" id="editor1">${ctnt.tb_promote_contents}</textarea>
+	<textarea name="tb_promote_contents"rows="100" id="editor1">${ctnt.tb_promote_contents}</textarea>
 </form>
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>

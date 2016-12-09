@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <div class="ad_tit">공지사항 ${ctnt.notice_board_no}번 글</div>
-<div class="row"> 
+ 
 <table class="table table-striped">
 	<tr class="info" style="text-align: center">
 		<td style="text-align: left" width="20%">글번호 : ${ctnt.notice_board_no}</td>
@@ -13,7 +13,7 @@
 		<td width="10%"> 조회수 : ${ctnt.notice_board_hit}</td>
 	</tr>
 </table>
-</div>  		
+		
 
 
 <div style="display: block; min-height: 350px;" >${ctnt.notice_board_contents}</div>

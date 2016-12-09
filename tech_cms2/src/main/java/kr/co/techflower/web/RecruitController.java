@@ -113,5 +113,43 @@ public class RecruitController extends FrameworkController{
 		
 		return "tiles.recruit_boardcontents";
 	}
+	
+	
+	
+	
+	@RequestMapping(value = "/cms/recruit_edit.do", method = RequestMethod.GET)
+	public String notice_boardEdit(Locale locale, Model model, HttpSession session,
+			@RequestParam(value = "tb_recruit_no") int tb_recruit_no) throws Exception{
+		
+		recruitService.getRecruitContents(tb_recruit_no,model);
+		
+		
+		
+		return "tiles.recruit_edit";
+	}
+	
+	
+	@RequestMapping(value = "/cms/tb_recruitupdatepost1.do", method = RequestMethod.POST)
+	public String tb_recruitupdatepost1(Locale locale, Model model, HttpSession session, String tb_recruit_title,
+			String tb_recruit_contents, int tb_recruit_no ) {
+		
+		Map<String, Object> bdupdate = new HashMap<String, Object>();
+		bdupdate.put("tb_recruit_title", tb_recruit_title);
+		bdupdate.put("tb_recruit_contents", tb_recruit_contents);
+		bdupdate.put("tb_recruit_no", tb_recruit_no);
+		
+		recruitService.updateRecruit(bdupdate, tb_recruit_no, model);
+		
+		
+		return "redirect:/cms/recruit.do";
+
+		
+	}
+	
+	
+	
+	
+	
+	
 
 }

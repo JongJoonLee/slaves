@@ -39,7 +39,7 @@
 												<a data-toggle="collapse" data-parent="#accordion"
 													href="#collapseOne" aria-expanded="true"
 													aria-controls="#collapseOne">DEFENCE EQUIPMENT</a>
-													<button class="btn btn-info btn-xs"> +</button>
+													<button class="btn btn-info btn-xs" data-toggle="modal" data-target="#AclassModal"> +</button>
 											</h4>
 											
 										</div>
@@ -168,25 +168,25 @@
 </div>
 
 
-
+<%-- <c:set value="${list}" var="menuA" />
 
 <!--중메뉴 추가 Modal -->
-	<div class="modal fade" id="BclassModal" tabindex="-1" role="dialog" aria-labelledby="BclassModalLabel" aria-hidden="true">
+	<div class="modal fade" id="AclassModal" tabindex="-1" role="dialog" aria-labelledby="AclassModalLabel" aria-hidden="true">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
 	      <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title" id="myModalLabel">주요 고객사 추가</h4>
+	        <h4 class="modal-title" id="myModalLabel">DEFENCE EQUIPMENT 하위메뉴 추가</h4>
 	      </div>
-	       <form method="post" action="productPost.do">
+	       <form method="post" action="#">
 		      <div class="modal-body">
 			    	
-			    	<input name="tb_product_sub_title" id="tb_product_sub_title" type="text" class="form-control" placeholder="중분류 제목 입력"/>
-				   	<input type="hidden" name="tb_product_no" value="">
+			    	<input name="tb_product_sub_title" id="tb_product_sub_title" type="text" class="form-control" value="#"/>
+				   	<input type="hidden" name="tb_product_no" value="${menuA.tb_product_no}">
 			      
 		      </div>
 		      <div class="modal-footer">
-			     	<button type="button" class="btn btn-success" data-dismiss="modal">로고첨부</button>
+			     	
 			     	<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
 			     	<button type="submit" class="btn btn-primary">저장</button>
 		     </div>
@@ -194,7 +194,7 @@
 	    </div>
 	  </div>
 	</div>
-	<!--중메뉴 추가 Modal 끝 -->	
+	<!--중메뉴 추가 Modal 끝 -->	 --%>
 
 
 
