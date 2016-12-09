@@ -13,7 +13,7 @@ $(function(){
 	$("#partner").click(function(){
 		$.doLoadPage("partner");
 	}); */
-	$("#history").click(function(){
+	/* $("#history").click(function(){
 		$.doLoadPage("history");
 	});
 	$("#research").click(function(){
@@ -21,24 +21,24 @@ $(function(){
 	});
 	$("#webEdit").click(function(){
 		$.doLoadPage("webEdit");
-	});
+	}); */
 	/* $("#notice").click(function(){
 		$.doLoadPage("notice");
 	}); */
-	$("#promote").click(function(){
+	/* $("#promote").click(function(){
 		$.doLoadPage("promote");
-	});
+	}); */
 	/* $("#recruit").click(function(){
 		$.doLoadPage("recruit");
 	}); */
 	
-	$("#online").click(function(){
+	/* $("#online").click(function(){
 		$.doLoadPage("online");
 	});
 	$("#manager").click(function(){
 		$.doLoadPage("manager");
 	});
-	
+	 */
 	
 		
 	$.doLoadPage = function(psPageId, psSurveyId){
@@ -53,7 +53,7 @@ $(function(){
 	$.setClassActive = function(psTagId){
 		if(!psTagId){
 			var vaTag = new Array();
-			vaTag = ["product","partner","history","research","webEdit","notice","promote","recruit","online","manager"];
+			vaTag = ["product","partner","history","research","webEdit","notice","promote","recruit","online","certification","manager"];
 			for(var i = 0; i < vaTag.length; i++){
 				$('#'+vaTag[i]).removeClass('on');
 			}
@@ -65,7 +65,7 @@ $(function(){
 			};
 			
 			var vaTag = new Array();
-			vaTag = ["product","partner","history","research","webEdit","notice","promote","recruit","online","manager"];
+			vaTag = ["product","partner","history","research","webEdit","notice","promote","recruit","online","certification","manager"];
 			for(var i = 0; i < vaTag.length; i++){
 				if(vaTag[i] == psTagId){
 					$('#'+psTagId).addClass("on");
@@ -85,13 +85,15 @@ $(window).load(function(){
 <div class="nav">
 	<a href="${pageContext.request.contextPath}/cms/product.do"><span id="product">PRODUCT 관리</span></a>
 	<a href="${pageContext.request.contextPath}/cms/partner.do"><span id="partner">주요고객사 관리</span></a>
-	<span id="history">연혁 관리</span>
-	<span id="research">연구개발내역 관리</span>
-	<span id="webEdit">웹에디터</span>
+	<a href="${pageContext.request.contextPath}/cms/history.do"><span id="history">연혁 관리</span></a>
+	<a href="${pageContext.request.contextPath}/cms/research.do"><span id="research">연구개발내역 관리</span></a>
+	<a href="${pageContext.request.contextPath}/cms/webEdit.do"><span id="webEdit">웹에디터</span></a>
 	<a href="${pageContext.request.contextPath}/cms/notice.do"><span id="notice">공지사항관리</span></a>
-	<span id="promote">대외홍보 관리</span>
+	<a href="${pageContext.request.contextPath}/cms/promote.do"><span id="promote">대외홍보 관리</span></a>
 	<a href="${pageContext.request.contextPath}/cms/recruit.do"><span id="recruit">채용공고 관리</span></a>
-	<span id="online">온라인접수 관리</span>
-	<span id="manager">담당자관리</span> 
+	<a href="${pageContext.request.contextPath}/cms/online.do"><span id="online">온라인접수 관리</span></a>
+	<a href="${pageContext.request.contextPath}/cms/certification.do"><span id="certification">인증현황 관리</span></a>
+	<a href="${pageContext.request.contextPath}/cms/manager.do"><span id="manager">담당자관리</span></a>
+	 
 	
 </div>

@@ -64,7 +64,7 @@ public class RecruitServiceImpl extends AbstractCommonService implements Recruit
 	public void inputRecruit(Map<String, Object> bdwrite, Model model){
 		
 		//System.out.println("제목은 : "+bdwrite.get("notice_board_title"));
-		mapper.insert("Recruit.insertNotice_Board", bdwrite);
+		mapper.insert("Recruit.insertRecruit", bdwrite);
 		
 	}
 	
@@ -97,7 +97,7 @@ public class RecruitServiceImpl extends AbstractCommonService implements Recruit
 		map.put("tb_recruit_hit", (hit + 1));
 		map.put("tb_recruit_no", tb_recruit_no);
 		mapper.update("Recruit.recruit_updateHit", map);
-		System.out.println("업데이트 후 : "+mapper.selectOne("Recruit.recruit_updateHit",tb_recruit_no));
+		System.out.println("업데이트 후 : "+mapper.selectOne("Recruit.getRecruit_hit",tb_recruit_no));
 		
 	}
 	

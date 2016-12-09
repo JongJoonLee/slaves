@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Promote">
+
+	<select id="getPromoteList" parameterType="int" resultType="map">
+		SELECT * 
+		FROM `tb_promote` 
+		ORDER BY tb_promote_no DESC
+		LIMIT #{cnt} , 10
+	
+	</select>
+	
+	<select id="getPromoteCount" resultType="int">
+		SELECT COUNT(*) FROM `tb_promote`
+	</select>
+	
+	<select id="getPromoteContents" parameterType="int" resultType="map">
+		SELECT * 
+		FROM `tb_promote`
+		WHERE tb_promote_no = #{tb_promote_no}
+	</select>
+	
+	<insert id="setPromote">
+		INSERT INTO `tb_promote` 
+		(tb_promote_title, tb_promote_contents, tb_promote_hit, tb_promote_moddate, tb_promote_regdate)
+		VALUES
+		(#{tb_promote_title},#{tb_promote_contents},0,now(),now())
+		
+	</insert>
+	
+	<update id="updatePromote" parameterType="map">
+	
+		UPDATE `tb_promote`
+		SET 
+		tb_promote_title=#{tb_promote_title},
+		tb_promote_contents=#{tb_promote_contents}
+		WHERE tb_promote_no=#{tb_promote_no}
+	</update>
+	
+	<update id="updatePromoteHit" parameterType="map">
+		UPDATE `tb_promote` SET tb_promote_hit=#{tb_promote_hit} WHERE tb_promote_no=#{tb_promote_no}
+	</update>
+	
+	<select id="getTb_promote_Prev" resultType="map" parameterType="int">
+	
+		select tb_promote_no, tb_promote_title 
+		from `tb_promote` 
+		where tb_promote_no=(select max(tb_promote_no) 
+		from `tb_promote`
+		<![CDATA[
+		where tb_promote_no < #{tb_promote_no});
+		]]> 
+		
+	
+	
+	</select>
+	
+	
+	<select id="getTb_promote_Next" resultType="map" parameterType="int">
+	
+		select tb_promote_no, tb_promote_title 
+		from `tb_promote` 
+		where tb_promote_no=(select min(tb_promote_no) 
+		from `tb_promote`
+		<![CDATA[
+		where tb_promote_no > #{tb_promote_no});
+		]]> 
+		
+	
+	
+	</select>
+	
+	
+	<select id="getPromotehit"  parameterType="int" resultType="int">
+		SELECT tb_promote_hit
+		FROM `tb_promote`
+		WHERE tb_promote_no=#{tb_promote_no}
+	</select>
+
+
+
+
+
+</mapper>

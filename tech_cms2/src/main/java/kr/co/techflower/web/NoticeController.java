@@ -73,9 +73,6 @@ public class NoticeController extends FrameworkController{
 	@RequestMapping(value = "/cms/notice_boardwrite.do", method = RequestMethod.GET)
 	public String notice_BoardWrite(Locale locale, Model model,HttpSession session) {
 		
-		
-
-		
 
 		// login1.jsp
 		return "tiles.notice_boardwrite";

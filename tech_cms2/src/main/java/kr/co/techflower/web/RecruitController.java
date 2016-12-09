@@ -79,7 +79,7 @@ public class RecruitController extends FrameworkController{
 		return "tiles.recruit_boardwrite";
 	}
 
-	@RequestMapping(value = "/cms/recruit_boardwritepost1.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/cms/recruit_writepost1.do", method = RequestMethod.POST)
 	public String notice_boardWritePost(Locale locale, Model model, HttpSession session, String tb_recruit_title,
 			String tb_recruit_contents, String tb_recruit_writter ) {
 		
