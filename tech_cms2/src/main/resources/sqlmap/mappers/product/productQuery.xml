@@ -67,6 +67,41 @@
 	
 	
 	
+	<!-- 서브메뉴추가제거수정삽입쿼리 -->
+	<insert id="insertSubMenu" parameterType="map">
+		INSERT INTO
+			`tb_product_sub`
+			(
+				tb_product_no, 
+				tb_product_sub_title
+			)
+		VALUES
+			(
+				#{tb_product_no}, 
+				#{tb_product_sub_title}
+			)
+	
+	</insert>
+	
+	<update id="updateSubMenu" parameterType="map">
+	
+		UPDATE 
+			`tb_product_sub`
+		SET
+			tb_product_no = #{tb_product_no},
+			tb_product_sub_title = #{tb_product_sub_title}
+		WHERE
+			tb_product_sub_no = #{tb_product_sub_no}
+			
+	</update>
+	
+	<delete id="deleteSubMenu" parameterType="int">
+		DELETE FROM `tb_product_sub` WHERE tb_product_sub_no = #{tb_product_sub_no}
+	</delete>
+	
+	
+	
+	
 	
 
 

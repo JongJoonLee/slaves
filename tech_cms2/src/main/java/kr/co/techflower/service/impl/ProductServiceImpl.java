@@ -66,6 +66,23 @@ public class ProductServiceImpl extends AbstractCommonService implements Product
 		System.out.println("서비스 리스트 내용 : "+listDetail);
 	}
 	
+	@Override
+	public void insertSubMenu(Map<String, Object> map,Model model){
+		
+		mapper.insert("Product.insertSubMenu", map);		
+		
+	}
+	@Override
+	public void updateSubMenu(Map<String, Object> map, @RequestParam(value = "tb_product_sub_no")int tb_product_sub_no, Model model){
+		mapper.insert("Product.insertSubMenu", map);
+	}
+	@Override
+	public void deleteSubMenu(Map<String, Object> inslist,Model model){
+		mapper.delete("Product.deleteSubMenu", inslist);
+		
+	}
+	
+	
 	
 	
 

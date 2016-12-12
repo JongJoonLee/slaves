@@ -39,7 +39,7 @@
 												<a data-toggle="collapse" data-parent="#accordion"
 													href="#collapseOne" aria-expanded="true"
 													aria-controls="#collapseOne">DEFENCE EQUIPMENT</a>
-													<button class="btn btn-info btn-xs" data-toggle="modal" data-target="#AclassModal"> +</button>
+													<button class="btn btn-info btn-xs" style="float: right;" data-toggle="modal" data-target="#AclassModal"> +</button>
 											</h4>
 											
 										</div>
@@ -47,9 +47,19 @@
 										<div id="collapseOne" class="panel-collapse collapse">
 											<c:forEach var="tmpsub" items="${listsub1}">
 												<div class="list-group">
+												
+												
 													<a href="#" class="list-group-item"
-														onclick="sendAjax('productDetail.do?tb_product_sub_no=${tmpsub.tb_product_sub_no}')">${tmpsub.tb_product_sub_title}</a>
+														onclick="sendAjax('productDetail.do?tb_product_sub_no=${tmpsub.tb_product_sub_no}')">
+														${tmpsub.tb_product_sub_title}
+													</a>
+													<div class="btn-group" role="group" aria-label="...">
+													<button class="btn btn-success btn-xs" data-toggle="modal" data-target="#">수정</button>
+													<button class="btn btn-danger btn-xs">삭제</button>
+													</div>
 												</div>
+												
+												
 											</c:forEach>
 										</div>
 										
@@ -62,6 +72,7 @@
 												<a data-toggle="collapse" data-parent="#accordion"
 													href="#collapseTwo" aria-expanded="true"
 													aria-controls="#collapseTwo">MARINE EQUIPMENT</a>
+													<button style="float: right;" class="btn btn-info btn-xs" data-toggle="modal" data-target="#BclassModal"> +</button>
 											</h4>
 										</div>
 										<!-- div id인 collapse*는 위의 데이터토글을 위해 DB값에서 받아옴 -->
@@ -73,6 +84,11 @@
 													<a href="#" class="list-group-item"
 														onclick="sendAjax('productDetail.do?tb_product_sub_no=${tmpsub.tb_product_sub_no}')">${tmpsub.tb_product_sub_title}</a>
 												</div>
+												
+												
+												
+												
+												
 											</c:forEach>
 										</div>
 										
@@ -82,6 +98,7 @@
 												<a data-toggle="collapse" data-parent="#accordion"
 													href="#collapseThree" aria-expanded="true"
 													aria-controls="#collapseThree">OFFSHORE EQUIPMENT</a>
+													<button style="float: right;" class="btn btn-info btn-xs" data-toggle="modal" data-target="#CclassModal"> +</button>
 											</h4>
 										</div>
 										<!-- div id인 collapse*는 위의 데이터토글을 위해 DB값에서 받아옴 -->
@@ -100,7 +117,8 @@
 											<h4 class="panel-title">
 												<a data-toggle="collapse" data-parent="#accordion"
 													href="#collapseFour" aria-expanded="true"
-													aria-controls="#collapseFour">OFFSHORE EQUIPMENT</a>
+													aria-controls="#collapseFour">ON/OFFSHORE PLANT</a>
+													<button style="float: right;" class="btn btn-info btn-xs" data-toggle="modal" data-target="#DclassModal"> +</button>
 											</h4>
 										</div>
 										<!-- div id인 collapse*는 위의 데이터토글을 위해 DB값에서 받아옴 -->
@@ -168,9 +186,9 @@
 </div>
 
 
-<%-- <c:set value="${list}" var="menuA" />
 
-<!--중메뉴 추가 Modal -->
+
+	<!--DEFENCE EQUIPMENT 하위메뉴 추가 Modal -->
 	<div class="modal fade" id="AclassModal" tabindex="-1" role="dialog" aria-labelledby="AclassModalLabel" aria-hidden="true">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
@@ -178,11 +196,11 @@
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	        <h4 class="modal-title" id="myModalLabel">DEFENCE EQUIPMENT 하위메뉴 추가</h4>
 	      </div>
-	       <form method="post" action="#">
+	       <form method="post" action="insertSubMenu.do">
 		      <div class="modal-body">
 			    	
-			    	<input name="tb_product_sub_title" id="tb_product_sub_title" type="text" class="form-control" value="#"/>
-				   	<input type="hidden" name="tb_product_no" value="${menuA.tb_product_no}">
+			    	<input name="tb_product_sub_title" id="tb_product_sub_title" type="text" class="form-control"/>
+				   	<input type="hidden" name="tb_product_no" value="1">
 			      
 		      </div>
 		      <div class="modal-footer">
@@ -194,9 +212,89 @@
 	    </div>
 	  </div>
 	</div>
-	<!--중메뉴 추가 Modal 끝 -->	 --%>
+	<!--DEFENCE EQUIPMENT 하위메뉴 추가 Modal 끝 -->	
 
-
+	<!--MARINE EQUIPMENT 하위메뉴 추가 Modal -->
+	<div class="modal fade" id="BclassModal" tabindex="-1" role="dialog" aria-labelledby="BclassModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">MARINE EQUIPMENT 하위메뉴 추가</h4>
+	      </div>
+	       <form method="post" action="insertSubMenu.do">
+		      <div class="modal-body">
+			    	
+			    	<input name="tb_product_sub_title" id="tb_product_sub_title" type="text" class="form-control"/>
+				   	<input type="hidden" name="tb_product_no" value="2">
+			      
+		      </div>
+		      <div class="modal-footer">
+			     	
+			     	<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+			     	<button type="submit" class="btn btn-primary">저장</button>
+		     </div>
+	      </form>
+	    </div>
+	  </div>
+	</div>
+	<!--MARINE EQUIPMENT 하위메뉴 추가 Modal 끝 -->	
+	
+	
+	<!--OFFSHORE EQUIPMENT 하위메뉴 추가 Modal -->
+	<div class="modal fade" id="CclassModal" tabindex="-1" role="dialog" aria-labelledby="CclassModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">OFFSHORE EQUIPMENT 하위메뉴 추가</h4>
+	      </div>
+	       <form method="post" action="insertSubMenu.do">
+		      <div class="modal-body">
+			    	
+			    	<input name="tb_product_sub_title" id="tb_product_sub_title" type="text" class="form-control"/>
+				   	<input type="hidden" name="tb_product_no" value="3">
+			      
+		      </div>
+		      <div class="modal-footer">
+			     	
+			     	<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+			     	<button type="submit" class="btn btn-primary">저장</button>
+		     </div>
+	      </form>
+	    </div>
+	  </div>
+	</div>
+	<!--OFFSHORE EQUIPMENT 하위메뉴 추가 Modal 끝 -->	
+	
+	
+	<!--ON/OFFSHORE PLANT 하위메뉴 추가 Modal -->
+	<div class="modal fade" id="DclassModal" tabindex="-1" role="dialog" aria-labelledby="DclassModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">ON/OFFSHORE PLANT 하위메뉴 추가</h4>
+	      </div>
+	       <form method="post" action="insertSubMenu.do">
+		      <div class="modal-body">
+			    	
+			    	<input name="tb_product_sub_title" id="tb_product_sub_title" type="text" class="form-control"/>
+				   	<input type="hidden" name="tb_product_no" value="4">
+			      
+		      </div>
+		      <div class="modal-footer">
+			     	
+			     	<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+			     	<button type="submit" class="btn btn-primary">저장</button>
+		     </div>
+	      </form>
+	    </div>
+	  </div>
+	</div>
+	<!--ON/OFFSHORE PLANT 하위메뉴 추가 Modal 끝 -->	
+	
+	
 
 
 

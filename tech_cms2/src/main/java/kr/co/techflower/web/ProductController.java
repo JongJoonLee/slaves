@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.techflower.service.ProductService;
@@ -56,5 +57,22 @@ public class ProductController extends FrameworkController{
 		
 		return "/cms/productDetail";
 	}
+	
+	
+	@RequestMapping(value="/cms/insertSubMenu.do", method = RequestMethod.POST )
+	public String insertSub(Map<String, Object> inslist, Model model,String tb_product_no, String tb_product_sub_title ){
+		
+		inslist.put("tb_product_no", tb_product_no);
+		inslist.put("tb_product_sub_title", tb_product_sub_title);
+		productservice.insertSubMenu(inslist, model);		
+		
+		
+		
+		
+		return "redirect:/cms/product.do";
+	}
+	
+	
+	
 
 }
