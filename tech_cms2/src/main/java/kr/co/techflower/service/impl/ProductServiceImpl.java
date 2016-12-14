@@ -73,8 +73,8 @@ public class ProductServiceImpl extends AbstractCommonService implements Product
 		
 	}
 	@Override
-	public void updateSubMenu(Map<String, Object> map, @RequestParam(value = "tb_product_sub_no")int tb_product_sub_no, Model model){
-		mapper.insert("Product.insertSubMenu", map);
+	public void updateSubMenu(Map<String, Object> map, Model model){
+		mapper.update("Product.updateSubMenu", map);
 	}
 	@Override
 	public void deleteSubMenu(Map<String, Object> inslist,Model model){

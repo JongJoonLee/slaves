@@ -72,6 +72,37 @@ public class ProductController extends FrameworkController{
 		return "redirect:/cms/product.do";
 	}
 	
+	@RequestMapping(value="/cms/updateSubMenu.do", method = RequestMethod.POST )
+	public String updateSub(Map<String, Object> inslist, Model model,int tb_product_sub_no, String tb_product_sub_title ){
+		
+		System.out.println("프로덕트써브넘버"+tb_product_sub_no);
+		inslist.put("tb_product_sub_no", tb_product_sub_no);
+		inslist.put("tb_product_sub_title", tb_product_sub_title);
+		
+		productservice.updateSubMenu(inslist, model);
+		
+		
+		
+		
+		return "redirect:/cms/product.do";
+	}
+	
+	
+	
+	@RequestMapping(value="/cms/deleteSubMenu.do", method = RequestMethod.POST)
+	public String deleteSub(Model model, HttpServletRequest req, HttpServletResponse res,
+			int tb_product_sub_no) throws Exception{
+		
+	
+	//이미지 차후 추가 
+	Map<String, Object> list = new HashMap<String, Object>();
+	list.put("tb_product_sub_no", tb_product_sub_no);
+	productservice.deleteSubMenu(list, model);
+	
+	return "redirect:/cms/product.do";
+	};
+	
+	
 	
 	
 

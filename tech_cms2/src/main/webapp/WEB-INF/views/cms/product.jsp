@@ -9,7 +9,7 @@
 
 
 <div class="row">
-	<div class="col-md-3">
+	<div class="col-md-4">
 		<div class="row">
 			<div class="col-md-12">
 				<div class="x_panel">
@@ -54,10 +54,48 @@
 														${tmpsub.tb_product_sub_title}
 													</a>
 													<div class="btn-group" role="group" aria-label="...">
-													<button class="btn btn-success btn-xs" data-toggle="modal" data-target="#">수정</button>
-													<button class="btn btn-danger btn-xs">삭제</button>
+														<form method="post" action="deleteSubMenu.do">
+															<button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#Modal${tmpsub.tb_product_sub_no}">수정</button>
+														
+															<input type="hidden" name="tb_product_sub_no" value="${tmpsub.tb_product_sub_no}">
+															<button class="btn btn-danger btn-xs" type="submit">삭제</button>
+														</form>
+													
 													</div>
 												</div>
+												
+												
+												
+												<!-- 하위메뉴 수정 Modal -->
+												<div class="modal fade" id="Modal${tmpsub.tb_product_sub_no}" tabindex="-1" role="dialog" aria-labelledby="Modal${tmpsub.tb_product_sub_no}Label" aria-hidden="true">
+												  <div class="modal-dialog">
+												    <div class="modal-content">
+												      <div class="modal-header">
+												        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+												        <h4 class="modal-title" id="myModalLabel">${tmpsub.tb_product_sub_title} 수정</h4>
+												      </div>
+												       <form method="post" action="updateSubMenu.do">
+													      <div class="modal-body">
+														    	
+														    	<input name="tb_product_sub_title" id="tb_product_sub_title" type="text" class="form-control" value="${tmpsub.tb_product_sub_title}"/>
+															   	<input type="hidden" name="tb_product_sub_no" value="${tmpsub.tb_product_sub_no}">
+														      
+													      </div>
+													      <div class="modal-footer">
+														     	
+														     	<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+														     	<button type="submit" class="btn btn-primary">저장</button>
+													     </div>
+												      </form>
+												    </div>
+												  </div>
+												</div>
+												<!--하위메뉴 수정 Modal 끝 -->
+												
+												
+												
+												
+												
 												
 												
 											</c:forEach>
@@ -83,7 +121,47 @@
 												<div class="list-group">
 													<a href="#" class="list-group-item"
 														onclick="sendAjax('productDetail.do?tb_product_sub_no=${tmpsub.tb_product_sub_no}')">${tmpsub.tb_product_sub_title}</a>
+													
+													<div class="btn-group" role="group" aria-label="...">
+														<form method="post" action="deleteSubMenu.do">
+															<button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#Modal${tmpsub.tb_product_sub_no}">수정</button>
+														
+															<input type="hidden" name="tb_product_sub_no" value="${tmpsub.tb_product_sub_no}">
+															<button class="btn btn-danger btn-xs" type="submit">삭제</button>
+														</form>
+													
+													</div>
+												
+												
 												</div>
+												
+												
+												
+												<!-- 하위메뉴 수정 Modal -->
+												<div class="modal fade" id="Modal${tmpsub.tb_product_sub_no}" tabindex="-1" role="dialog" aria-labelledby="Modal${tmpsub.tb_product_sub_no}Label" aria-hidden="true">
+												  <div class="modal-dialog">
+												    <div class="modal-content">
+												      <div class="modal-header">
+												        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+												        <h4 class="modal-title" id="myModalLabel">${tmpsub.tb_product_sub_title} 수정</h4>
+												      </div>
+												       <form method="post" action="updateSubMenu.do">
+													      <div class="modal-body">
+														    	
+														    	<input name="tb_product_sub_title" id="tb_product_sub_title" type="text" class="form-control" value="${tmpsub.tb_product_sub_title}"/>
+															   	<input type="hidden" name="tb_product_sub_no" value="${tmpsub.tb_product_sub_no}">
+														      
+													      </div>
+													      <div class="modal-footer">
+														     	
+														     	<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+														     	<button type="submit" class="btn btn-primary">저장</button>
+													     </div>
+												      </form>
+												    </div>
+												  </div>
+												</div>
+												<!--하위메뉴 수정 Modal 끝 -->
 												
 												
 												
@@ -109,7 +187,48 @@
 												<div class="list-group">
 													<a href="#" class="list-group-item"
 														onclick="sendAjax('productDetail.do?tb_product_sub_no=${tmpsub.tb_product_sub_no}')">${tmpsub.tb_product_sub_title}</a>
+												
+												<div class="btn-group" role="group" aria-label="...">
+														<form method="post" action="deleteSubMenu.do">
+															<button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#Modal${tmpsub.tb_product_sub_no}">수정</button>
+														
+															<input type="hidden" name="tb_product_sub_no" value="${tmpsub.tb_product_sub_no}">
+															<button class="btn btn-danger btn-xs" type="submit">삭제</button>
+														</form>
+													
+													</div>
+												
+												
 												</div>
+												
+												<!-- 하위메뉴 수정 Modal -->
+												<div class="modal fade" id="Modal${tmpsub.tb_product_sub_no}" tabindex="-1" role="dialog" aria-labelledby="Modal${tmpsub.tb_product_sub_no}Label" aria-hidden="true">
+												  <div class="modal-dialog">
+												    <div class="modal-content">
+												      <div class="modal-header">
+												        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+												        <h4 class="modal-title" id="myModalLabel">${tmpsub.tb_product_sub_title} 수정</h4>
+												      </div>
+												       <form method="post" action="updateSubMenu.do">
+													      <div class="modal-body">
+														    	
+														    	<input name="tb_product_sub_title" id="tb_product_sub_title" type="text" class="form-control" value="${tmpsub.tb_product_sub_title}"/>
+															   	<input type="hidden" name="tb_product_sub_no" value="${tmpsub.tb_product_sub_no}">
+														      
+													      </div>
+													      <div class="modal-footer">
+														     	
+														     	<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+														     	<button type="submit" class="btn btn-primary">저장</button>
+													     </div>
+												      </form>
+												    </div>
+												  </div>
+												</div>
+												<!--하위메뉴 수정 Modal 끝 -->
+											
+											
+											
 											</c:forEach>
 										</div>
 										
@@ -129,7 +248,47 @@
 												<div class="list-group">
 													<a href="#" class="list-group-item"
 														onclick="sendAjax('productDetail.do?tb_product_sub_no=${tmpsub.tb_product_sub_no}')">${tmpsub.tb_product_sub_title}</a>
+												<div class="btn-group" role="group" aria-label="...">
+														<form method="post" action="deleteSubMenu.do">
+															<button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#Modal${tmpsub.tb_product_sub_no}">수정</button>
+														
+															<input type="hidden" name="tb_product_sub_no" value="${tmpsub.tb_product_sub_no}">
+															<button class="btn btn-danger btn-xs" type="submit">삭제</button>
+														</form>
+													
+													</div>
+												
+												
+												
 												</div>
+												
+												
+												
+												<!-- 하위메뉴 수정 Modal -->
+												<div class="modal fade" id="Modal${tmpsub.tb_product_sub_no}" tabindex="-1" role="dialog" aria-labelledby="Modal${tmpsub.tb_product_sub_no}Label" aria-hidden="true">
+												  <div class="modal-dialog">
+												    <div class="modal-content">
+												      <div class="modal-header">
+												        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+												        <h4 class="modal-title" id="myModalLabel">${tmpsub.tb_product_sub_title} 수정</h4>
+												      </div>
+												       <form method="post" action="updateSubMenu.do">
+													      <div class="modal-body">
+														    	
+														    	<input name="tb_product_sub_title" id="tb_product_sub_title" type="text" class="form-control" value="${tmpsub.tb_product_sub_title}"/>
+															   	<input type="hidden" name="tb_product_sub_no" value="${tmpsub.tb_product_sub_no}">
+														      
+													      </div>
+													      <div class="modal-footer">
+														     	
+														     	<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+														     	<button type="submit" class="btn btn-primary">저장</button>
+													     </div>
+												      </form>
+												    </div>
+												  </div>
+												</div>
+												<!--하위메뉴 수정 Modal 끝 -->
 											</c:forEach>
 										</div>
 									
@@ -155,7 +314,7 @@
 
 
 
-	<div class="col-md-9">
+	<div class="col-md-8">
 
 		<div class="row">
 			<div class="col-md-12">

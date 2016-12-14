@@ -88,7 +88,6 @@
 		UPDATE 
 			`tb_product_sub`
 		SET
-			tb_product_no = #{tb_product_no},
 			tb_product_sub_title = #{tb_product_sub_title}
 		WHERE
 			tb_product_sub_no = #{tb_product_sub_no}
